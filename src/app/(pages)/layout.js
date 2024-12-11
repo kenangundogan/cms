@@ -4,7 +4,9 @@ export default function PageLayout({ children }) {
     return (
         <main className="relative top-20 w-full min-h-calc bg-white">
             <Header />
-            {children}
+            <div className="p-4">
+                {children}
+            </div>
         </main>
     );
 }
