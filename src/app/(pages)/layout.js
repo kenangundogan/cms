@@ -5,7 +5,7 @@ export default function PageLayout({ children }) {
     return (
         <main className="relative top-20 w-full min-h-calc bg-white">
             <Header />
-            <div className="min-h-screen p-4">
+            <div className="min-h-screen p-8">
                 {children}
             </div>
             <Footer />

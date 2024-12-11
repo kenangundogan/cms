@@ -14,7 +14,7 @@ const Header = () => {
     };
 
     return (
-        <header className="fixed top-0 z-50 w-full overflow-hidden p-4 px-8 h-20 flex justify-between items-center bg-gray-50">
+        <header className="fixed top-0 z-50 w-full overflow-hidden p-4 px-8 h-20 flex justify-between items-center border-b bg-white">
             <div className="text-xl font-bold">
                 <Link href="/" className='flex items-center gap-2'>
                     <Image src="/assets/images/symbol/symbol.svg" alt="Logo" width={30} height={30} />
