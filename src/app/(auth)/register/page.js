@@ -24,8 +24,8 @@ const RegisterPage = () => {
             <div className='w-full md:w-6/12 lg:w-8/12 p-8 bg-blue-700'>
                 <div className='w-full h-full flex justify-center items-center'>
                     <Image
-                        src='/logo/logo.svg'
-                        alt='Login Image'
+                        src='/assets/images/symbol/symbol.svg'
+                        alt='Register Image'
                         width={100}
                         height={100}
                     />
