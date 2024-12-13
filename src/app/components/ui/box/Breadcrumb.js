@@ -3,15 +3,12 @@
 import React from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
-const Breadcrumb = ({ children, className, style }) => {
+const Breadcrumb = ({ children, className }) => {
     const items = React.Children.toArray(children);
 
     return (
-        <div data-name="breadcrumb" className="p-4">
-            <ul
-                className={`w-full flex gap-1 items-center text-xs ${className || ''}`}
-                style={style}
-            >
+        <div data-name="Breadcrumb" className="p-4">
+            <ul className={`w-full flex gap-1 items-center text-xs ${className || ''}`}>
                 {items.map((child, index) => (
                     <li
                         key={index}

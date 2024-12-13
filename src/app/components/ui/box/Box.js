@@ -2,20 +2,17 @@
 
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
-const Box = ({ children, className, style }) => {
+const Box = ({ children, className }) => {
     return (
-        <div data-name="box" className='p-4'>
-            <div
-                className={`w-full flex flex-col gap-4 bg-white border rounded-sm ${className || ''}`}
-                style={style}
-            >
+        <div data-name="Box" className='p-4'>
+            <div className={`w-full flex flex-col gap-4 bg-white border rounded-sm ${className || ''}`}>
                 {children}
             </div>
         </div>
     );
 };
 
-Box.Title = ({ children }) => {
+Box.Head = ({ children }) => {
     return (
         <div data-name="head" className="p-4 border-b">
             <div className="flex justify-between">

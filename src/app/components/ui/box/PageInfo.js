@@ -1,12 +1,9 @@
 'use client';
 
-const PageInfo = ({ children, className, style }) => {
+const PageInfo = ({ children, className }) => {
     return (
-        <div data-name="box" className='p-4'>
-            <div
-                className={`w-full flex flex-col gap-1 ${className || ''}`}
-                style={style}
-            >
+        <div data-name="PageInfo" className='p-4'>
+            <div className={`w-full flex flex-col gap-1 ${className || ''}`}>
                 {children}
             </div>
         </div>
