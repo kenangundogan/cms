@@ -16,5 +16,22 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        function ({ addUtilities }) {
+            addUtilities({
+                '.writing-mode-vertical': {
+                    'writing-mode': 'vertical-rl',
+                },
+                '.writing-mode-horizontal': {
+                    'writing-mode': 'horizontal-tb',
+                },
+                '.text-orientation-upright': {
+                    'text-orientation': 'upright',
+                },
+                '.text-orientation-mixed': {
+                    'text-orientation': 'mixed',
+                },
+            });
+        },
+    ],
 };

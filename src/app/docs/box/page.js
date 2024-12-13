@@ -4,7 +4,6 @@ import Breadcrumb from '@/app/components/ui/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import BoxWrapper from '@/app/components/ui/box/BoxWrapper';
 import Box from '@/app/components/ui/box/Box';
-import Accordion from '@/app/components/ui/accordion/Accordion';
 
 const DashboardPage = () => {
     return (
@@ -19,48 +18,6 @@ const DashboardPage = () => {
                 <PageInfo.Title>Box</PageInfo.Title>
                 <PageInfo.Description>Box is a container component that can be used to wrap other components.</PageInfo.Description>
             </PageInfo>
-
-            <Accordion isAllOpen={false} trigger="click">
-                <Accordion.Item defaultOpen={false}>
-                    <Accordion.Head title="Başlık 1" />
-                    <Accordion.Body>
-                        İçerik 1: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item defaultOpen={true}>
-                    <Accordion.Head title="Başlık 2" />
-                    <Accordion.Body>
-                        İçerik 2: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item>
-                    <Accordion.Head title="Başlık 3" />
-                    <Accordion.Body>
-                        İçerik 3: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-
-            <Accordion isAllOpen={false} trigger="hover">
-                <Accordion.Item defaultOpen={false}>
-                    <Accordion.Head title="Başlık 1" />
-                    <Accordion.Body>
-                        İçerik 1: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item defaultOpen={true}>
-                    <Accordion.Head title="Başlık 2" />
-                    <Accordion.Body>
-                        İçerik 2: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item>
-                    <Accordion.Head title="Başlık 3" />
-                    <Accordion.Body>
-                        İçerik 3: Bu bir accordion body içerik alanıdır.
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
 
             <BoxWrapper className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}>
                 <Box>

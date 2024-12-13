@@ -8,7 +8,7 @@ import React from 'react';
 const AccordionContext = createContext();
 
 // Accordion bileşeni
-const Accordion = ({ children, isAllOpen = false, trigger = "click", className }) => {
+const Accordion = ({ children, isAllOpen = false, direction = "vertical", className }) => {
     const [openItems, setOpenItems] = useState(
         Array.isArray(children)
             ? children.map((child) => child.props.defaultOpen || isAllOpen)
@@ -21,15 +21,12 @@ const Accordion = ({ children, isAllOpen = false, trigger = "click", className }
         );
     };
 
-    const setHoverState = (index, state) => {
-        setOpenItems((prevState) =>
-            prevState.map((isOpen, i) => (i === index ? state : isOpen))
-        );
-    };
-
     return (
-        <AccordionContext.Provider value={{ openItems, toggleItem, setHoverState, trigger }}>
-            <div data-type="Accordion" className={`w-full flex flex-col gap-2 p-4 ${className || ''}`}>
+        <AccordionContext.Provider value={{ openItems, toggleItem, direction }}>
+            <div
+                data-type="Accordion"
+                className={`w-full ${direction === "horizontal" ? 'flex-row' : 'flex-col'} flex gap-2 p-4 ${className || ''}`}
+            >
                 {Array.isArray(children)
                     ? children.map((child, index) =>
                         React.cloneElement(child, { index, key: index })
@@ -42,60 +39,66 @@ const Accordion = ({ children, isAllOpen = false, trigger = "click", className }
 
 // Accordion Item bileşeni
 Accordion.Item = ({ children, defaultOpen = false, index }) => {
-    const { openItems, toggleItem, setHoverState, trigger } = useContext(AccordionContext);
+    const { openItems, direction } = useContext(AccordionContext);
 
     const isOpen = openItems[index];
 
-    const handleMouseEnter = () => {
-        if (trigger === "hover") {
-            setHoverState(index, true);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        if (trigger === "hover") {
-            setHoverState(index, false);
-        }
-    };
-
-    const handleClick = () => {
-        if (trigger === "click") {
-            toggleItem(index);
-        }
-    };
-
     return (
         <div
-            className="border rounded-sm"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleClick}
+            className={`border rounded-sm flex ${direction === "horizontal" ? 'flex-row' : 'flex-col'}`}
         >
             {React.Children.map(children, (child) =>
-                React.cloneElement(child, { isOpen })
+                React.cloneElement(child, { isOpen, direction, index })
             )}
         </div>
     );
 };
 
 // Head bileşeni
-Accordion.Head = ({ title, isOpen }) => {
+Accordion.Head = ({ title, isOpen, direction, index }) => {
+    const { toggleItem } = useContext(AccordionContext);
+    const isHorizontal = direction === "horizontal";
+
+    // Dinamik sınıflar
+    const containerClass = `flex items-center p-4 cursor-pointer bg-white ${isHorizontal ? 'flex-col h-24' : 'flex-row'} justify-between`;
+
+    const titleClass = `flex-none text-md font-bold ${isHorizontal ? 'writing-mode-vertical' : ''}`;
+
+    const iconClass = `w-5 h-5 ${isHorizontal ? 'transform rotate-90' : ''}`;
+
+    const handleClick = () => {
+        toggleItem(index);
+    };
+
     return (
-        <div data-type="head" className="flex justify-between items-center p-4 bg-white">
-            <span className="text-md font-bold">{title}</span>
+        <div
+            data-type="head"
+            className={containerClass}
+            onClick={handleClick}
+        >
+            <span className={titleClass}>{title}</span>
             {isOpen ? (
-                <ChevronUpIcon className="w-5 h-5" />
+                <ChevronUpIcon className={iconClass} />
             ) : (
-                <ChevronDownIcon className="w-5 h-5" />
+                <ChevronDownIcon className={iconClass} />
             )}
         </div>
     );
 };
 
 // Body bileşeni
-Accordion.Body = ({ children, isOpen }) => {
+Accordion.Body = ({ children, isOpen, direction }) => {
+    const isHorizontal = direction === "horizontal";
+
+    // Sınıfları basit ve okunabilir hale getiriyoruz
+    const containerClass = isHorizontal
+        ? `transition-all duration-300 overflow-hidden border-l py-4 ${isOpen ? 'px-4 max-w-screen' : 'max-w-0 border-transparent'
+        }`
+        : `transition-all duration-300 overflow-hidden border-t px-4 ${isOpen ? 'py-4 max-h-screen' : 'max-h-0 border-transparent'
+        }`;
+
     return (
-        <div data-type="body" className={`px-4 transition-all duration-300 overflow-hidden border-t ${isOpen ? 'py-4 max-h-auto' : 'max-h-0 border-transparent'}`}>
+        <div data-type="body" className={containerClass}>
             {isOpen && children}
         </div>
     );
