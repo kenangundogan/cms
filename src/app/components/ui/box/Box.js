@@ -46,7 +46,7 @@ Box.Head = ({ children }) => {
     const { isFullScreen, toggleFullScreen } = useContext(BoxContext);
 
     return (
-        <div data-type="head" className="p-4 border-b">
+        <div data-type="Head" className="p-4 border-b">
             <div className="flex justify-between">
                 <div className="text-md font-bold">{children}</div>
                 <div className="relative group">
@@ -70,12 +70,12 @@ Box.Head = ({ children }) => {
 
 // Body bileşeni
 Box.Body = ({ children }) => {
-    return <div data-type="body" className="p-4">{children}</div>;
+    return <div data-type="Body" className="p-4">{children}</div>;
 };
 
-// Footer bileşeni
-Box.Footer = ({ children }) => {
-    return <div data-type="footer" className="p-4 border-t">{children}</div>;
+// Foot bileşeni
+Box.Foot = ({ children }) => {
+    return <div data-type="Foot" className="p-4 border-t">{children}</div>;
 };
 
 export default Box;
