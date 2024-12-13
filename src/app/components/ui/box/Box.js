@@ -32,7 +32,7 @@ const Box = ({ children, className }) => {
 
     return (
         <BoxContext.Provider value={{ isFullScreen, toggleFullScreen }}>
-            <div data-name="Box" className={`p-4 ${isFullScreen ? 'fixed inset-0 w-full h-full shadow-xl bg-yellow-50/75 z-50' : ''}`}>
+            <div data-type="Box" className={`p-4 ${isFullScreen ? 'fixed inset-0 w-full h-full shadow-xl bg-yellow-50/75 z-50' : ''}`}>
                 <div className={`w-full flex flex-col gap-4 bg-white border rounded-sm ${className || ''}`}>
                     {children}
                 </div>
@@ -46,7 +46,7 @@ Box.Head = ({ children }) => {
     const { isFullScreen, toggleFullScreen } = useContext(BoxContext);
 
     return (
-        <div data-name="head" className="p-4 border-b">
+        <div data-type="head" className="p-4 border-b">
             <div className="flex justify-between">
                 <div className="text-md font-bold">{children}</div>
                 <div className="relative group">
@@ -70,12 +70,12 @@ Box.Head = ({ children }) => {
 
 // Body bileşeni
 Box.Body = ({ children }) => {
-    return <div data-name="body" className="p-4">{children}</div>;
+    return <div data-type="body" className="p-4">{children}</div>;
 };
 
 // Footer bileşeni
 Box.Footer = ({ children }) => {
-    return <div data-name="footer" className="p-4 border-t">{children}</div>;
+    return <div data-type="footer" className="p-4 border-t">{children}</div>;
 };
 
 export default Box;

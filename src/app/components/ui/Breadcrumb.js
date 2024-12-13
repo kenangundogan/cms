@@ -7,12 +7,12 @@ const Breadcrumb = ({ children, className }) => {
     const items = React.Children.toArray(children);
 
     return (
-        <div data-name="Breadcrumb" className="p-4">
+        <div data-type="Breadcrumb" className="p-4">
             <ul className={`w-full flex gap-1 items-center text-xs ${className || ''}`}>
                 {items.map((child, index) => (
                     <li
                         key={index}
-                        data-name="item"
+                        data-type="item"
                         className="flex items-center gap-2"
                     >
                         {child}

@@ -1,7 +1,7 @@
 'use client';
 
-import Breadcrumb from '@/app/components/ui/box/Breadcrumb';
-import PageInfo from '@/app/components/ui/box/PageInfo';
+import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import PageInfo from '@/app/components/ui/PageInfo';
 
 const DashboardPage = () => {
     return (

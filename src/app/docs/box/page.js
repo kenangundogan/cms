@@ -1,9 +1,10 @@
 'use client';
 
-import Breadcrumb from '@/app/components/ui/box/Breadcrumb';
-import PageInfo from '@/app/components/ui/box/PageInfo';
+import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import PageInfo from '@/app/components/ui/PageInfo';
 import BoxWrapper from '@/app/components/ui/box/BoxWrapper';
 import Box from '@/app/components/ui/box/Box';
+import Accordion from '@/app/components/ui/accordion/Accordion';
 
 const DashboardPage = () => {
     return (
@@ -19,9 +20,51 @@ const DashboardPage = () => {
                 <PageInfo.Description>Box is a container component that can be used to wrap other components.</PageInfo.Description>
             </PageInfo>
 
-            <BoxWrapper className={'grid grid-cols-1 md:grid-cols-2'}>
+            <Accordion isAllOpen={false} trigger="click">
+                <Accordion.Item defaultOpen={false}>
+                    <Accordion.Head title="Başlık 1" />
+                    <Accordion.Body>
+                        İçerik 1: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item defaultOpen={true}>
+                    <Accordion.Head title="Başlık 2" />
+                    <Accordion.Body>
+                        İçerik 2: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item>
+                    <Accordion.Head title="Başlık 3" />
+                    <Accordion.Body>
+                        İçerik 3: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+
+            <Accordion isAllOpen={false} trigger="hover">
+                <Accordion.Item defaultOpen={false}>
+                    <Accordion.Head title="Başlık 1" />
+                    <Accordion.Body>
+                        İçerik 1: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item defaultOpen={true}>
+                    <Accordion.Head title="Başlık 2" />
+                    <Accordion.Body>
+                        İçerik 2: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item>
+                    <Accordion.Head title="Başlık 3" />
+                    <Accordion.Body>
+                        İçerik 3: Bu bir accordion body içerik alanıdır.
+                    </Accordion.Body>
+                </Accordion.Item>
+            </Accordion>
+
+            <BoxWrapper className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}>
                 <Box>
-                    <Box.Head>Dashboard Title</Box.Head>
+                    <Box.Head>Box Title</Box.Head>
                     <Box.Body>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
                     </Box.Body>

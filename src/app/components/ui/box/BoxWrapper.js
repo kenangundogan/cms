@@ -2,7 +2,7 @@
 
 const BoxWrapper = ({ children, className }) => {
     return (
-        <div data-name="BoxWrapper" className={`${className || ''}`}>
+        <div data-type="BoxWrapper" className={`${className || ''}`}>
             {children}
         </div>
     );
