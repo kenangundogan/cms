@@ -34,14 +34,14 @@ const DashboardPage = () => {
             <Breadcrumb>
                 <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                 <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
-                <Breadcrumb.Item>Accordion</Breadcrumb.Item>
+                <Breadcrumb.Item>Tabs</Breadcrumb.Item>
             </Breadcrumb>
 
             {/* Page Info */}
             <PageInfo>
                 <PageInfo.Title>Tabs</PageInfo.Title>
                 <PageInfo.Description>
-                    The Tabs component is used to display collapsible sections of content. It can be customized to display items in both vertical and horizontal directions.
+                    The Tabs component is used to create a tabbed interface. It is a simple way to switch between different sections of content.
                 </PageInfo.Description>
             </PageInfo>
 
