@@ -47,25 +47,6 @@ const DashboardPage = () => {
         `
     };
 
-    const horizontalExample = {
-        JS: `
-<Accordion direction="horizontal">
-    <Accordion.Item>
-        <Accordion.Head>Title 1</Accordion.Head>
-        <Accordion.Body>
-            This section is displayed horizontally.
-        </Accordion.Body>
-    </Accordion.Item>
-    <Accordion.Item>
-        <Accordion.Head>Title 2</Accordion.Head>
-        <Accordion.Body>
-            Another horizontal content section.
-        </Accordion.Body>
-    </Accordion.Item>
-</Accordion>
-        `
-    };
-
     const defaultOpenExample = {
         JS: `
 <Accordion>
@@ -187,31 +168,6 @@ const DashboardPage = () => {
                         </Accordion.Item>
                     </Accordion>
                     <CodeCard codeSnippets={allOpenExample} />
-                </Example.Body>
-            </Example>
-
-            {/* Horizontal Accordion */}
-            <Example>
-                <Example.Title>Horizontal Accordion</Example.Title>
-                <Example.Description>
-                    Change the layout direction to horizontal using the <code>direction="horizontal"</code> prop.
-                </Example.Description>
-                <Example.Body>
-                    <Accordion direction="horizontal">
-                        <Accordion.Item>
-                            <Accordion.Head>Title 1</Accordion.Head>
-                            <Accordion.Body>
-                                This section is displayed horizontally.
-                            </Accordion.Body>
-                        </Accordion.Item>
-                        <Accordion.Item>
-                            <Accordion.Head>Title 2</Accordion.Head>
-                            <Accordion.Body>
-                                Another horizontal content section.
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                    <CodeCard codeSnippets={horizontalExample} />
                 </Example.Body>
             </Example>
 
