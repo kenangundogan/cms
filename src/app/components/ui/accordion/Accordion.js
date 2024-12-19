@@ -10,7 +10,7 @@ import React from 'react';
 const AccordionContext = createContext();
 
 // Accordion bileşeni
-const Accordion = ({ children, isAllOpen = false, closeOthers = false, direction = "vertical", className }) => {
+const Accordion = ({ children, isAllOpen = false, closeOthers = false, className }) => {
     const [openItems, setOpenItems] = useState(
         Array.isArray(children)
             ? children.map((child) => child.props.defaultOpen || isAllOpen)
@@ -27,10 +27,10 @@ const Accordion = ({ children, isAllOpen = false, closeOthers = false, direction
     };
 
     return (
-        <AccordionContext.Provider value={{ openItems, toggleItem, direction }}>
+        <AccordionContext.Provider value={{ openItems, toggleItem }}>
             <div
                 data-type="Accordion"
-                className={`w-full ${direction === "horizontal" ? 'flex-row' : 'flex-col'} flex gap-2 p-4 ${className || ''}`}
+                className={`w-full flex flex-col gap-2 p-4 ${className || ''}`}
             >
                 {Array.isArray(children)
                     ? children.map((child, index) =>
@@ -44,33 +44,29 @@ const Accordion = ({ children, isAllOpen = false, closeOthers = false, direction
 
 // Accordion Item bileşeni
 Accordion.Item = ({ children, defaultOpen = false, index, disable = false }) => {
-    const { openItems, direction } = useContext(AccordionContext);
+    const { openItems } = useContext(AccordionContext);
 
     const isOpen = openItems[index];
 
     return (
         <div
-            className={`border rounded-sm flex ${direction === "horizontal" ? 'flex-row' : 'flex-col'}
-            ${disable ? 'opacity-50 cursor-not-allowed' : ''}`}
+            data-type="Item"
+            className={`rounded-sm flex flex-col ${disable ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
             {React.Children.map(children, (child) =>
-                React.cloneElement(child, { isOpen, direction, index, disable })
+                React.cloneElement(child, { isOpen, index, disable })
             )}
         </div>
     );
 };
 
 // Head bileşeni
-Accordion.Head = ({ children, isOpen, direction, index, disable }) => {
+Accordion.Head = ({ children, isOpen, index, disable }) => {
     const { toggleItem } = useContext(AccordionContext);
-    const isHorizontal = direction === "horizontal";
 
-    const containerClass = `flex items-center gap-4 p-4 cursor-pointer bg-white
-        ${isHorizontal ? 'flex-col' : 'flex-row'} justify-between
-        ${disable ? 'cursor-not-allowed' : ''}`;
+    const containerClass = `flex items-center gap-4 p-4 cursor-pointer bg-white justify-between ${disable ? 'cursor-not-allowed' : ''}`;
 
-    const titleClass = `text-md font-bold ${isHorizontal ? 'writing-mode-vertical' : ''}`;
-    const iconClass = `w-5 h-5 ${isHorizontal ? 'transform rotate-90' : ''}`;
+    const iconClass = `w-5 h-5`;
 
     const handleClick = () => {
         if (!disable) {
@@ -79,22 +75,18 @@ Accordion.Head = ({ children, isOpen, direction, index, disable }) => {
     };
 
     return (
-        <div data-type="head" className={containerClass} onClick={handleClick}>
-            <span className={titleClass}>{children}</span>
+        <div data-type="Head" className={containerClass} onClick={handleClick}>
+            <span>{children}</span>
             {isOpen ? <ChevronUpIcon className={iconClass} /> : <ChevronDownIcon className={iconClass} />}
         </div>
     );
 };
 
 // Body bileşeni
-Accordion.Body = ({ children, isOpen, direction }) => {
-    const isHorizontal = direction === "horizontal";
+Accordion.Body = ({ children, isOpen }) => {
+    const containerClass = `transition-all duration-300 overflow-hidden border-t px-4 bg-white ${isOpen ? 'py-4 max-h-screen' : 'max-h-0 border-transparent'}`;
 
-    const containerClass = isHorizontal
-        ? `transition-all duration-300 overflow-hidden border-l py-4 ${isOpen ? 'px-4 max-w-screen' : 'max-w-0 border-transparent'}`
-        : `transition-all duration-300 overflow-hidden border-t px-4 ${isOpen ? 'py-4 max-h-screen' : 'max-h-0 border-transparent'}`;
-
-    return <div data-type="body" className={containerClass}>{isOpen && children}</div>;
+    return <div data-type="Body" className={containerClass}>{isOpen && children}</div>;
 };
 
 export default Accordion;
