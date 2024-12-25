@@ -190,7 +190,7 @@ export async function GET(req) {
     // 9. JSON cevabı
     return new Response(
         JSON.stringify({
-            items: paginatedItems,
+            data: paginatedItems,
             meta,
             links
         }),

@@ -1,6 +1,6 @@
-export default function Pagination({ meta, setPage }) {
+export default function Pagination({ meta, links, setPage }) {
     if (!meta) return null;
-
+    console.log(links);
     const { current_page, last_page, total } = meta;
     const maxVisiblePages = 5;
 
@@ -25,7 +25,7 @@ export default function Pagination({ meta, setPage }) {
                 {/* İlk sayfaya git */}
                 <button
                     onClick={() => setPage(1)}
-                    disabled={current_page === 1}
+                    disabled={current_page === 1 || !links?.first}
                     className={`px-3 py-2 border rounded ${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &laquo;
@@ -34,7 +34,7 @@ export default function Pagination({ meta, setPage }) {
                 {/* Önceki sayfaya git */}
                 <button
                     onClick={() => setPage(current_page - 1)}
-                    disabled={current_page === 1}
+                    disabled={current_page === 1 || !links?.prev}
                     className={`px-3 py-2 border rounded ${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &lsaquo;
@@ -54,7 +54,7 @@ export default function Pagination({ meta, setPage }) {
                 {/* Sonraki sayfaya git */}
                 <button
                     onClick={() => setPage(current_page + 1)}
-                    disabled={current_page === last_page}
+                    disabled={current_page === last_page || !links?.next}
                     className={`px-3 py-2 border rounded ${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &rsaquo;
@@ -63,7 +63,7 @@ export default function Pagination({ meta, setPage }) {
                 {/* Son sayfaya git */}
                 <button
                     onClick={() => setPage(last_page)}
-                    disabled={current_page === last_page}
+                    disabled={current_page === last_page || !links?.last}
                     className={`px-3 py-2 border rounded ${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &raquo;
