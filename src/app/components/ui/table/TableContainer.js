@@ -4,7 +4,6 @@ import Table from "@/app/components/ui/table/Table";
 import Pagination from "@/app/components/ui/table/Pagination";
 import Controls from "@/app/components/ui/table/Controls";
 
-
 export default function TableContainer({
     endpoint,
     pagination = { active: false, options: {} },
@@ -13,6 +12,8 @@ export default function TableContainer({
     sort = false, // Sıralama aktif mi?
     customColumns = [],
     responseMapping = { data: "items" },
+    visibleColumns = [], // Sadece gösterilecek kolonlar
+    hiddenColumns = [], // Gizlenecek kolonlar
 }) {
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState(null);
@@ -41,9 +42,8 @@ export default function TableContainer({
 
             const data = await res.json();
 
-            const resolvePath = (obj, path) => {
-                return path.split('.').reduce((acc, key) => (acc ? acc[key] : null), obj);
-            };
+            const resolvePath = (obj, path) =>
+                path.split(".").reduce((acc, key) => (acc ? acc[key] : null), obj);
 
             const itemsData = resolvePath(data, responseMapping.data) || [];
 
@@ -63,6 +63,7 @@ export default function TableContainer({
                 };
 
                 linksData = resolvePath(data, options.links) || null;
+
                 if (!linksData && options.links) {
                     console.warn(
                         `Warning: The key "${options.links}" does not exist in the API response. Please check the "pagination.options.links" mapping.`
@@ -85,7 +86,21 @@ export default function TableContainer({
                     render: null,
                 }));
 
-                const mergedColumns = initialColumns.map((col) => {
+                // Kolonları filtrele
+                const filteredColumns = initialColumns.filter((col) => {
+                    // Eğer `visibleColumns` tanımlıysa, sadece bu kolonları göster
+                    if (visibleColumns.length > 0) {
+                        return visibleColumns.includes(col.field);
+                    }
+                    // Eğer `hiddenColumns` tanımlıysa, bu kolonları gizle
+                    if (hiddenColumns.length > 0) {
+                        return !hiddenColumns.includes(col.field);
+                    }
+                    // Varsayılan olarak tüm kolonları göster
+                    return true;
+                });
+
+                const mergedColumns = filteredColumns.map((col) => {
                     const customColumn = customColumns.find((c) => c.field === col.field);
                     return customColumn
                         ? {
@@ -98,14 +113,16 @@ export default function TableContainer({
 
                 setColumns(mergedColumns);
 
-                setFilters(
-                    initialColumns.reduce((acc, column) => {
-                        acc[column.field] = "";
-                        return acc;
-                    }, {})
-                );
+                if (filter) {
+                    setFilters(
+                        filteredColumns.reduce((acc, column) => {
+                            acc[column.field] = "";
+                            return acc;
+                        }, {})
+                    );
+                }
 
-                setSortField(initialColumns[0]?.field || "");
+                setSortField(filteredColumns[0]?.field || "");
             }
 
             setItems(itemsData);

@@ -10,10 +10,11 @@ const DashboardPage = () => {
         <div>
 
 
-            <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}} />
+            <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}}/>
 
             <TableContainer
                 endpoint="/api/table" // Verilerin çekileceği endpoint
+                hiddenColumns={["id", "member"]} // Gizlenecek kolonlar
                 showControls={{
                     active: true, // Kontrollerin gösterilip gösterilmeyeceği
                     options: [10, 20, 40, 60, 100, 120],
