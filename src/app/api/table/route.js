@@ -2,11 +2,36 @@
 
 export async function GET(req) {
     const url = new URL(req.url);
+
+    // Sayfalama parametreleri
     const page = parseInt(url.searchParams.get("page")) || 1; // Varsayılan sayfa 1
-    const perPage = 8; // Sayfa başına gösterilecek öğe sayısı
+    const perPage = parseInt(url.searchParams.get("limit")) || 8; // Varsayılan sayfa başına öğe sayısı 8
+
+    // Filtreleme parametreleri
+    const filters = {};
+    url.searchParams.forEach((value, key) => {
+        const filterMatch = key.match(/^filter\[(.+)\]$/);
+        if (filterMatch) {
+            const field = filterMatch[1];
+            filters[field] = value.split(',').map(v => v.trim().toLowerCase());
+        }
+    });
+
+    // Alan seçimi parametresi
+    const fieldsParam = url.searchParams.get("fields");
+    const fields = fieldsParam ? fieldsParam.split(',').map(f => f.trim()) : null;
+
+    // Sıralama parametresi
+    const sortParam = url.searchParams.get("sort");
+    const sortFields = sortParam
+        ? sortParam.split(',').map(field => {
+              field = field.trim();
+              return field.startsWith('-') ? { field: field.substring(1), order: 'desc' } : { field, order: 'asc' };
+          })
+        : [];
 
     // Tüm veriler
-    const allItems = [
+    let allItems = [
         { id: 1, member: "Tyler Hero", location: "Estonia", status: "Active" },
         { id: 2, member: "Jacob Jones", location: "Ukraine", status: "Active" },
         { id: 3, member: "Leslie Alexander", location: "India", status: "Active" },
@@ -60,17 +85,60 @@ export async function GET(req) {
 
     ];
 
-    // Pagination için başlangıç ve bitiş indeksi
+    // 1. Filtreleme Uygulama (İçerik içerisinde geçen kelime ile eşleşme)
+    if (Object.keys(filters).length > 0) {
+        allItems = allItems.filter(item => {
+            return Object.keys(filters).every(field => {
+                if (!item[field]) return false;
+                const itemValue = item[field].toString().toLowerCase();
+                // Her bir filtre değeri için itemValue içinde geçip geçmediğini kontrol et
+                return filters[field].some(filterValue => itemValue.includes(filterValue));
+            });
+        });
+    }
+
+    // 2. Sıralama Uygulama
+    if (sortFields.length > 0) {
+        allItems.sort((a, b) => {
+            for (let sortField of sortFields) {
+                const { field, order } = sortField;
+                if (!a[field] || !b[field]) continue;
+
+                const aValue = a[field].toString().toLowerCase();
+                const bValue = b[field].toString().toLowerCase();
+
+                if (aValue < bValue) return order === 'asc' ? -1 : 1;
+                if (aValue > bValue) return order === 'asc' ? 1 : -1;
+                // Eğer eşitse, bir sonraki sortField'a geç
+            }
+            return 0; // Tüm sortField'lar eşitse
+        });
+    }
+
+    // 3. Sayfalama için başlangıç ve bitiş indeksi
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
 
-    // İlgili sayfa verilerini al
-    const paginatedItems = allItems.slice(startIndex, endIndex);
+    // 4. İlgili sayfa verilerini al
+    let paginatedItems = allItems.slice(startIndex, endIndex);
 
-    // Toplam sayfa sayısını hesapla
+    // 5. Alan seçimi
+    if (fields) {
+        paginatedItems = paginatedItems.map(item => {
+            const selected = {};
+            fields.forEach(field => {
+                if (item.hasOwnProperty(field)) {
+                    selected[field] = item[field];
+                }
+            });
+            return selected;
+        });
+    }
+
+    // 6. Toplam sayfa sayısını hesapla
     const totalPages = Math.ceil(allItems.length / perPage);
 
-    // Sayfalama bilgileri
+    // 7. Sayfalama bilgileri
     const meta = {
         current_page: page,
         from: startIndex + 1,
@@ -81,15 +149,15 @@ export async function GET(req) {
         total: allItems.length
     };
 
-    // Linkler
+    // 8. Linkler
     const links = {
-        first: `/api/table?page=1`,
-        last: `/api/table?page=${totalPages}`,
-        prev: page > 1 ? `/api/table?page=${page - 1}` : null,
-        next: page < totalPages ? `/api/table?page=${page + 1}` : null
+        first: `/api/table?page=1&limit=${perPage}`,
+        last: `/api/table?page=${totalPages}&limit=${perPage}`,
+        prev: page > 1 ? `/api/table?page=${page - 1}&limit=${perPage}` : null,
+        next: page < totalPages ? `/api/table?page=${page + 1}&limit=${perPage}` : null
     };
 
-    // JSON cevabı
+    // 9. JSON cevabı
     return new Response(
         JSON.stringify({
             items: paginatedItems,
