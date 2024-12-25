@@ -1,22 +1,24 @@
 // Filters.js
-export default function Filters({ filters, setFilters, setPage, columns }) {
+export default function Filters({ filters, setFilters, columns, setPage }) {
     const handleFilterChange = (field, value) => {
         setFilters((prev) => ({ ...prev, [field]: value }));
         setPage(1);
     };
 
     return (
-        <div className="mb-4 flex gap-2">
+        <tr>
             {columns.map((column) => (
-                <input
-                    key={column.field}
-                    type="text"
-                    placeholder={`Ara ${column.label}...`}
-                    value={filters[column.field]}
-                    onChange={(e) => handleFilterChange(column.field, e.target.value)}
-                    className="border px-2 py-1 rounded"
-                />
+                <th key={column.field} className="text-left py-2 px-4">
+                    <input
+                        type="text"
+                        placeholder={`Ara ${column.label || column.field}...`}
+                        value={filters[column.field] || ""}
+                        onChange={(e) => handleFilterChange(column.field, e.target.value)}
+                        className="w-full px-2 py-1 border border-gray-300 rounded"
+                    />
+                </th>
             ))}
-        </div>
+        </tr>
     );
 }
+

@@ -2,16 +2,15 @@
 import { useEffect, useState } from "react";
 import Table from "@/app/components/ui/table/Table";
 import Pagination from "@/app/components/ui/table/Pagination";
-import Filters from "@/app/components/ui/table/Filters";
 import Controls from "@/app/components/ui/table/Controls";
 
 
 export default function TableContainer({
     endpoint,
     pagination = { active: false, options: {} },
-    filter = false,
+    filter = false, // Filtreleme aktif mi?
     showControls = { active: false, options: [10, 20, 40, 60, 100] },
-    sort = false, // Varsayılan olarak sıralama kapalı
+    sort = false, // Sıralama aktif mi?
     customColumns = [],
     responseMapping = { data: "items" },
 }) {
@@ -21,8 +20,8 @@ export default function TableContainer({
     const [columns, setColumns] = useState([]);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
-    const [sortField, setSortField] = useState("id"); // Varsayılan sıralama alanı
-    const [sortOrder, setSortOrder] = useState("asc"); // Varsayılan sıralama yönü
+    const [sortField, setSortField] = useState("id");
+    const [sortOrder, setSortOrder] = useState("asc");
     const [filters, setFilters] = useState({});
 
     const fetchColumnsAndData = async () => {
@@ -30,9 +29,7 @@ export default function TableContainer({
             const params = new URLSearchParams({
                 page,
                 limit,
-                ...(sort
-                    ? { sort: sortOrder === "desc" ? `-${sortField}` : sortField }
-                    : {}), // Eğer sıralama aktifse `sort` parametresini ekle
+                ...(sort ? { sort: sortOrder === "desc" ? `-${sortField}` : sortField } : {}),
                 ...Object.entries(filters).reduce((acc, [key, value]) => {
                     if (value.trim() !== "") acc[`filter[${key}]`] = value.trim();
                     return acc;
@@ -124,7 +121,7 @@ export default function TableContainer({
     }, [page, limit, sortField, sortOrder, filters]);
 
     const handleSort = (field) => {
-        if (!sort) return; // Eğer sıralama aktif değilse, hiçbir işlem yapma
+        if (!sort) return;
 
         if (sortField === field) {
             setSortOrder(sortOrder === "asc" ? "desc" : "asc");
@@ -148,15 +145,16 @@ export default function TableContainer({
                             options={showControls.options}
                         />
                     )}
-                    {filter && (
-                        <Filters filters={filters} setFilters={setFilters} setPage={setPage} columns={columns} />
-                    )}
                     <Table
                         items={items}
+                        columns={columns}
                         handleSort={handleSort}
                         sortField={sortField}
                         sortOrder={sortOrder}
-                        columns={columns}
+                        filters={filters}
+                        setFilters={setFilters}
+                        setPage={setPage}
+                        filter={filter}
                     />
                     {pagination.active && meta && (
                         <Pagination meta={meta} links={links} setPage={setPage} />
@@ -168,5 +166,3 @@ export default function TableContainer({
         </div>
     );
 }
-
-

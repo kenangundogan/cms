@@ -9,48 +9,9 @@ const DashboardPage = () => {
     return (
         <div>
 
-            {/* <TableContainer
-                endpoint="http://127.0.0.1:8001/api/articles"
-                dataKey="data"
-                metaKeys={{
-                    key: null, // Meta bilgileri "meta" altında (varsayılan). Ana endpoint seviyesindeyse null bırakabilirsiniz.
-                    currentPage: "current_page",
-                    lastPage: "last_page",
-                    perPage: "per_page",
-                    total: "total",
-                    path: "path",
-                    from: "from",
-                    to: "to",
-                }}
-                linksKey="asdasd"
-            /> */}
 
-            {/* <TableContainer endpoint="/api/table" pagination={true} />
+            <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}} />
 
-            <TableContainer endpoint="/api/table" filter={true} />
-
-            <TableContainer endpoint="/api/table" showControls={true} />
-
-            <TableContainer endpoint="/api/table" pagination={true} filter={true} />
-
-            <TableContainer endpoint="/api/table" pagination={true} filter={true} showControls={true} /> */}
-
-            {/* <TableContainer
-                endpoint="/api/table"
-                pagination={true}
-                filter={true}
-                showControls={true}
-                customColumns={[
-                    {
-                        field: "avatar",
-                        render: (value) => <img src={value} alt="Preview" className="w-10 h-10 object-cover" />,
-                    },
-                    {
-                        field: "id",
-                        render: (value) => <strong>{value}</strong>,
-                    },
-                ]}
-            /> */}
             <TableContainer
                 endpoint="/api/table" // Verilerin çekileceği endpoint
                 showControls={{
@@ -74,19 +35,33 @@ const DashboardPage = () => {
                     },
                 }}
                 filter={true} // Filtreleme aktif mi?
-                sort={false} // Sıralama aktif mi?
+                sort={true} // Sıralama aktif mi?
+                customColumns={[
+                    {
+                        field: "avatar",
+                        render: (value) => <img src={value} alt="Preview" className="w-10 h-10 object-cover" />,
+                    },
+                    {
+                        field: "id",
+                        render: (value) => <strong>{value}</strong>,
+                    }
+                ]}
             />
 
 
 
-            {/* <TableContainer
+            <TableContainer
                 endpoint="http://127.0.0.1:8001/api/articles" // Verilerin çekileceği endpoint
-                pagination={false} // Sayfalama aktif mi?
-                filter={true} // Filtreleme aktif mi?
-                dataKeyMatching={
-                    {
-                        data: "data", // Verilerin bulunduğu key
-                        links: "links", // Sayfa linkleri için key
+                showControls={{
+                    active: true, // Kontrollerin gösterilip gösterilmeyeceği
+                    options: [10, 20, 40, 60, 100, 120],
+                }}
+                responseMapping={{
+                    data: "data", // Verilerin bulunduğu key
+                }}
+                pagination={{
+                    active: true, // Sayfalama aktif mi?
+                    options: {
                         currentPage: "current_page", // Sayfa numarası
                         lastPage: "last_page", // Son sayfa numarası
                         perPage: "per_page", // Sayfa başına kayıt sayısı
@@ -94,9 +69,12 @@ const DashboardPage = () => {
                         path: "path", // Endpoint path
                         from: "from", // Kayıtların başlangıç indexi
                         to: "to", // Kayıtların bitiş indexi
-                    }
-                }
-            /> */}
+                        links: "links", // Sayfa linkleri için key
+                    },
+                }}
+                filter={true} // Filtreleme aktif mi?
+                sort={true} // Sıralama aktif mi?
+            />
 
         </div>
     );
