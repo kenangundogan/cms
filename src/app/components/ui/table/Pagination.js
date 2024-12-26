@@ -14,19 +14,15 @@ export default function Pagination({ meta, links, setPage }) {
     }
 
     return (
-        <div className="flex flex-col items-center gap-2 mt-4">
-            {/* Sayfa ve toplam kayıt bilgileri */}
-            <div className="text-sm text-gray-600">
-                Sayfa: {current_page} / {last_page} | Toplam Kayıt: {total}
-            </div>
+        <div className="flex flex-col items-end">
 
             {/* Sayfa numaraları */}
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-start mb-2 gap-2 *:px-3 *:py-2 *:border *:rounded-sm">
                 {/* İlk sayfaya git */}
                 <button
                     onClick={() => setPage(1)}
                     disabled={current_page === 1 || !links?.first}
-                    className={`px-3 py-2 border rounded ${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
+                    className={`${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &laquo;
                 </button>
@@ -35,7 +31,7 @@ export default function Pagination({ meta, links, setPage }) {
                 <button
                     onClick={() => setPage(current_page - 1)}
                     disabled={current_page === 1 || !links?.prev}
-                    className={`px-3 py-2 border rounded ${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
+                    className={`${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &lsaquo;
                 </button>
@@ -45,7 +41,7 @@ export default function Pagination({ meta, links, setPage }) {
                     <button
                         key={page}
                         onClick={() => setPage(page)}
-                        className={`px-3 py-2 border rounded ${page === current_page ? "bg-blue-100 text-blue-600 font-bold cursor-default" : "hover:bg-gray-100"}`}
+                        className={`${page === current_page ? "bg-blue-100 text-blue-600 font-bold cursor-default" : "hover:bg-gray-100"}`}
                     >
                         {page}
                     </button>
@@ -55,7 +51,7 @@ export default function Pagination({ meta, links, setPage }) {
                 <button
                     onClick={() => setPage(current_page + 1)}
                     disabled={current_page === last_page || !links?.next}
-                    className={`px-3 py-2 border rounded ${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
+                    className={`${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &rsaquo;
                 </button>
@@ -64,10 +60,14 @@ export default function Pagination({ meta, links, setPage }) {
                 <button
                     onClick={() => setPage(last_page)}
                     disabled={current_page === last_page || !links?.last}
-                    className={`px-3 py-2 border rounded ${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
+                    className={`${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
                 >
                     &raquo;
                 </button>
+            </div>
+            {/* Sayfa ve toplam kayıt bilgileri */}
+            <div className="text-xs text-gray-600">
+                Sayfa: {current_page} / {last_page} | Toplam Kayıt: {total}
             </div>
         </div>
     );

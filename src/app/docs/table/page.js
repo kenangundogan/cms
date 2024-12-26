@@ -9,15 +9,15 @@ const DashboardPage = () => {
     return (
         <div>
 
-
             <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}}/>
 
             <TableContainer
                 endpoint="/api/table" // Verilerin çekileceği endpoint
-                hiddenColumns={["id", "member"]} // Gizlenecek kolonlar
+                // hiddenColumns={["status"]} // Gizlenecek kolonlar
+                visibleColumnsColumns={["status"]} // Gizlenecek kolonlar
                 showControls={{
                     active: true, // Kontrollerin gösterilip gösterilmeyeceği
-                    options: [10, 20, 40, 60, 100, 120],
+                    options: [10, 20, 40, 60, 100, 121],
                 }}
                 responseMapping={{
                     data: "data", // Verilerin bulunduğu key
@@ -36,7 +36,7 @@ const DashboardPage = () => {
                     },
                 }}
                 filter={true} // Filtreleme aktif mi?
-                sort={true} // Sıralama aktif mi?
+                sort={false} // Sıralama aktif mi?
                 customColumns={[
                     {
                         field: "avatar",
@@ -46,6 +46,29 @@ const DashboardPage = () => {
                         field: "id",
                         render: (value) => <strong>{value}</strong>,
                     }
+                ]}
+                addColumns={[
+                    {
+                        field: "actions",
+                        label: "Actions",
+                        render: (value, rowData) => (
+                            <div className="flex gap-2 text-sm">
+                                <button
+                                    onClick={() => console.log(`Düzenle: ${rowData.id}`)}
+                                    className="bg-blue-400 text-white py-2 px-4 rounded-sm"
+                                >
+                                    Düzenle
+                                </button>
+                                <button
+                                    onClick={() => console.log(`Sil: ${rowData.id}`)}
+                                    className="bg-red-400 text-white py-2 px-4 rounded-sm"
+                                >
+                                    Sil
+                                </button>
+                            </div>
+                        ),
+                        filterable: false, // Filtreleme bu kolon için geçerli değil
+                    },
                 ]}
             />
 

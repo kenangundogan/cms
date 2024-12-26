@@ -10,7 +10,8 @@ export default function TableContainer({
     filter = false, // Filtreleme aktif mi?
     showControls = { active: false, options: [10, 20, 40, 60, 100] },
     sort = false, // Sıralama aktif mi?
-    customColumns = [],
+    customColumns = [], // Özelleştirilmiş kolonlar
+    addColumns = [], // Eklemek istediğiniz bağımsız kolonlar
     responseMapping = { data: "items" },
     visibleColumns = [], // Sadece gösterilecek kolonlar
     hiddenColumns = [], // Gizlenecek kolonlar
@@ -84,30 +85,34 @@ export default function TableContainer({
                     field: key,
                     label: key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " "),
                     render: null,
+                    filterable: true, // Varsayılan olarak filtrelenebilir
                 }));
 
-                // Kolonları filtrele
-                const filteredColumns = initialColumns.filter((col) => {
-                    // Eğer `visibleColumns` tanımlıysa, sadece bu kolonları göster
-                    if (visibleColumns.length > 0) {
-                        return visibleColumns.includes(col.field);
-                    }
-                    // Eğer `hiddenColumns` tanımlıysa, bu kolonları gizle
-                    if (hiddenColumns.length > 0) {
-                        return !hiddenColumns.includes(col.field);
-                    }
-                    // Varsayılan olarak tüm kolonları göster
-                    return true;
-                });
+                // Ek kolonları tabloya dahil et
+                const allColumns = [
+                    ...initialColumns.filter((col) => {
+                        if (visibleColumns.length > 0) {
+                            return visibleColumns.includes(col.field);
+                        }
+                        if (hiddenColumns.length > 0) {
+                            return !hiddenColumns.includes(col.field);
+                        }
+                        return true;
+                    }),
+                    ...addColumns.map((col) => ({
+                        ...col,
+                        filterable: col.filterable ?? false, // Eklenen kolonlarda filtreleme varsayılan olarak kapalı
+                    })),
+                ];
 
-                const mergedColumns = filteredColumns.map((col) => {
+                const mergedColumns = allColumns.map((col) => {
                     const customColumn = customColumns.find((c) => c.field === col.field);
                     return customColumn
                         ? {
-                              ...col,
-                              ...customColumn,
-                              label: customColumn.label || col.label,
-                          }
+                            ...col,
+                            ...customColumn,
+                            label: customColumn.label || col.label,
+                        }
                         : col;
                 });
 
@@ -115,14 +120,16 @@ export default function TableContainer({
 
                 if (filter) {
                     setFilters(
-                        filteredColumns.reduce((acc, column) => {
-                            acc[column.field] = "";
+                        allColumns.reduce((acc, column) => {
+                            if (column.filterable) {
+                                acc[column.field] = "";
+                            }
                             return acc;
                         }, {})
                     );
                 }
 
-                setSortField(filteredColumns[0]?.field || "");
+                setSortField(allColumns[0]?.field || "");
             }
 
             setItems(itemsData);
@@ -150,18 +157,9 @@ export default function TableContainer({
     };
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">Dinamik Tablo</h1>
+        <div className="p-4 flex flex-wrap items-start justify-between gap-4">
             {columns.length > 0 ? (
                 <>
-                    {showControls.active && (
-                        <Controls
-                            limit={limit}
-                            setLimit={setLimit}
-                            setPage={setPage}
-                            options={showControls.options}
-                        />
-                    )}
                     <Table
                         items={items}
                         columns={columns}
@@ -173,6 +171,14 @@ export default function TableContainer({
                         setPage={setPage}
                         filter={filter}
                     />
+                    {showControls.active && (
+                        <Controls
+                            limit={limit}
+                            setLimit={setLimit}
+                            setPage={setPage}
+                            options={showControls.options}
+                        />
+                    )}
                     {pagination.active && meta && (
                         <Pagination meta={meta} links={links} setPage={setPage} />
                     )}
@@ -183,3 +189,4 @@ export default function TableContainer({
         </div>
     );
 }
+

@@ -6,19 +6,24 @@ export default function Filters({ filters, setFilters, columns, setPage }) {
     };
 
     return (
-        <tr>
+        <tr className="bg-gray-50">
             {columns.map((column) => (
-                <th key={column.field} className="text-left py-2 px-4">
-                    <input
-                        type="text"
-                        placeholder={`Ara ${column.label || column.field}...`}
-                        value={filters[column.field] || ""}
-                        onChange={(e) => handleFilterChange(column.field, e.target.value)}
-                        className="w-full px-2 py-1 border border-gray-300 rounded"
-                    />
-                </th>
+                column.filterable ? ( // Eğer kolon filterable ise input göster
+                    <th key={column.field} className="text-left p-4 border-b border-r last:border-r-0">
+                        <input
+                            type="text"
+                            placeholder={`Search ${column.label || column.field}...`}
+                            value={filters[column.field] || ""}
+                            onChange={(e) => handleFilterChange(column.field, e.target.value)}
+                            className="w-full py-2 px-4 rounded-sm outline-none"
+                        />
+                    </th>
+                ) : (
+                    <th key={column.field} className="text-left p-4 border-b border-r last:border-r-0"></th> // Filterable değilse boş bir hücre
+                )
             ))}
         </tr>
     );
 }
+
 
