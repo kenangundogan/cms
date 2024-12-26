@@ -12,6 +12,7 @@ const DashboardPage = () => {
             <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}}/>
 
             <TableContainer
+                columnVisibilityToggle={true} // Kolon gizleme/gösterme aktif mi?
                 endpoint="/api/table" // Verilerin çekileceği endpoint
                 // hiddenColumns={["status"]} // Gizlenecek kolonlar
                 visibleColumnsColumns={["status"]} // Gizlenecek kolonlar
@@ -36,7 +37,7 @@ const DashboardPage = () => {
                     },
                 }}
                 filter={true} // Filtreleme aktif mi?
-                sort={false} // Sıralama aktif mi?
+                sort={true} // Sıralama aktif mi?
                 customColumns={[
                     {
                         field: "avatar",

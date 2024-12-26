@@ -1,25 +1,29 @@
-// TableContainer.js
+// src/app/components/ui/table/TableContainer.js
+
 import { useEffect, useState } from "react";
 import Table from "@/app/components/ui/table/Table";
 import Pagination from "@/app/components/ui/table/Pagination";
 import Controls from "@/app/components/ui/table/Controls";
+import ColumnVisibilityToggle from "@/app/components/ui/table/ColumnVisibilityToggle";
 
 export default function TableContainer({
     endpoint,
     pagination = { active: false, options: {} },
-    filter = false, // Filtreleme aktif mi?
+    filter = false,
     showControls = { active: false, options: [10, 20, 40, 60, 100] },
-    sort = false, // Sıralama aktif mi?
-    customColumns = [], // Özelleştirilmiş kolonlar
-    addColumns = [], // Eklemek istediğiniz bağımsız kolonlar
+    sort = false,
+    customColumns = [],
+    addColumns = [],
     responseMapping = { data: "items" },
-    visibleColumns = [], // Sadece gösterilecek kolonlar
-    hiddenColumns = [], // Gizlenecek kolonlar
+    visibleColumns = [],
+    hiddenColumns = [],
+    columnVisibilityToggle = false,
 }) {
     const [items, setItems] = useState([]);
     const [meta, setMeta] = useState(null);
     const [links, setLinks] = useState(null);
     const [columns, setColumns] = useState([]);
+    const [visibleColumnKeys, setVisibleColumnKeys] = useState([]);
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
     const [sortField, setSortField] = useState("id");
@@ -85,10 +89,9 @@ export default function TableContainer({
                     field: key,
                     label: key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " "),
                     render: null,
-                    filterable: true, // Varsayılan olarak filtrelenebilir
+                    filterable: true,
                 }));
 
-                // Ek kolonları tabloya dahil et
                 const allColumns = [
                     ...initialColumns.filter((col) => {
                         if (visibleColumns.length > 0) {
@@ -101,7 +104,7 @@ export default function TableContainer({
                     }),
                     ...addColumns.map((col) => ({
                         ...col,
-                        filterable: col.filterable ?? false, // Eklenen kolonlarda filtreleme varsayılan olarak kapalı
+                        filterable: col.filterable ?? false,
                     })),
                 ];
 
@@ -117,6 +120,7 @@ export default function TableContainer({
                 });
 
                 setColumns(mergedColumns);
+                setVisibleColumnKeys(mergedColumns.map((col) => col.field));
 
                 if (filter) {
                     setFilters(
@@ -156,13 +160,36 @@ export default function TableContainer({
         setPage(1);
     };
 
+    const handleColumnVisibilityChange = (field, isVisible) => {
+        setVisibleColumnKeys((prev) =>
+            isVisible ? [...prev, field] : prev.filter((key) => key !== field)
+        );
+    };
+
     return (
-        <div className="p-4 flex flex-wrap items-start justify-between gap-4">
+        <div className="p-6">
+            <div className="flex justify-between items-center mb-4">
+                {showControls.active && (
+                    <Controls
+                        limit={limit}
+                        setLimit={setLimit}
+                        setPage={setPage}
+                        options={showControls.options}
+                    />
+                )}
+                {columnVisibilityToggle && columns.length > 0 && (
+                    <ColumnVisibilityToggle
+                        columns={columns}
+                        visibleColumnKeys={visibleColumnKeys}
+                        onChange={handleColumnVisibilityChange}
+                    />
+                )}
+            </div>
             {columns.length > 0 ? (
                 <>
                     <Table
                         items={items}
-                        columns={columns}
+                        columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
                         handleSort={handleSort}
                         sortField={sortField}
                         sortOrder={sortOrder}
@@ -171,14 +198,6 @@ export default function TableContainer({
                         setPage={setPage}
                         filter={filter}
                     />
-                    {showControls.active && (
-                        <Controls
-                            limit={limit}
-                            setLimit={setLimit}
-                            setPage={setPage}
-                            options={showControls.options}
-                        />
-                    )}
                     {pagination.active && meta && (
                         <Pagination meta={meta} links={links} setPage={setPage} />
                     )}
@@ -189,4 +208,3 @@ export default function TableContainer({
         </div>
     );
 }
-

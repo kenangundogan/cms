@@ -115,19 +115,18 @@ export async function GET(req) {
         { "id": 80, "member": "Ursula Powell", "location": "Mexico", "status": "Inactive", "avatar": "https://randomuser.me/api/portraits/men/80.jpg" },
     ];
 
-    // 1. Filtreleme Uygulama (İçerik içerisinde geçen kelime ile eşleşme)
+    // 1. Filtreleme
     if (Object.keys(filters).length > 0) {
         allItems = allItems.filter(item => {
             return Object.keys(filters).every(field => {
                 if (!item[field]) return false;
                 const itemValue = item[field].toString().toLowerCase();
-                // Her bir filtre değeri için itemValue içinde geçip geçmediğini kontrol et
                 return filters[field].some(filterValue => itemValue.includes(filterValue));
             });
         });
     }
 
-    // 2. Sıralama Uygulama
+    // 2. Sıralama
     if (sortFields.length > 0) {
         allItems.sort((a, b) => {
             for (let sortField of sortFields) {
@@ -139,20 +138,17 @@ export async function GET(req) {
 
                 if (aValue < bValue) return order === 'asc' ? -1 : 1;
                 if (aValue > bValue) return order === 'asc' ? 1 : -1;
-                // Eğer eşitse, bir sonraki sortField'a geç
             }
-            return 0; // Tüm sortField'lar eşitse
+            return 0;
         });
     }
 
-    // 3. Sayfalama için başlangıç ve bitiş indeksi
+    // 3. Sayfalama
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
-
-    // 4. İlgili sayfa verilerini al
     let paginatedItems = allItems.slice(startIndex, endIndex);
 
-    // 5. Alan seçimi
+    // 4. Alan seçimi
     if (fields) {
         paginatedItems = paginatedItems.map(item => {
             const selected = {};
@@ -165,33 +161,92 @@ export async function GET(req) {
         });
     }
 
-    // 6. Toplam sayfa sayısını hesapla
+    // 5. Toplam sayfa sayısını hesapla
     const totalPages = Math.ceil(allItems.length / perPage);
 
-    // 7. Sayfalama bilgileri
-    const meta = {
-        current_page: page,
-        from: startIndex + 1,
-        last_page: totalPages,
-        path: "/api/table",
-        per_page: perPage,
-        to: endIndex > allItems.length ? allItems.length : endIndex,
-        total: allItems.length
+    // 6. Sayfalama linklerini oluştur
+    const createPaginationLinks = (currentPage, totalPages) => {
+        const links = [];
+        const maxPagesToShow = 5; // Aynı anda gösterilecek maksimum sayfa sayısı
+        let startPage = Math.max(currentPage - 2, 1);
+        let endPage = startPage + maxPagesToShow - 1;
+
+        if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = Math.max(endPage - maxPagesToShow + 1, 1);
+        }
+
+        // Previous link
+        links.push({
+            url: currentPage > 1 ? `/api/table?page=${currentPage - 1}` : null,
+            label: "Previous",
+            active: false,
+        });
+
+        // Sayfa numaraları
+        if (startPage > 1) {
+            links.push({
+                url: `/api/table?page=1`,
+                label: "1",
+                active: currentPage === 1,
+            });
+            if (startPage > 2) {
+                links.push({
+                    url: null,
+                    label: "...",
+                    active: false,
+                });
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            links.push({
+                url: `/api/table?page=${i}`,
+                label: `${i}`,
+                active: currentPage === i,
+            });
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                links.push({
+                    url: null,
+                    label: "...",
+                    active: false,
+                });
+            }
+            links.push({
+                url: `/api/table?page=${totalPages}`,
+                label: `${totalPages}`,
+                active: currentPage === totalPages,
+            });
+        }
+
+        // Next link
+        links.push({
+            url: currentPage < totalPages ? `/api/table?page=${currentPage + 1}` : null,
+            label: "Next",
+            active: false,
+        });
+
+        return links;
     };
 
-    // 8. Linkler
-    const links = {
-        first: `/api/table?page=1&limit=${perPage}`,
-        last: `/api/table?page=${totalPages}&limit=${perPage}`,
-        prev: page > 1 ? `/api/table?page=${page - 1}&limit=${perPage}` : null,
-        next: page < totalPages ? `/api/table?page=${page + 1}&limit=${perPage}` : null
-    };
+    const links = createPaginationLinks(page, totalPages);
 
-    // 9. JSON cevabı
+    // 7. JSON cevabı
     return new Response(
         JSON.stringify({
             data: paginatedItems,
-            meta,
+            meta: {
+                current_page: page,
+                from: startIndex + 1,
+                last_page: totalPages,
+                path: "/api/table",
+                per_page: perPage,
+                to: endIndex > allItems.length ? allItems.length : endIndex,
+                total: allItems.length
+            },
             links
         }),
         {

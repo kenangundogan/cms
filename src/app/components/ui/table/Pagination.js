@@ -1,73 +1,54 @@
 export default function Pagination({ meta, links, setPage }) {
-    if (!meta) return null;
-    console.log(links);
-    const { current_page, last_page, total } = meta;
-    const maxVisiblePages = 5;
+    if (!meta || !links) return null;
 
-    // Sayfa aralığını hesapla
-    const startPage = Math.max(1, current_page - Math.floor(maxVisiblePages / 2));
-    const endPage = Math.min(last_page, startPage + maxVisiblePages - 1);
-
-    const pages = [];
-    for (let i = startPage; i <= endPage; i++) {
-        pages.push(i);
-    }
+    const getLabelContent = (label) => {
+        const normalizedLabel = label.toLowerCase();
+        if (normalizedLabel.includes("previous") || normalizedLabel.includes("prev")) {
+            return "«"; // Geri yön ikonu
+        }
+        if (normalizedLabel.includes("next")) {
+            return "»"; // İleri yön ikonu
+        }
+        if (normalizedLabel.includes("first")) {
+            return "⇤"; // İlk sayfa ikonu (opsiyonel)
+        }
+        if (normalizedLabel.includes("last")) {
+            return "⇥"; // Son sayfa ikonu (opsiyonel)
+        }
+        if (normalizedLabel.includes("...")) {
+            return "…"; // Statik atlama göstergesi
+        }
+        return label; // Diğerleri için varsayılan label
+    };
 
     return (
-        <div className="flex flex-col items-end">
-
-            {/* Sayfa numaraları */}
-            <div className="flex justify-start mb-2 gap-2 *:px-3 *:py-2 *:border *:rounded-sm">
-                {/* İlk sayfaya git */}
-                <button
-                    onClick={() => setPage(1)}
-                    disabled={current_page === 1 || !links?.first}
-                    className={`${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                >
-                    &laquo;
-                </button>
-
-                {/* Önceki sayfaya git */}
-                <button
-                    onClick={() => setPage(current_page - 1)}
-                    disabled={current_page === 1 || !links?.prev}
-                    className={`${current_page === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                >
-                    &lsaquo;
-                </button>
-
-                {/* Sayfa numaralarını listele */}
-                {pages.map((page) => (
-                    <button
-                        key={page}
-                        onClick={() => setPage(page)}
-                        className={`${page === current_page ? "bg-blue-100 text-blue-600 font-bold cursor-default" : "hover:bg-gray-100"}`}
-                    >
-                        {page}
-                    </button>
-                ))}
-
-                {/* Sonraki sayfaya git */}
-                <button
-                    onClick={() => setPage(current_page + 1)}
-                    disabled={current_page === last_page || !links?.next}
-                    className={`${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                >
-                    &rsaquo;
-                </button>
-
-                {/* Son sayfaya git */}
-                <button
-                    onClick={() => setPage(last_page)}
-                    disabled={current_page === last_page || !links?.last}
-                    className={`${current_page === last_page ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "hover:bg-gray-100"}`}
-                >
-                    &raquo;
-                </button>
-            </div>
+        <div className="flex flex-col lg:items-end gap-2">
             {/* Sayfa ve toplam kayıt bilgileri */}
             <div className="text-xs text-gray-600">
-                Sayfa: {current_page} / {last_page} | Toplam Kayıt: {total}
+                Sayfa: {meta.current_page} / {meta.last_page} | Toplam Kayıt: {meta.total}
+            </div>
+
+            {/* Sayfa numaraları */}
+            <div className="flex justify-center gap-2">
+                {links.map((link, index) => (
+                    <button
+                        key={index}
+                        onClick={() =>
+                            link.url &&
+                            setPage(new URLSearchParams(link.url.split('?')[1]).get('page'))
+                        }
+                        disabled={!link.url || link.active || link.label.includes("...")}
+                        className={`px-3 py-2 border rounded ${
+                            link.active
+                                ? "bg-blue-100 text-blue-600 font-bold cursor-default"
+                                : link.label.includes("...")
+                                ? "cursor-default text-gray-400"
+                                : "hover:bg-gray-100"
+                        }`}
+                    >
+                        {getLabelContent(link.label)}
+                    </button>
+                ))}
             </div>
         </div>
     );
