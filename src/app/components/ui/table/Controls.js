@@ -3,7 +3,7 @@ export default function Controls({ limit, setLimit, setPage, options }) {
         options = [10, 20, 40, 60, 100];
     }
     return (
-        <div className="flex items-center gap-2 text-sm">
+        <div className="flex items-center gap-2 py-4 text-sm">
             <span>Göster:</span>
             <select
                 className="border rounded-sm py-2 px-3 outline-none"

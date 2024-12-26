@@ -169,14 +169,6 @@ export default function TableContainer({
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-                {showControls.active && (
-                    <Controls
-                        limit={limit}
-                        setLimit={setLimit}
-                        setPage={setPage}
-                        options={showControls.options}
-                    />
-                )}
                 {columnVisibilityToggle && columns.length > 0 && (
                     <ColumnVisibilityToggle
                         columns={columns}
@@ -187,20 +179,32 @@ export default function TableContainer({
             </div>
             {columns.length > 0 ? (
                 <>
-                    <Table
-                        items={items}
-                        columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
-                        handleSort={handleSort}
-                        sortField={sortField}
-                        sortOrder={sortOrder}
-                        filters={filters}
-                        setFilters={setFilters}
-                        setPage={setPage}
-                        filter={filter}
-                    />
-                    {pagination.active && meta && (
-                        <Pagination meta={meta} links={links} setPage={setPage} />
-                    )}
+                    <div className="">
+                        <Table
+                            items={items}
+                            columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
+                            handleSort={handleSort}
+                            sortField={sortField}
+                            sortOrder={sortOrder}
+                            filters={filters}
+                            setFilters={setFilters}
+                            setPage={setPage}
+                            filter={filter}
+                        />
+                        <div className="flex flex-wrap justify-between items-start border rounded-sm border-t-0 px-4">
+                            {pagination.active && meta && (
+                                <Pagination meta={meta} links={links} setPage={setPage} />
+                            )}
+                            {showControls.active && (
+                                <Controls
+                                    limit={limit}
+                                    setLimit={setLimit}
+                                    setPage={setPage}
+                                    options={showControls.options}
+                                />
+                            )}
+                        </div>
+                    </div>
                 </>
             ) : (
                 <p>Yükleniyor...</p>
