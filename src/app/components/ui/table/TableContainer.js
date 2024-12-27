@@ -29,9 +29,11 @@ export default function TableContainer({
     const [sortField, setSortField] = useState("id");
     const [sortOrder, setSortOrder] = useState("asc");
     const [filters, setFilters] = useState({});
+    const [errorMessage, setErrorMessage] = useState(""); // Hata mesajı için state
 
     const fetchColumnsAndData = async () => {
         try {
+            setErrorMessage(""); // Önceki hatayı temizle
             const params = new URLSearchParams({
                 page,
                 limit,
@@ -42,15 +44,26 @@ export default function TableContainer({
                 }, {}),
             });
 
-            const res = await fetch(`${endpoint}?${params.toString()}`);
-            if (!res.ok) throw new Error("Veri çekilirken hata oluştu.");
+            const url = `${endpoint}?${params.toString()}`;
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error(
+                    `API isteği başarısız oldu. (HTTP ${res.status}: ${res.statusText})`
+                );
+            }
 
             const data = await res.json();
+
+            if (!data) {
+                throw new Error("API'den boş veri döndü.");
+            }
 
             const resolvePath = (obj, path) =>
                 path.split(".").reduce((acc, key) => (acc ? acc[key] : null), obj);
 
             const itemsData = resolvePath(data, responseMapping.data) || [];
+            setItems(itemsData);
 
             let metaData = null;
             let linksData = null;
@@ -69,19 +82,8 @@ export default function TableContainer({
 
                 linksData = resolvePath(data, options.links) || null;
 
-                if (!linksData && options.links) {
-                    console.warn(
-                        `Warning: The key "${options.links}" does not exist in the API response. Please check the "pagination.options.links" mapping.`
-                    );
-                }
-
-                Object.entries(metaData).forEach(([key, value]) => {
-                    if (value === null || value === undefined) {
-                        console.warn(
-                            `Warning: The key "${options[key]}" does not exist in the API response. Please check the "pagination.options" mapping for "${key}".`
-                        );
-                    }
-                });
+                setMeta(metaData);
+                setLinks(linksData);
             }
 
             if (itemsData.length > 0 && columns.length === 0) {
@@ -135,12 +137,19 @@ export default function TableContainer({
 
                 setSortField(allColumns[0]?.field || "");
             }
-
-            setItems(itemsData);
-            setMeta(metaData);
-            setLinks(linksData);
-        } catch (err) {
-            console.error("Hata:", err);
+        } catch (error) {
+            console.error("Detaylı Hata:", error.message); // Geliştiriciye log
+            setErrorMessage(
+                <>
+                    <div>
+                        <p>Veri yüklenirken bir hata oluştu.</p>
+                        <p>Lütfen <strong>{endpoint}</strong> endpoint'ini kontrol edin veya daha sonra tekrar deneyin.</p>
+                    </div>
+                </>
+            );
+            setItems([]);
+            setMeta(null);
+            setColumns([]);
         }
     };
 
@@ -168,6 +177,14 @@ export default function TableContainer({
 
     return (
         <div className="p-6">
+            {errorMessage && (
+                <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
+                    <strong>Hata:</strong>
+                    <span className="ml-2">
+                        {errorMessage}
+                    </span>
+                </div>
+            )}
             <div className="flex justify-between items-center mb-4">
                 {columnVisibilityToggle && columns.length > 0 && (
                     <ColumnVisibilityToggle
@@ -206,9 +223,11 @@ export default function TableContainer({
                         </div>
                     </div>
                 </>
-            ) : (
+            ) : !errorMessage ? (
                 <p>Yükleniyor...</p>
-            )}
+            ) : null}
         </div>
     );
 }
+
+
