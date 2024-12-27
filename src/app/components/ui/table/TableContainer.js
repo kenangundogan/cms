@@ -196,7 +196,7 @@ export default function TableContainer({
             </div>
             {columns.length > 0 ? (
                 <>
-                    <div className="">
+                    <div className="w-full overflow-x-auto border rounded-sm text-sm">
                         <Table
                             items={items}
                             columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
@@ -208,7 +208,7 @@ export default function TableContainer({
                             setPage={setPage}
                             filter={filter}
                         />
-                        <div className="flex flex-wrap justify-between items-start border rounded-sm border-t-0 px-4">
+                        <div className="flex flex-wrap justify-between items-start px-4">
                             {pagination.active && meta && (
                                 <Pagination meta={meta} links={links} setPage={setPage} />
                             )}

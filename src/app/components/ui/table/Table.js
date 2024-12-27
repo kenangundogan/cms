@@ -3,7 +3,7 @@ import Filters from "@/app/components/ui/table/Filters";
 
 export default function Table({ items, columns, handleSort, sortField, sortOrder, filters, setFilters, setPage, filter }) {
     return (
-        <div className="w-full overflow-x-auto border rounded-sm text-sm">
+        <div className="relative">
             <table className="min-w-full">
                 <thead className="whitespace-pre">
                     {/* Sıralama başlıkları */}
@@ -47,6 +47,27 @@ export default function Table({ items, columns, handleSort, sortField, sortOrder
                         </tr>
                     )}
                 </tbody>
+                <tfoot className="whitespace-pre">
+                    {/* Sıralama başlıkları */}
+                    <tr className="bg-gray-50">
+                        {columns.map((column) => (
+                            <th
+                                key={column.field}
+                                className="text-left p-4 cursor-pointer border-r last:border-r-0"
+                                onClick={() => handleSort(column.field)}
+                            >
+                                <div className="flex items-center justify-between gap-1">
+                                    <span>{column.label || column.field}</span>
+                                    {sortField === column.field && <span>{sortOrder === "asc" ? "▲" : "▼"}</span>}
+                                </div>
+                            </th>
+                        ))}
+                    </tr>
+                    {/* Filtreleme satırı, sadece filter aktifse gösterilir */}
+                    {filter && (
+                        <Filters filters={filters} setFilters={setFilters} columns={columns} setPage={setPage} />
+                    )}
+                </tfoot>
             </table>
         </div>
     );

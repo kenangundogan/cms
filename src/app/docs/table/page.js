@@ -14,8 +14,8 @@ const DashboardPage = () => {
             <TableContainer
                 columnVisibilityToggle={true} // Kolon gizleme/gösterme aktif mi?
                 endpoint="/api/table" // Verilerin çekileceği endpoint
-                // hiddenColumns={["status"]} // Gizlenecek kolonlar
-                visibleColumnsColumns={["status"]} // Gizlenecek kolonlar
+                hiddenColumns={["status"]} // Gizlenecek kolonlar
+                // visibleColumns={["status"]} // Gizlenecek kolonlar
                 showControls={{
                     active: true, // Kontrollerin gösterilip gösterilmeyeceği
                     options: [10, 20, 40, 60, 100, 121],
