@@ -191,7 +191,7 @@ export default function TableContainer({
                 <>
                     <div data-type="DataTable" className="p-4">
                         <div data-type="DataTableWrapper" className="w-full bg-white border rounded-xl text-sm">
-                            <div data-type="Head" className="flex items-center py-4 px-6">
+                            <div data-type="Head" className="relative z-20 flex items-center py-4 px-6">
                                 <div data-type="Title" className="font-bold text-xl">Data Table</div>
                                 {columnVisibilityToggle && (
                                     <ColumnVisibilityToggle
@@ -202,7 +202,7 @@ export default function TableContainer({
                                 )}
                             </div>
 
-                            <div data-type="Body">
+                            <div data-type="Body" className="overflow-x-auto">
                                 <Table
                                     items={items}
                                     columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
@@ -217,7 +217,7 @@ export default function TableContainer({
                             </div>
 
                             {(pagination.active || showControls.active) && (
-                                <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
+                                <div data-type="Foot" className="overflow-hidden flex flex-wrap justify-between items-start gap-4 py-4 px-6">
 
                                     {pagination.active && meta && (
                                         <Pagination meta={meta} links={links} setPage={setPage} />

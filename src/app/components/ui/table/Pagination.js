@@ -24,7 +24,7 @@ export default function Pagination({ meta, links, setPage }) {
     return (
         <div data-type="Pagination" className="flex flex-col gap-2">
             {/* Sayfa numaraları */}
-            <div className="flex justify-center gap-2">
+            <div className="flex flex-wrap gap-2">
                 {links.map((link, index) => (
                     <button
                         key={index}
