@@ -3,10 +3,9 @@ export default function Controls({ limit, setLimit, setPage, options }) {
         options = [10, 20, 40, 60, 100];
     }
     return (
-        <div className="flex items-center gap-2 py-4 text-sm">
-            <span>Göster:</span>
+        <div data-type="Controls" className="flex items-center gap-2 text-sm">
             <select
-                className="border rounded-sm py-2 px-3 outline-none"
+                className="border rounded-sm py-2 px-3 outline-none appearance-none"
                 value={limit}
                 onChange={(e) => {
                     setLimit(Number(e.target.value));
@@ -19,7 +18,6 @@ export default function Controls({ limit, setLimit, setPage, options }) {
                     </option>
                 ))}
             </select>
-            <span>kayıt</span>
         </div>
     );
 }

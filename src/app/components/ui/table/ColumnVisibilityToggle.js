@@ -16,7 +16,7 @@ export default function ColumnVisibilityToggle({ columns, visibleColumnKeys, onC
     }, []);
 
     return (
-        <div className="relative ml-auto text-sm" ref={dropdownRef}>
+        <div data-type="ColumnnVisibility" className="relative ml-auto text-sm" ref={dropdownRef}>
             {/* Dropdown Aç/Kapat Butonu */}
             <button
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -27,10 +27,10 @@ export default function ColumnVisibilityToggle({ columns, visibleColumnKeys, onC
 
             {/* Dropdown İçeriği */}
             {isOpen && (
-                <div className="absolute right-0 mt-2 w-64 bg-white border rounded-sm shadow-lg z-10">
-                    <div className="flex flex-col">
+                <div className="absolute right-0 -mt-[1px] min-w-40 bg-white border rounded-sm shadow-lg z-10">
+                    <div className="flex flex-col p-4">
                         {columns.map((col) => (
-                            <label key={col.field} className="flex items-center gap-2 p-4 border-b">
+                            <label key={col.field} className="cursor-pointer flex items-center gap-2 p-2 hover:bg-gray-100">
                                 <input
                                     type="checkbox"
                                     checked={visibleColumnKeys.includes(col.field)}

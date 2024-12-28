@@ -176,7 +176,7 @@ export default function TableContainer({
     };
 
     return (
-        <div className="p-6">
+        <div>
             {errorMessage && (
                 <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
                     <strong>Hata:</strong>
@@ -185,30 +185,35 @@ export default function TableContainer({
                     </span>
                 </div>
             )}
-            <div className="flex justify-between items-center mb-4">
-                {columnVisibilityToggle && columns.length > 0 && (
-                    <ColumnVisibilityToggle
-                        columns={columns}
-                        visibleColumnKeys={visibleColumnKeys}
-                        onChange={handleColumnVisibilityChange}
-                    />
-                )}
-            </div>
             {columns.length > 0 ? (
                 <>
-                    <div className="w-full overflow-x-auto border rounded-sm text-sm">
-                        <Table
-                            items={items}
-                            columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
-                            handleSort={handleSort}
-                            sortField={sortField}
-                            sortOrder={sortOrder}
-                            filters={filters}
-                            setFilters={setFilters}
-                            setPage={setPage}
-                            filter={filter}
-                        />
-                        <div className="flex flex-wrap justify-between items-start px-4">
+                    <div data-type="DataTable" className="w-full bg-white border rounded-sm text-sm mb-4">
+                        <div data-type="Head" className="flex items-center py-4 px-6">
+                            <div data-type="Title" className="font-bold text-xl">Data Table</div>
+                            {columnVisibilityToggle && (
+                                <ColumnVisibilityToggle
+                                    columns={columns}
+                                    visibleColumnKeys={visibleColumnKeys}
+                                    onChange={handleColumnVisibilityChange}
+                                />
+                            )}
+                        </div>
+
+                        <div data-type="Body">
+                            <Table
+                                items={items}
+                                columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
+                                handleSort={handleSort}
+                                sortField={sortField}
+                                sortOrder={sortOrder}
+                                filters={filters}
+                                setFilters={setFilters}
+                                setPage={setPage}
+                                filter={filter}
+                            />
+                        </div>
+                        <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
+
                             {pagination.active && meta && (
                                 <Pagination meta={meta} links={links} setPage={setPage} />
                             )}
@@ -220,6 +225,7 @@ export default function TableContainer({
                                     options={showControls.options}
                                 />
                             )}
+
                         </div>
                     </div>
                 </>

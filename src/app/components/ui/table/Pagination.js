@@ -22,7 +22,7 @@ export default function Pagination({ meta, links, setPage }) {
     };
 
     return (
-        <div className="flex flex-col gap-2 my-4">
+        <div data-type="Pagination" className="flex flex-col gap-2">
             {/* Sayfa numaraları */}
             <div className="flex justify-center gap-2">
                 {links.map((link, index) => (
@@ -47,7 +47,7 @@ export default function Pagination({ meta, links, setPage }) {
             </div>
             {/* Sayfa ve toplam kayıt bilgileri */}
             <div className="text-xs text-gray-600">
-                Sayfa: {meta.current_page} / {meta.last_page} | Toplam Kayıt: {meta.total}
+                Page: {meta.current_page} / {meta.last_page} | Total: {meta.total}
             </div>
         </div>
     );

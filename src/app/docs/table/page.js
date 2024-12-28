@@ -3,13 +3,14 @@
 'use client';
 
 import TableContainer from '@/app/components/ui/table/TableContainer';
+import { TrashIcon, PencilIcon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
 
 const DashboardPage = () => {
 
     return (
         <div>
 
-            <TableContainer endpoint="/api/table" responseMapping={{ data: "data"}}/>
+            <TableContainer endpoint="/api/table" responseMapping={{ data: "data" }} />
 
             <TableContainer
                 columnVisibilityToggle={true} // Kolon gizleme/gösterme aktif mi?
@@ -56,15 +57,21 @@ const DashboardPage = () => {
                             <div className="flex gap-2 text-sm">
                                 <button
                                     onClick={() => console.log(`Düzenle: ${rowData.id}`)}
-                                    className="bg-blue-400 text-white py-2 px-4 rounded-sm"
+                                    className="border p-3 rounded-sm"
                                 >
-                                    Düzenle
+                                    <PencilIcon className="w-4 h-4" />
                                 </button>
                                 <button
                                     onClick={() => console.log(`Sil: ${rowData.id}`)}
-                                    className="bg-red-400 text-white py-2 px-4 rounded-sm"
+                                    className="border p-3 rounded-sm"
                                 >
-                                    Sil
+                                    <TrashIcon className="w-4 h-4" />
+                                </button>
+                                <button
+                                    onClick={() => console.log(`Detay: ${rowData.id}`)}
+                                    className="border p-3 rounded-sm"
+                                >
+                                    <ViewfinderCircleIcon className="w-4 h-4" />
                                 </button>
                             </div>
                         ),
