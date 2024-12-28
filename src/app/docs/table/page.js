@@ -2,13 +2,29 @@
 
 'use client';
 
+import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import PageInfo from '@/app/components/ui/PageInfo';
 import TableContainer from '@/app/components/ui/table/TableContainer';
 import { TrashIcon, PencilIcon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
 
-const DashboardPage = () => {
+const DataTablePage = () => {
 
     return (
         <div>
+
+
+            <Breadcrumb>
+                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
+                <Breadcrumb.Item>Data Table</Breadcrumb.Item>
+            </Breadcrumb>
+
+            <PageInfo>
+                <PageInfo.Title>Data Table Component Documentation</PageInfo.Title>
+                <PageInfo.Description>
+                    The <strong>DataTable</strong> component is a flexible and reusable table for displaying data in a structured format.
+                </PageInfo.Description>
+            </PageInfo>
 
             <TableContainer endpoint="/api/table" responseMapping={{ data: "data" }} />
 
@@ -43,10 +59,6 @@ const DashboardPage = () => {
                     {
                         field: "avatar",
                         render: (value) => <img src={value} alt="Preview" className="w-10 h-10 object-cover" />,
-                    },
-                    {
-                        field: "id",
-                        render: (value) => <strong>{value}</strong>,
                     }
                 ]}
                 addColumns={[
@@ -112,4 +124,4 @@ const DashboardPage = () => {
     );
 };
 
-export default DashboardPage;
+export default DataTablePage;

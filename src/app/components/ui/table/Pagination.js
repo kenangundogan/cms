@@ -35,7 +35,7 @@ export default function Pagination({ meta, links, setPage }) {
                         disabled={!link.url || link.active || link.label.includes("...")}
                         className={`px-3 py-2 border rounded ${
                             link.active
-                                ? "bg-blue-100 text-blue-600 font-bold cursor-default"
+                                ? "bg-gray-100 font-bold cursor-default"
                                 : link.label.includes("...")
                                 ? "cursor-default text-gray-400"
                                 : "hover:bg-gray-100"

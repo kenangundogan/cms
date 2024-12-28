@@ -178,54 +178,59 @@ export default function TableContainer({
     return (
         <div>
             {errorMessage && (
-                <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300 rounded">
-                    <strong>Hata:</strong>
-                    <span className="ml-2">
-                        {errorMessage}
-                    </span>
+                <div data-type="DataTable" className="p-4">
+                    <div className="mb-4 p-4 bg-red-100 text-red-700 border rounded-xl border-red-300">
+                        <strong>Hata:</strong>
+                        <span className="ml-2">
+                            {errorMessage}
+                        </span>
+                    </div>
                 </div>
             )}
             {columns.length > 0 ? (
                 <>
-                    <div data-type="DataTable" className="w-full bg-white border rounded-sm text-sm mb-4">
-                        <div data-type="Head" className="flex items-center py-4 px-6">
-                            <div data-type="Title" className="font-bold text-xl">Data Table</div>
-                            {columnVisibilityToggle && (
-                                <ColumnVisibilityToggle
-                                    columns={columns}
-                                    visibleColumnKeys={visibleColumnKeys}
-                                    onChange={handleColumnVisibilityChange}
-                                />
-                            )}
-                        </div>
+                    <div data-type="DataTable" className="p-4">
+                        <div data-type="DataTableWrapper" className="w-full bg-white border rounded-xl text-sm">
+                            <div data-type="Head" className="flex items-center py-4 px-6">
+                                <div data-type="Title" className="font-bold text-xl">Data Table</div>
+                                {columnVisibilityToggle && (
+                                    <ColumnVisibilityToggle
+                                        columns={columns}
+                                        visibleColumnKeys={visibleColumnKeys}
+                                        onChange={handleColumnVisibilityChange}
+                                    />
+                                )}
+                            </div>
 
-                        <div data-type="Body">
-                            <Table
-                                items={items}
-                                columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
-                                handleSort={handleSort}
-                                sortField={sortField}
-                                sortOrder={sortOrder}
-                                filters={filters}
-                                setFilters={setFilters}
-                                setPage={setPage}
-                                filter={filter}
-                            />
-                        </div>
-                        <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
-
-                            {pagination.active && meta && (
-                                <Pagination meta={meta} links={links} setPage={setPage} />
-                            )}
-                            {showControls.active && (
-                                <Controls
-                                    limit={limit}
-                                    setLimit={setLimit}
+                            <div data-type="Body">
+                                <Table
+                                    items={items}
+                                    columns={columns.filter((col) => visibleColumnKeys.includes(col.field))}
+                                    handleSort={handleSort}
+                                    sortField={sortField}
+                                    sortOrder={sortOrder}
+                                    filters={filters}
+                                    setFilters={setFilters}
                                     setPage={setPage}
-                                    options={showControls.options}
+                                    filter={filter}
                                 />
-                            )}
+                            </div>
 
+                            <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
+
+                                {pagination.active && meta && (
+                                    <Pagination meta={meta} links={links} setPage={setPage} />
+                                )}
+                                {showControls.active && (
+                                    <Controls
+                                        limit={limit}
+                                        setLimit={setLimit}
+                                        setPage={setPage}
+                                        options={showControls.options}
+                                    />
+                                )}
+
+                            </div>
                         </div>
                     </div>
                 </>

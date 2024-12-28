@@ -4,7 +4,7 @@ import Filters from "@/app/components/ui/table/Filters";
 export default function Table({ items, columns, handleSort, sortField, sortOrder, filters, setFilters, setPage, filter }) {
     return (
         <table data-type="Table" className="min-w-full">
-            <thead data-type="Thead">
+            <thead data-type="Thead" className="bg-gray-50 text-gray-500">
                 <tr className="whitespace-pre *:py-4 *:px-6">
                     {columns.map((column) => (
                         <th
@@ -44,7 +44,7 @@ export default function Table({ items, columns, handleSort, sortField, sortOrder
                     </tr>
                 )}
             </tbody>
-            <tfoot data-type="Tfoot">
+            <tfoot data-type="Tfoot" className="bg-gray-50">
                 <tr className="whitespace-pre *:py-4 *:px-6">
                     {columns.map((column) => (
                         <th

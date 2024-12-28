@@ -5,7 +5,7 @@ export default function Controls({ limit, setLimit, setPage, options }) {
     return (
         <div data-type="Controls" className="flex items-center gap-2 text-sm">
             <select
-                className="border rounded-sm py-2 px-3 outline-none appearance-none"
+                className="border rounded py-2 outline-none indent-1 min-w-14"
                 value={limit}
                 onChange={(e) => {
                     setLimit(Number(e.target.value));
