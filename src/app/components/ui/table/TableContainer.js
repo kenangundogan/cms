@@ -216,21 +216,24 @@ export default function TableContainer({
                                 />
                             </div>
 
-                            <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
+                            {(pagination.active || showControls.active) && (
+                                <div data-type="Foot" className="flex flex-wrap justify-between items-start py-4 px-6">
 
-                                {pagination.active && meta && (
-                                    <Pagination meta={meta} links={links} setPage={setPage} />
-                                )}
-                                {showControls.active && (
-                                    <Controls
-                                        limit={limit}
-                                        setLimit={setLimit}
-                                        setPage={setPage}
-                                        options={showControls.options}
-                                    />
-                                )}
+                                    {pagination.active && meta && (
+                                        <Pagination meta={meta} links={links} setPage={setPage} />
+                                    )}
 
-                            </div>
+                                    {showControls.active && (
+                                        <Controls
+                                            limit={limit}
+                                            setLimit={setLimit}
+                                            setPage={setPage}
+                                            options={showControls.options}
+                                        />
+                                    )}
+
+                                </div>
+                            )}
                         </div>
                     </div>
                 </>
