@@ -1,12 +1,11 @@
-// src/app/components/ui/table/TableContainer.js
-
+// src/app/components/ui/datatable/Container.js
 import { useEffect, useState } from "react";
-import Table from "@/app/components/ui/table/Table";
-import Pagination from "@/app/components/ui/table/Pagination";
-import Controls from "@/app/components/ui/table/Controls";
-import ColumnVisibilityToggle from "@/app/components/ui/table/ColumnVisibilityToggle";
+import Table from "@/app/components/ui/datatable/Table";
+import Pagination from "@/app/components/ui/datatable/Pagination";
+import Controls from "@/app/components/ui/datatable/Controls";
+import ColumnVisibilityToggle from "@/app/components/ui/datatable/ColumnVisibilityToggle";
 
-export default function TableContainer({
+export default function Container({
     endpoint,
     pagination = { active: false, options: {} },
     filter = false,
@@ -138,7 +137,7 @@ export default function TableContainer({
                 setSortField(allColumns[0]?.field || "");
             }
         } catch (error) {
-            console.error("Detaylı Hata:", error.message); // Geliştiriciye log
+            console.error("Detaylı Hata:", error.message);
             setErrorMessage(
                 <>
                     <div>
@@ -238,10 +237,13 @@ export default function TableContainer({
                     </div>
                 </>
             ) : !errorMessage ? (
-                <p>Yükleniyor...</p>
+                <div data-type="DataTable" className="p-4">
+                    <div data-type="DataTableWrapper" className="w-full bg-white border rounded-xl text-sm">
+                        <p className="py-4 px-6">Yükleniyor...</p>
+                    </div>
+                </div>
+
             ) : null}
         </div>
     );
 }
-
-

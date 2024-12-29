@@ -1,3 +1,4 @@
+// src/app/components/ui/datatable/ColumnVisibilityToggle.js
 import { useState, useRef, useEffect } from "react";
 
 export default function ColumnVisibilityToggle({ columns, visibleColumnKeys, onChange }) {
@@ -17,7 +18,7 @@ export default function ColumnVisibilityToggle({ columns, visibleColumnKeys, onC
 
     return (
         <div data-type="ColumnnVisibility" className="relative ml-auto text-sm" ref={dropdownRef}>
-            {/* Dropdown Aç/Kapat Butonu */}
+
             <button
                 onClick={() => setIsOpen((prev) => !prev)}
                 className="bg-white border px-4 py-2 rounded-sm"
@@ -25,7 +26,6 @@ export default function ColumnVisibilityToggle({ columns, visibleColumnKeys, onC
                 Column Visibility
             </button>
 
-            {/* Dropdown İçeriği */}
             {isOpen && (
                 <div className="absolute right-0 -mt-[1px] min-w-40 bg-white border rounded-sm shadow-lg z-10">
                     <div className="flex flex-col p-4">

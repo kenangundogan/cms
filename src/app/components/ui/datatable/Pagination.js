@@ -1,3 +1,4 @@
+// src/app/components/ui/datatable/Pagination.js
 export default function Pagination({ meta, links, setPage }) {
     if (!meta || !links) return null;
 

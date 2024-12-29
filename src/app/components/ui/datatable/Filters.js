@@ -1,4 +1,4 @@
-// Filters.js
+// src/app/components/ui/datatable/Filters.js
 export default function Filters({ filters, setFilters, columns, setPage }) {
     const handleFilterChange = (field, value) => {
         setFilters((prev) => ({ ...prev, [field]: value }));
@@ -25,5 +25,3 @@ export default function Filters({ filters, setFilters, columns, setPage }) {
         </tr>
     );
 }
-
-

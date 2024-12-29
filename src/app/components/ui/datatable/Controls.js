@@ -1,3 +1,4 @@
+// src/app/components/ui/datatable/Controls.js
 export default function Controls({ limit, setLimit, setPage, options }) {
     if (!options) {
         options = [10, 20, 40, 60, 100];
