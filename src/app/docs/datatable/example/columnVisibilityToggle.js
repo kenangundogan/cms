@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const ColumnVisibilityToggleExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     columnVisibilityToggle={true}
 />
 `

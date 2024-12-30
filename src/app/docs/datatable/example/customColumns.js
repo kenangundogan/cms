@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const CustomColumnsExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     customColumns={[
         { field: "id", label: "ID" },
         { field: "name", label: "Name", render: (value) => <strong>{value}</strong> },

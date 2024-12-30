@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const AllFeaturesExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     endpoint="https://example.com/api/users"
     pagination={{
         active: true,
@@ -54,7 +54,7 @@ const AllFeaturesExample = () => {
             <Example>
                 <Example.Title>All Features (Comprehensive)</Example.Title>
                 <Example.Description>
-                    Below is a comprehensive example showcasing all supported features of the <code>TableContainer</code> component.
+                    Below is a comprehensive example showcasing all supported features of the <code>DataTable</code> component.
                 </Example.Description>
                 <Example.Body>
                     <div>

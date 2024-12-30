@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const FilteringExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     filter={true}
 />
 `

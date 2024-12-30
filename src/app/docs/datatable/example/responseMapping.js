@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const ResponseMappingExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     responseMapping={{
         data: "data"
     }}

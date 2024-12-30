@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const EndpointExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     endpoint="https://example.com/api/users"
 />
 `

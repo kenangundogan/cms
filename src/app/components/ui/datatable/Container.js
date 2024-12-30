@@ -215,8 +215,8 @@ export default function Container({
     return (
         <div>
             {errorMessage && (
-                <div data-type="DataTable" className="p-4">
-                    <div className="mb-4 p-4 bg-red-100 text-red-700 border rounded-xl border-red-300">
+                <div data-type="DataTable">
+                    <div className="mb-4 p-4 bg-red-100 text-red-700 border border-red-300">
                         <strong>Hata:</strong>
                         <span className="ml-2">
                             {errorMessage}
@@ -226,8 +226,8 @@ export default function Container({
             )}
             {columns.length > 0 ? (
                 <>
-                    <div data-type="DataTable" className="p-4">
-                        <div data-type="DataTableWrapper" className="w-full bg-white border rounded-xl text-sm">
+                    <div data-type="DataTable">
+                        <div data-type="DataTableWrapper" className="w-full bg-white border text-sm">
                             <div data-type="Head" className="relative z-20 flex items-center py-4 px-6">
                                 <div data-type="Title" className="font-bold text-xl">Data Table</div>
                                 {columnVisibilityToggle && (

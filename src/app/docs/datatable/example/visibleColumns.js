@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const VisibleColumnsExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     visibleColumns={["status"]}
 />
 `

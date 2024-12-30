@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const PaginationExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     pagination={{
         active: true,
         options: {

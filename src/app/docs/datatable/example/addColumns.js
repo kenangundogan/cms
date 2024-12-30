@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const AddColumnsExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     addColumns={[
         {
             field: "actions",

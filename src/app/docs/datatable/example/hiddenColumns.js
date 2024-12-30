@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const HiddenColumnsExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     hiddenColumns={["status"]}
 />
 `

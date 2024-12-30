@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const ShowControlsExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     showControls={{
         active: true,
         options: [10, 20, 40, 60, 100, 121],

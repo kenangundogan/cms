@@ -5,7 +5,7 @@ import CodeCard from "@/app/components/ui/CodeCard";
 const SortingExample = () => {
     const basicExample = {
         JS: `
-<TableContainer
+<DataTable
     sort={true}
 />
 `
