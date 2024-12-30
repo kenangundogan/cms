@@ -19,7 +19,7 @@ Example.Description = ({ children }) => {
 };
 
 Example.Body = ({ children }) => {
-    return <div data-type="Body" className="bg-gray-50 rounded-md overflow-hidden text-sm">{children}</div>;
+    return <div data-type="Body" className="bg-gray-50 rounded-md overflow-hidden text-sm p-4">{children}</div>;
 };
 
 export default Example;
