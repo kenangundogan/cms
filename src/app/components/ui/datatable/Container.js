@@ -30,6 +30,23 @@ export default function Container({
     const [filters, setFilters] = useState({});
     const [errorMessage, setErrorMessage] = useState(""); // Hata mesajı için state
 
+    const resolvePath = (obj, path) => {
+        if (!path) return null;
+
+        const parts = path
+            .replace(/\[(\w+)\]/g, ".$1")
+            .split(".")
+            .filter(Boolean);
+
+        return parts.reduce((acc, key) => {
+            if (acc && Object.prototype.hasOwnProperty.call(acc, key)) {
+                return acc[key];
+            }
+            return null;
+        }, obj);
+    };
+
+
     const fetchColumnsAndData = async () => {
         try {
             setErrorMessage(""); // Önceki hatayı temizle
@@ -58,8 +75,8 @@ export default function Container({
                 throw new Error("API'den boş veri döndü.");
             }
 
-            const resolvePath = (obj, path) =>
-                path.split(".").reduce((acc, key) => (acc ? acc[key] : null), obj);
+
+
 
             const itemsData = resolvePath(data, responseMapping.data) || [];
             setItems(itemsData);
@@ -86,12 +103,33 @@ export default function Container({
             }
 
             if (itemsData.length > 0 && columns.length === 0) {
-                const initialColumns = Object.keys(itemsData[0]).map((key) => ({
-                    field: key,
-                    label: key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, " "),
-                    render: null,
-                    filterable: true,
-                }));
+                const initialColumns = Object.keys(itemsData[0]).reduce((acc, key) => {
+                    const customCol = customColumns.find((c) => c.field === key);
+
+                    if (customCol) {
+                        acc.push({
+                            field: key,
+                            label: customCol.label || key,
+                            render: customCol.render || null,
+                            filterable: customCol.filterable ?? true, // yoksa default true
+                        });
+                        return acc;
+                    }
+
+                    const val = itemsData[0][key];
+                    if (val !== null && typeof val === "object") {
+                        return acc;
+                    }
+
+                    acc.push({
+                        field: key,
+                        label: key.charAt(0).toUpperCase() + key.slice(1),
+                        render: null,
+                        filterable: true,
+                    });
+
+                    return acc;
+                }, []);
 
                 const allColumns = [
                     ...initialColumns.filter((col) => {
