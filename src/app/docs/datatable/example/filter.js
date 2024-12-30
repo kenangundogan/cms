@@ -18,7 +18,7 @@ const FilteringExample = () => {
                     Activate the filtering feature by using the <code>filter</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">

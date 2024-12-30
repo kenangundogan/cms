@@ -18,7 +18,7 @@ const EndpointExample = () => {
                     Specifies the API endpoint from which the data is fetched. The table dynamically builds itself based on the data from this endpoint.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">

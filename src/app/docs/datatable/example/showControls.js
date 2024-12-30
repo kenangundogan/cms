@@ -21,7 +21,7 @@ const ShowControlsExample = () => {
                     Manage table control options (e.g., records per page) using the <code>showControls</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">

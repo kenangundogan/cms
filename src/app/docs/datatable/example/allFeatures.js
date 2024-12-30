@@ -57,7 +57,7 @@ const AllFeaturesExample = () => {
                     Below is a comprehensive example showcasing all supported features of the <code>TableContainer</code> component.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">
@@ -84,7 +84,7 @@ const AllFeaturesExample = () => {
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">filter</code></td>
                                     <td>Enables table filtering.</td>
                                     <td><code>boolean</code></td>
-                                    <td><code>false</code></td>
+                                    <td><code>{`{false}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">showControls</code></td>
@@ -96,19 +96,19 @@ const AllFeaturesExample = () => {
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">sort</code></td>
                                     <td>Enables column sorting.</td>
                                     <td><code>boolean</code></td>
-                                    <td><code>false</code></td>
+                                    <td><code>{`{false}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">customColumns</code></td>
                                     <td>Customizes table columns.</td>
                                     <td><code>array</code></td>
-                                    <td><code>[]</code></td>
+                                    <td><code>{`{[]}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">addColumns</code></td>
                                     <td>Adds new columns to the table.</td>
                                     <td><code>array</code></td>
-                                    <td><code>[]</code></td>
+                                    <td><code>{`{[]}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">responseMapping</code></td>
@@ -120,19 +120,19 @@ const AllFeaturesExample = () => {
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">visibleColumns</code></td>
                                     <td>Specifies which columns to display.</td>
                                     <td><code>array</code></td>
-                                    <td><code>[]</code></td>
+                                    <td><code>{`{[]}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">hiddenColumns</code></td>
                                     <td>Specifies which columns to hide.</td>
                                     <td><code>array</code></td>
-                                    <td><code>[]</code></td>
+                                    <td><code>{`{[]}`}</code></td>
                                 </tr>
                                 <tr className="*:border *:p-4">
                                     <td><code className="bg-gray-100 rounded-md py-2 px-4">columnVisibilityToggle</code></td>
                                     <td>Allows users to toggle column visibility.</td>
                                     <td><code>boolean</code></td>
-                                    <td><code>false</code></td>
+                                    <td><code>{`{false}`}</code></td>
                                 </tr>
                             </tbody>
                         </table>

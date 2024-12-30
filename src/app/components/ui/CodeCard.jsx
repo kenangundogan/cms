@@ -50,7 +50,7 @@ const CodeCard = ({ codeSnippets }) => {
                 </div>
 
                 {isExpanded && (
-                    <div className="">
+                    <div>
                         <SyntaxHighlighter
                             language={selectedLanguage}
                             style={hybrid}

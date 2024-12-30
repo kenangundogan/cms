@@ -30,7 +30,7 @@ const PaginationExample = () => {
                     Use the <code>pagination</code> prop to activate the pagination feature.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">

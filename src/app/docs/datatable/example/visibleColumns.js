@@ -18,7 +18,7 @@ const VisibleColumnsExample = () => {
                     Specify the columns to display in the table using the <code>visibleColumns</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">

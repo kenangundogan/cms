@@ -18,7 +18,7 @@ const SortingExample = () => {
                     Activate sorting functionality using the <code>sort</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div className="p-4">
+                    <div>
                         <table className="w-full text-left bg-white">
                             <thead>
                                 <tr className="*:border *:p-4">
