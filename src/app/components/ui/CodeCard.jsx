@@ -18,7 +18,7 @@ const CodeCard = ({ codeSnippets }) => {
     return (
         <div className="bg-white">
             <div className="relative">
-                <div className="flex justify-between items-center px-4 py-4 border-y">
+                <div className="flex justify-between items-center px-4 py-4 border-b">
                     <div className="flex gap-2 items-center">
                         {Object.keys(codeSnippets).map((lang) => (
                             <button
