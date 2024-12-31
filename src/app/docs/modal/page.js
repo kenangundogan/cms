@@ -2,7 +2,7 @@
 
 'use client';
 import React, { useState } from 'react';
-import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import CodeCard from "@/app/components/ui/CodeCard";
 import Modal from '@/app/components/ui/modal/Modal';

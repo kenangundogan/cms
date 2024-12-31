@@ -23,6 +23,7 @@ export default function PageLayout({ children }) {
 
     const docs = [
         { title: "Data Table", url: "/docs/datatable" },
+        { title: "Base Table", url: "/docs/table" },
         { title: "Modal", url: "/docs/modal" },
         { title: "Tabs", url: "/docs/tabs" },
         { title: "Accordion", url: "/docs/accordion" },

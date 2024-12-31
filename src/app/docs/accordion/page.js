@@ -2,7 +2,7 @@
 
 'use client';
 
-import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import Accordion from '@/app/components/ui/accordion/Accordion';
 import CodeCard from "@/app/components/ui/CodeCard";

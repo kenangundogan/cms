@@ -1,24 +1,24 @@
-// src/app/docs/table/page.js
+// src/app/docs/breadcrumb/page.js
 
 'use client';
 
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
-import Sample from '@/app/docs/table/example/_sample';
+import Sample from '@/app/docs/breadcrumb/example/_sample';
 
-const TablePage = () => {
+const BreadcrumbPage = () => {
     return (
         <div>
             <Breadcrumb>
                 <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                 <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
-                <Breadcrumb.Item>Table</Breadcrumb.Item>
+                <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>
             </Breadcrumb>
 
             <PageInfo>
-                <PageInfo.Title>Table Component Documentation</PageInfo.Title>
+                <PageInfo.Title>Breadcrumb Component Documentation</PageInfo.Title>
                 <PageInfo.Description>
-                    The <code>Table</code> component is used to display data in a tabular format.
+                    The <code>Breadcrumb</code> component is used to display a breadcrumb navigation.
                 </PageInfo.Description>
             </PageInfo>
             <Sample />
@@ -26,4 +26,4 @@ const TablePage = () => {
     );
 };
 
-export default TablePage;
+export default BreadcrumbPage;

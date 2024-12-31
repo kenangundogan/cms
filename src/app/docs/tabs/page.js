@@ -2,7 +2,7 @@
 
 'use client';
 
-import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import Tabs from '@/app/components/ui/tabs/Tabs';
 import CodeCard from "@/app/components/ui/CodeCard";

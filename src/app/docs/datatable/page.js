@@ -2,7 +2,7 @@
 
 'use client';
 
-import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import AllFeatures from '@/app/docs/datatable/example/allFeatures';
 import Endpoint from '@/app/docs/datatable/example/endpoint';

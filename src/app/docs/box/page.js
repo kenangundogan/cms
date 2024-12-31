@@ -1,7 +1,7 @@
 //src/app/docs/box/page.js
 'use client';
 
-import Breadcrumb from '@/app/components/ui/Breadcrumb';
+import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import Box from '@/app/components/ui/box/Box';
 import CodeCard from "@/app/components/ui/CodeCard";
