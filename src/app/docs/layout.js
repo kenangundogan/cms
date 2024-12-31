@@ -69,9 +69,9 @@ export default function PageLayout({ children }) {
                     </button>
                     <div className="min-h-screen h-screen relative w-full max-w-80 bg-gray-50 p-8 overflow-y-auto pb-52">
                         <h2 className="text-lg font-bold mb-4">Components</h2>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="text-sm">
                             {docs.map((doc, index) => (
-                                <li key={index} className={pathname === doc.url ? "font-bold" : ""}>
+                                <li key={index} className={`border-l py-1 pl-4 ${pathname === doc.url ? "font-bold border-l-black" : ""}`}>
                                     <a href={doc.url}>{doc.title}</a>
                                 </li>
                             ))}

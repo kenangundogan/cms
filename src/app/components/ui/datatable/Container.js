@@ -275,8 +275,8 @@ export default function Container({
                     </div>
                 </>
             ) : !errorMessage ? (
-                <div data-type="DataTable" className="p-4">
-                    <div data-type="DataTableWrapper" className="w-full bg-white border rounded-xl text-sm">
+                <div data-type="DataTable">
+                    <div data-type="DataTableWrapper" className="w-full bg-white border text-sm">
                         <p className="py-4 px-6">Yükleniyor...</p>
                     </div>
                 </div>

@@ -8,9 +8,10 @@ const SampleExample = () => {
     const basicExample = {
         JS: `
 <DataTable
-    columnVisibilityToggle={true}
     endpoint="/api/table"
-    hiddenColumns={["status"]}
+    filter={true}
+    sort={true}
+    columnVisibilityToggle={true}
     showControls={{
         active: true,
         options: [10, 20, 40, 60, 100, 121],
@@ -31,8 +32,6 @@ const SampleExample = () => {
             links: "links",
         },
     }}
-    filter={true}
-    sort={true}
     customColumns={[
         {
             field: "avatar",
@@ -83,9 +82,13 @@ const SampleExample = () => {
 
 
                     <DataTable
-                        // endpoint="http://127.0.0.1:8000/api/articles"
                         endpoint="http://localhost:3000/api/table"
                         responseMapping={{ data: "data" }}
+                        columnVisibilityToggle={true}
+                        showControls={{
+                            active: true,
+                            options: [10, 20, 40, 60, 100, 120],
+                        }}
                         sort={true}
                         filter={true}
                         pagination={{

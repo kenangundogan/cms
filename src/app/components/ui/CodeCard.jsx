@@ -53,7 +53,7 @@ const CodeCard = ({ codeSnippets }) => {
                     <div>
                         <SyntaxHighlighter
                             language={selectedLanguage}
-                            style={hybrid}
+                            style={xcode}
                             showLineNumbers
                             className="text-sm"
                         >
