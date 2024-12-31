@@ -22,14 +22,16 @@ export default function PageLayout({ children }) {
     }, [isOpen]);
 
     const docs = [
+        { title: "Box", url: "/docs/box" },
+        { title: "Breadcrumb", url: "/docs/breadcrumb" },
         { title: "Data Table", url: "/docs/datatable" },
         { title: "Base Table", url: "/docs/table" },
-        { title: "Modal", url: "/docs/modal" },
         { title: "Tabs", url: "/docs/tabs" },
         { title: "Accordion", url: "/docs/accordion" },
+        { title: "Treeview", url: "/docs/treeview" },
+        { title: "Modal", url: "/docs/modal" },
         { title: "Alert", url: "/docs/alert" },
         { title: "Badge", url: "/docs/badge" },
-        { title: "Breadcrumb", url: "/docs/breadcrumb" },
         { title: "Button", url: "/docs/button" },
         { title: "Card", url: "/docs/card" },
         { title: "Dropdown", url: "/docs/dropdown" },
