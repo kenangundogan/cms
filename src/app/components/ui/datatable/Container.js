@@ -7,6 +7,7 @@ import ColumnVisibilityToggle from "@/app/components/ui/datatable/ColumnVisibili
 
 export default function Container({
     endpoint,
+    name,
     pagination = { active: false, options: {} },
     filter = false,
     showControls = { active: false, options: [10, 20, 40, 60, 100] },
@@ -229,7 +230,7 @@ export default function Container({
                     <div data-type="DataTable">
                         <div data-type="DataTableWrapper" className="w-full bg-white border text-sm">
                             <div data-type="Head" className="relative z-20 flex items-center py-4 px-6">
-                                <div data-type="Title" className="font-bold text-xl">Data Table</div>
+                                <div data-type="Title" className="font-bold text-xl">{name || "Data Table"}</div>
                                 {columnVisibilityToggle && (
                                     <ColumnVisibilityToggle
                                         columns={columns}

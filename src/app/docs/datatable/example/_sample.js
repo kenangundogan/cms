@@ -9,6 +9,7 @@ const SampleExample = () => {
         JS: `
 <DataTable
     endpoint="/api/table"
+    name="Data Table"
     filter={true}
     sort={true}
     columnVisibilityToggle={true}
@@ -83,6 +84,7 @@ const SampleExample = () => {
 
                     <DataTable
                         endpoint="http://localhost:3000/api/table"
+                        name="Data Table"
                         responseMapping={{ data: "data" }}
                         columnVisibilityToggle={true}
                         showControls={{
