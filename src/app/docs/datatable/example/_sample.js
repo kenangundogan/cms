@@ -39,6 +39,36 @@ const SampleExample = () => {
             render: (value) => <img src={value} alt="Preview" className="w-10 h-10 object-cover" />,
         }
     ]}
+    addColumns={[
+        {
+            field: "actions",
+            label: "Actions",
+            render: (value, rowData) => (
+                <div className="flex gap-2 text-sm">
+                    <button
+                        onClick={() => console.log(Düzenle:)}
+                        className="border p-3 rounded-sm"
+                    >
+                        <PencilIcon className="w-4 h-4" />
+                    </button>
+                    <button
+                        onClick={() => console.log(Sil:)}
+                        className="border p-3 rounded-sm"
+                    >
+                        <TrashIcon className="w-4 h-4" />
+                    </button>
+                    <button
+                        onClick={() => console.log(Detay:)}
+                        className="border p-3 rounded-sm"
+                    >
+                        <ViewfinderCircleIcon className="w-4 h-4" />
+                    </button>
+                </div>
+            ),
+            filterable: false,
+        },
+    ]}
+
 />
 `
     };
@@ -50,17 +80,14 @@ const SampleExample = () => {
                     This is a basic example of the DataTable component with all features enabled.
                 </Example.Description>
                 <Example.Body>
+
+
                     <DataTable
-                        columnVisibilityToggle={true}
-                        endpoint="/api/table"
-                        hiddenColumns={["status"]}
-                        showControls={{
-                            active: true,
-                            options: [10, 20, 40, 60, 100, 121],
-                        }}
-                        responseMapping={{
-                            data: "data",
-                        }}
+                        // endpoint="http://127.0.0.1:8000/api/articles"
+                        endpoint="http://localhost:3000/api/table"
+                        responseMapping={{ data: "data" }}
+                        sort={true}
+                        filter={true}
                         pagination={{
                             active: true,
                             options: {
@@ -74,8 +101,6 @@ const SampleExample = () => {
                                 links: "links",
                             },
                         }}
-                        filter={true}
-                        sort={true}
                         customColumns={[
                             {
                                 field: "avatar",

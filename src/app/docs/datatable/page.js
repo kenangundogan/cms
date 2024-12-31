@@ -16,7 +16,7 @@ import VisibleColumns from '@/app/docs/datatable/example/visibleColumns';
 import ColumnVisibilityToggle from '@/app/docs/datatable/example/columnVisibilityToggle';
 import ShowControls from '@/app/docs/datatable/example/showControls';
 import ResponseMapping from '@/app/docs/datatable/example/responseMapping';
-import Base from '@/app/docs/datatable/example/_sample';
+import Sample from '@/app/docs/datatable/example/_sample';
 
 const DataTablePage = () => {
 
@@ -34,7 +34,7 @@ const DataTablePage = () => {
                     The <strong>DataTable</strong> component is a flexible and reusable table for displaying data in a structured format.
                 </PageInfo.Description>
             </PageInfo>
-            <Base />
+            <Sample />
             <AllFeatures />
             <Endpoint />
             <Pagination />
