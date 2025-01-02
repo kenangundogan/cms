@@ -30,7 +30,7 @@ const BasicExample = () => {
             <Example>
                 <Example.Title>All Items Open</Example.Title>
                 <Example.Description>
-                    Use the <code>isAllOpen</code> prop to open all items by default.
+                    Use the <code>Accordion</code> component to create an accordion.
                 </Example.Description>
                 <Example.Body>
                     <Accordion isAllOpen={true}>
