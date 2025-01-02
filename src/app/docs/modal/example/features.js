@@ -1,6 +1,7 @@
 'use client';
 
 import Example from "@/app/docs/components/Example";
+import Table from "@/app/components/ui/table/Table";
 
 const Features = () => {
     return (
@@ -11,72 +12,105 @@ const Features = () => {
                     Below is a detailed documentation of the <code>Modal</code> component, showcasing its supported features and usage examples.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Sample Use</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">isOpen</code></td>
-                                    <td>Determines if the modal is visible.</td>
-                                    <td><code>boolean</code></td>
-                                    <td><code>{`false`}</code></td>
-                                    <td>
-                                        <code>{`<Modal isOpen={true}>...</Modal>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">onClose</code></td>
-                                    <td>Callback triggered when the modal is closed (e.g., Escape key or outside click).</td>
-                                    <td><code>function</code></td>
-                                    <td><code>{`undefined`}</code></td>
-                                    <td>
-                                        <code>{`<Modal isOpen={true} onClose={() => setOpen(false)}>...</Modal>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">Modal.Head</code></td>
-                                    <td>
-                                        Defines the header section of the modal. Typically includes a title and close button.
-                                    </td>
-                                    <td><code>ReactNode</code></td>
-                                    <td><code>{`null`}</code></td>
-                                    <td>
-                                        <code>{`<Modal.Head>Title</Modal.Head>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">Modal.Body</code></td>
-                                    <td>
-                                        Defines the body section of the modal, where the main content is displayed.
-                                    </td>
-                                    <td><code>ReactNode</code></td>
-                                    <td><code>{`null`}</code></td>
-                                    <td>
-                                        <code>{`<Modal.Body>Content</Modal.Body>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">Modal.Foot</code></td>
-                                    <td>
-                                        Defines the footer section of the modal, typically for action buttons.
-                                    </td>
-                                    <td><code>ReactNode</code></td>
-                                    <td><code>{`null`}</code></td>
-                                    <td>
-                                        <code>{`<Modal.Foot>Actions</Modal.Foot>`}</code>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <Table>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.Cell as="th">Property</Table.Cell>
+                                <Table.Cell as="th">Description</Table.Cell>
+                                <Table.Cell as="th">Type</Table.Cell>
+                                <Table.Cell as="th">Default</Table.Cell>
+                                <Table.Cell as="th">Sample Use</Table.Cell>
+                            </Table.Row>
+                        </Table.Header>
+                        <Table.Body>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>isOpen</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Determines if the modal is visible.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>boolean</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`false`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Modal isOpen={true}>...</Modal>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>onClose</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Callback triggered when the modal is closed (e.g., Escape key or outside click).
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>function</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`undefined`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Modal isOpen={true} onClose={() => setOpen(false)}>...</Modal>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>Modal.Head</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Defines the header section of the modal. Typically includes a title and close button.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>ReactNode</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`null`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Modal.Head>Title</Modal.Head>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>Modal.Body</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Defines the body section of the modal, where the main content is displayed.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>ReactNode</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`null`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Modal.Body>Content</Modal.Body>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>Modal.Foot</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Defines the footer section of the modal, typically for action buttons.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>ReactNode</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`null`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Modal.Foot>Actions</Modal.Foot>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
+
                 </Example.Body>
             </Example>
         </div>

@@ -2,8 +2,8 @@
 
 const Example = ({ children, className }) => {
     return (
-        <div data-type="Example" className=''>
-            <div className={`w-full flex flex-col p-4 bg-white ${className || ''}`}>
+        <div data-type="Example">
+            <div className={`w-full flex flex-col p-4 ${className || ''}`}>
                 {children}
             </div>
         </div>
@@ -19,7 +19,9 @@ Example.Description = ({ children }) => {
 };
 
 Example.Body = ({ children }) => {
-    return <div data-type="Body" className="bg-gray-50 rounded-md overflow-hidden text-sm p-4">{children}</div>;
+    return <div data-type="Body" className="bg-example bg-slate-50 rounded-md overflow-hidden text-sm p-4">
+        {children}
+    </div>;
 };
 
 export default Example;

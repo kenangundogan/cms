@@ -1,6 +1,7 @@
 'use client';
 
 import Example from "@/app/docs/components/Example";
+import Table from "@/app/components/ui/table/Table";
 
 const Features = () => {
     return (
@@ -11,48 +12,70 @@ const Features = () => {
                     Below is a detailed documentation of the <code>Breadcrumb</code> component, showcasing its supported features and usage examples.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th>Default</th>
-                                    <th>Sample Use</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">className</code></td>
-                                    <td>Custom classes for the root <code>Breadcrumb</code> container.</td>
-                                    <td><code>string</code></td>
-                                    <td><code>{`''`}</code></td>
-                                    <td>
-                                        <code>{`<Breadcrumb className="custom-class">...</Breadcrumb>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">children</code></td>
-                                    <td>The breadcrumb items.</td>
-                                    <td><code>ReactNode</code></td>
-                                    <td><code>{`null`}</code></td>
-                                    <td>
-                                        <code>{`<Breadcrumb><Breadcrumb.Item>Home</Breadcrumb.Item></Breadcrumb>`}</code>
-                                    </td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">href</code></td>
-                                    <td>URL for the breadcrumb item. If set, the item becomes a link.</td>
-                                    <td><code>string</code></td>
-                                    <td><code>{`null`}</code></td>
-                                    <td>
-                                        <code>{`<Breadcrumb.Item href="/home">Home</Breadcrumb.Item>`}</code>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <Table>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.Cell as="th">Property</Table.Cell>
+                                <Table.Cell as="th">Description</Table.Cell>
+                                <Table.Cell as="th">Type</Table.Cell>
+                                <Table.Cell as="th">Default</Table.Cell>
+                                <Table.Cell as="th">Sample Use</Table.Cell>
+                            </Table.Row>
+                        </Table.Header>
+                        <Table.Body>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>className</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Custom classes for the root <code>Breadcrumb</code> container.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>string</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`''`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Breadcrumb className="custom-class">...</Breadcrumb>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>children</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    The breadcrumb items.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>ReactNode</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`null`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Breadcrumb><Breadcrumb.Item>Home</Breadcrumb.Item></Breadcrumb>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>href</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    URL for the breadcrumb item. If set, the item becomes a link.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>string</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`null`}</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<Breadcrumb.Item href="/home">Home</Breadcrumb.Item>`}</code>
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
                 </Example.Body>
             </Example>
         </div>
