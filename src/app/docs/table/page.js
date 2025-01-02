@@ -19,8 +19,14 @@ const TablePage = () => {
             <PageInfo>
                 <PageInfo.Title>Base Table</PageInfo.Title>
                 <PageInfo.Description>
-                    The <code>Table</code> component is used to display data in a tabular format.
+                    The Base Table component provides a simple and flexible way to display tabular data without advanced features like filtering or pagination. It’s a foundational table component for building lightweight and fast layouts.
                 </PageInfo.Description>
+                <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
+                <PageInfo.List>
+                    <PageInfo.Item>Displaying simple lists or data overviews</PageInfo.Item>
+                    <PageInfo.Item>Static tables without dynamic data</PageInfo.Item>
+                    <PageInfo.Item>Quick data visualization in dashboards</PageInfo.Item>
+                </PageInfo.List>
             </PageInfo>
 
             <Features />

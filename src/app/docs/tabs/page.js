@@ -22,8 +22,14 @@ const DashboardPage = () => {
             <PageInfo>
                 <PageInfo.Title>Tabs</PageInfo.Title>
                 <PageInfo.Description>
-                    The Tabs component is used to create a tabbed interface. It is a simple way to switch between different sections of content.
+                    The Tabs component organizes content into multiple sections, displaying one section at a time. Users can switch between tabs to view different content without navigating away from the page.
                 </PageInfo.Description>
+                <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
+                <PageInfo.List>
+                    <PageInfo.Item>Ogranizing settings pages</PageInfo.Item>
+                    <PageInfo.Item>Grouping data into logical sections</PageInfo.Item>
+                    <PageInfo.Item>Creating clean and efficient UI layouts for dashboards</PageInfo.Item>
+                </PageInfo.List>
             </PageInfo>
 
             <Features />

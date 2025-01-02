@@ -22,8 +22,14 @@ const DashboardPage = () => {
             <PageInfo>
                 <PageInfo.Title>Modal</PageInfo.Title>
                 <PageInfo.Description>
-                    The Modal component is used to display a modal dialog. It can be used to display a message, a form, or any other content.
+                    The Modal component provides a focused interface for presenting content or prompting user interactions. It overlays the screen to grab attention and isolate the user interaction from the rest of the page.
                 </PageInfo.Description>
+                <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
+                <PageInfo.List>
+                    <PageInfo.Item>Displaying forms or user inputs</PageInfo.Item>
+                    <PageInfo.Item>Confirmations or alerts</PageInfo.Item>
+                    <PageInfo.Item>Showing additional content like images or videos</PageInfo.Item>
+                </PageInfo.List>
             </PageInfo>
 
             <Features />

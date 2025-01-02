@@ -26,8 +26,14 @@ const DashboardPage = () => {
             <PageInfo>
                 <PageInfo.Title>Accordion</PageInfo.Title>
                 <PageInfo.Description>
-                    The Accordion component is used to display collapsible sections of content. It can be customized to display items in both vertical and horizontal directions.
+                    The Accordion component allows content to be collapsed or expanded. It’s ideal for organizing large amounts of information into manageable sections that users can open or close as needed.
                 </PageInfo.Description>
+                <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
+                <PageInfo.List>
+                    <PageInfo.Item>Frequently Asked Questions (FAQ) sections</PageInfo.Item>
+                    <PageInfo.Item>Step-by-step guides or tutorials</PageInfo.Item>
+                    <PageInfo.Item>Content-heavy pages with collapsible sections</PageInfo.Item>
+                </PageInfo.List>
             </PageInfo>
 
             {/* Examples */}

@@ -31,8 +31,15 @@ const DataTablePage = () => {
             <PageInfo>
                 <PageInfo.Title>Data Table</PageInfo.Title>
                 <PageInfo.Description>
-                    The <strong>DataTable</strong> component is a flexible and reusable table for displaying data in a structured format.
+                    The Data Table component is used to display structured data in a tabular format. It supports advanced features like pagination, filtering, sorting, and customizable columns for a comprehensive data management experience.
                 </PageInfo.Description>
+                <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
+                <PageInfo.List>
+                    <PageInfo.Item>Managing user lists in admin dashboards</PageInfo.Item>
+                    <PageInfo.Item>Displaying reports or logs</PageInfo.Item>
+                    <PageInfo.Item>E-commerce product management</PageInfo.Item>
+                    <PageInfo.Item>Any scenario requiring dynamic data representation</PageInfo.Item>
+                </PageInfo.List>
             </PageInfo>
 
             <Features />
