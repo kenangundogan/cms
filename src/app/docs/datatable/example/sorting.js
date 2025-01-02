@@ -2,14 +2,17 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const SortingExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     sort={true}
 />
-`
+        `,
     };
+};
+
+const SortingExample = () => {
     return (
         <div>
             <Example>
@@ -36,7 +39,7 @@ const SortingExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

@@ -3,17 +3,19 @@ import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 
-const SampleExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <Breadcrumb>
     <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
     <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
     <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>
 </Breadcrumb>
-`
+`,
     };
+};
 
+const SampleExample = () => {
     return (
         <div>
             <Example>
@@ -27,7 +29,7 @@ const SampleExample = () => {
                         <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
                         <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>
                     </Breadcrumb>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

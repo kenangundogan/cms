@@ -2,8 +2,8 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const PaginationExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     pagination={{
@@ -20,8 +20,11 @@ const PaginationExample = () => {
         }
     }}
 />
-`
+        `,
     };
+};
+
+const PaginationExample = () => {
     return (
         <div>
             <Example>
@@ -53,7 +56,7 @@ const PaginationExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

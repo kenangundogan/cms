@@ -2,8 +2,8 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const AddColumnsExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     addColumns={[
@@ -16,8 +16,11 @@ const AddColumnsExample = () => {
         },
     ]}
 />
-`
+        `,
     };
+};
+
+const AddColumnsExample = () => {
     return (
         <div>
             <Example>
@@ -44,7 +47,7 @@ const AddColumnsExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

@@ -4,8 +4,8 @@ import CodeCard from "@/app/components/ui/CodeCard";
 import DataTable from '@/app/components/ui/datatable/Container';
 import { TrashIcon, PencilIcon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
 
-const SampleExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     endpoint="/api/table"
@@ -70,8 +70,11 @@ const SampleExample = () => {
     ]}
 
 />
-`
+        `,
     };
+};
+
+const SampleExample = () => {
     return (
         <div>
             <Example>
@@ -142,7 +145,7 @@ const SampleExample = () => {
                             },
                         ]}
                     />
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

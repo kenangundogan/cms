@@ -2,16 +2,19 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const ResponseMappingExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     responseMapping={{
         data: "data"
     }}
 />
-`
+        `,
     };
+};
+
+const ResponseMappingExample = () => {
     return (
         <div>
             <Example>
@@ -38,7 +41,7 @@ const ResponseMappingExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

@@ -2,14 +2,17 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const EndpointExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     endpoint="https://example.com/api/users"
 />
-`
+        `,
     };
+};
+
+const EndpointExample = () => {
     return (
         <div>
             <Example>
@@ -36,7 +39,7 @@ const EndpointExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

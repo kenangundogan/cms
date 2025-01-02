@@ -2,8 +2,8 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const AllFeaturesExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     endpoint="https://example.com/api/users"
@@ -46,9 +46,11 @@ const AllFeaturesExample = () => {
     hiddenColumns={["password", "token"]}
     columnVisibilityToggle={true}
 />
-`
+        `,
     };
+};
 
+const AllFeaturesExample = () => {
     return (
         <div>
             <Example>
@@ -137,7 +139,7 @@ const AllFeaturesExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

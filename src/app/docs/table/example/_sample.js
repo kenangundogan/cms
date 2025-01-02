@@ -4,23 +4,8 @@ import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 import Table from '@/app/components/ui/table/Table';
 
-const SampleExample = () => {
-    const [tableData, setTableData] = useState([]);
-    const [columns, setColumns] = useState([]);
-
-    useEffect(() => {
-        fetch('/api/table')
-            .then(response => response.json())
-            .then(result => {
-                setTableData(result.data);
-                if (result.data.length > 0) {
-                    setColumns(Object.keys(result.data[0]));
-                }
-            })
-            .catch(error => console.error('Error fetching table data:', error));
-    }, []);
-
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <Table>
     <Table.Header>
@@ -39,8 +24,25 @@ const SampleExample = () => {
         </Table.Row>
     </Table.Footer>
 </Table>
-`
+        `,
     };
+};
+
+const SampleExample = () => {
+    const [tableData, setTableData] = useState([]);
+    const [columns, setColumns] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/table')
+            .then(response => response.json())
+            .then(result => {
+                setTableData(result.data);
+                if (result.data.length > 0) {
+                    setColumns(Object.keys(result.data[0]));
+                }
+            })
+            .catch(error => console.error('Error fetching table data:', error));
+    }, []);
 
     return (
         <div>
@@ -75,7 +77,7 @@ const SampleExample = () => {
                             </Table.Row>
                         </Table.Footer>
                     </Table>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

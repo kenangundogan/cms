@@ -2,8 +2,8 @@
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
 
-const CustomColumnsExample = () => {
-    const basicExample = {
+const generateBasicExample = () => {
+    return {
         JS: `
 <DataTable
     customColumns={[
@@ -11,8 +11,11 @@ const CustomColumnsExample = () => {
         { field: "name", label: "Name", render: (value) => <strong>{value}</strong> },
     ]}
 />
-`
+        `,
     };
+};
+
+const CustomColumnsExample = () => {
     return (
         <div>
             <Example>
@@ -39,7 +42,7 @@ const CustomColumnsExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={basicExample} />
+                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>
