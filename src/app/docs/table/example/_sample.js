@@ -45,42 +45,40 @@ const SampleExample = () => {
     }, []);
 
     return (
-        <div>
-            <Example>
-                <Example.Title>Sample Usage</Example.Title>
-                <Example.Description>
-                    This is a basic example of the Table component with all features enabled.
-                </Example.Description>
-                <Example.Body>
-                    <Table>
-                        <Table.Header>
-                            <Table.Row>
-                                {columns.map((column, index) => (
-                                    <Table.Cell key={index}>{column.toUpperCase()}</Table.Cell>
-                                ))}
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {tableData.map((row, rowIndex) => (
-                                <Table.Row key={rowIndex}>
-                                    {columns.map((column, colIndex) => (
-                                        <Table.Cell key={colIndex}>{row[column]}</Table.Cell>
-                                    ))}
-                                </Table.Row>
+        <Example>
+            <Example.Title>Sample Usage</Example.Title>
+            <Example.Description>
+                This is a basic example of the Table component with all features enabled.
+            </Example.Description>
+            <Example.Body>
+                <Table>
+                    <Table.Header>
+                        <Table.Row>
+                            {columns.map((column, index) => (
+                                <Table.Cell key={index}>{column.toUpperCase()}</Table.Cell>
                             ))}
-                        </Table.Body>
-                        <Table.Footer>
-                            <Table.Row>
-                                {columns.map((column, index) => (
-                                    <Table.Cell key={index}>{column.toUpperCase()}</Table.Cell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {tableData.map((row, rowIndex) => (
+                            <Table.Row key={rowIndex}>
+                                {columns.map((column, colIndex) => (
+                                    <Table.Cell key={colIndex}>{row[column]}</Table.Cell>
                                 ))}
                             </Table.Row>
-                        </Table.Footer>
-                    </Table>
-                    <CodeCard codeSnippets={generateBasicExample()} />
-                </Example.Body>
-            </Example>
-        </div>
+                        ))}
+                    </Table.Body>
+                    <Table.Footer>
+                        <Table.Row>
+                            {columns.map((column, index) => (
+                                <Table.Cell key={index}>{column.toUpperCase()}</Table.Cell>
+                            ))}
+                        </Table.Row>
+                    </Table.Footer>
+                </Table>
+                <CodeCard codeSnippets={generateBasicExample()} />
+            </Example.Body>
+        </Example>
     );
 };
 
