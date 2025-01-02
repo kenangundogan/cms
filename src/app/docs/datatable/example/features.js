@@ -1,60 +1,11 @@
 'use client';
 import Example from "@/app/docs/components/Example";
-import CodeCard from "@/app/components/ui/CodeCard";
-
-const generateBasicExample = () => {
-    return {
-        JS: `
-<DataTable
-    endpoint="https://example.com/api/users"
-    pagination={{
-        active: true,
-        options: {
-            currentPage: "meta.current_page",
-            lastPage: "meta.last_page",
-            perPage: "meta.per_page",
-            total: "meta.total",
-            path: "meta.path",
-            from: "meta.from",
-            to: "meta.to",
-            links: "links",
-        },
-    }}
-    filter={true}
-    showControls={{
-        active: true,
-        options: [10, 20, 40, 60, 100],
-    }}
-    sort={true}
-    customColumns={[
-        { field: "id", label: "ID" },
-        { field: "name", label: "Name", render: (value) => <strong>{value}</strong> },
-    ]}
-    addColumns={[
-        {
-            field: "actions",
-            label: "Actions",
-            render: (row) => (
-                <button onClick={() => alert(\`Editing \${row.id}\`)}>Edit</button>
-            ),
-        },
-    ]}
-    responseMapping={{
-        data: "data",
-    }}
-    visibleColumns={["id", "name", "email"]}
-    hiddenColumns={["password", "token"]}
-    columnVisibilityToggle={true}
-/>
-        `,
-    };
-};
 
 const AllFeaturesExample = () => {
     return (
         <div>
             <Example>
-                <Example.Title>All Features (Comprehensive)</Example.Title>
+                <Example.Title>Features</Example.Title>
                 <Example.Description>
                     Below is a comprehensive example showcasing all supported features of the <code>DataTable</code> component.
                 </Example.Description>
@@ -139,7 +90,6 @@ const AllFeaturesExample = () => {
                             </tbody>
                         </table>
                     </div>
-                    <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>
         </div>

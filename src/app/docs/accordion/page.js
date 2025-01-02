@@ -4,6 +4,7 @@
 
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
+import Features from '@/app/docs/accordion/example/features';
 import Basic from '@/app/docs/accordion/example/basic';
 import DefaultOpen from '@/app/docs/accordion/example/defaultOpen';
 import DisabledItem from '@/app/docs/accordion/example/disabledItem';
@@ -28,6 +29,9 @@ const DashboardPage = () => {
                     The Accordion component is used to display collapsible sections of content. It can be customized to display items in both vertical and horizontal directions.
                 </PageInfo.Description>
             </PageInfo>
+
+            {/* Examples */}
+            <Features />
             <Basic />
             <DefaultOpen />
             <DisabledItem />

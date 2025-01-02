@@ -28,7 +28,7 @@ const BasicExample = () => {
     return (
         <div>
             <Example>
-                <Example.Title>Basic Example</Example.Title>
+                <Example.Title>Basic</Example.Title>
                 <Example.Description>
                     Use the <code>Accordion</code> component to create an accordion.
                 </Example.Description>

@@ -27,7 +27,7 @@ const SampleExample = () => {
                     This is a basic example of the Box component. The Box component is a flexible and reusable container for organizing UI content. It provides a structured layout with optional Header, Body, and Footer subcomponents, making it ideal for creating consistent and clean interfaces.
                 </Example.Description>
                 <Example.Body>
-                    <Box>
+                    <Box isFullScreen={false}>
                         <Box.Head>Box Title</Box.Head>
                         <Box.Body>
                             <p>This is the body of the box. You can add any content here, such as text, images, or other components.</p>

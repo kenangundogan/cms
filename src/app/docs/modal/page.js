@@ -3,6 +3,7 @@
 'use client';
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
+import Features from '@/app/docs/modal/example/features';
 import Sample from '@/app/docs/modal/example/_sample';
 
 const DashboardPage = () => {
@@ -24,6 +25,8 @@ const DashboardPage = () => {
                     The Modal component is used to display a modal dialog. It can be used to display a message, a form, or any other content.
                 </PageInfo.Description>
             </PageInfo>
+
+            <Features />
             <Sample />
 
         </div>

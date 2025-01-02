@@ -5,6 +5,7 @@
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import Sample from '@/app/docs/breadcrumb/example/_sample';
+import Features from '@/app/docs/breadcrumb/example/features';
 
 const BreadcrumbPage = () => {
     return (
@@ -16,11 +17,13 @@ const BreadcrumbPage = () => {
             </Breadcrumb>
 
             <PageInfo>
-                <PageInfo.Title>Breadcrumb Component Documentation</PageInfo.Title>
+                <PageInfo.Title>Breadcrumb</PageInfo.Title>
                 <PageInfo.Description>
                     The <code>Breadcrumb</code> component is used to display a breadcrumb navigation.
                 </PageInfo.Description>
             </PageInfo>
+
+            <Features />
             <Sample />
         </div>
     );

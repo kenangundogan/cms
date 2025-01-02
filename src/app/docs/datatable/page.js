@@ -4,7 +4,7 @@
 
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
-import AllFeatures from '@/app/docs/datatable/example/allFeatures';
+import Features from '@/app/docs/datatable/example/features';
 import Endpoint from '@/app/docs/datatable/example/endpoint';
 import Pagination from "@/app/docs/datatable/example/pagination";
 import Sorting from '@/app/docs/datatable/example/sorting';
@@ -29,13 +29,14 @@ const DataTablePage = () => {
             </Breadcrumb>
 
             <PageInfo>
-                <PageInfo.Title>Data Table Component Documentation</PageInfo.Title>
+                <PageInfo.Title>Data Table</PageInfo.Title>
                 <PageInfo.Description>
                     The <strong>DataTable</strong> component is a flexible and reusable table for displaying data in a structured format.
                 </PageInfo.Description>
             </PageInfo>
+
+            <Features />
             <Sample />
-            <AllFeatures />
             <Endpoint />
             <Pagination />
             <Sorting />

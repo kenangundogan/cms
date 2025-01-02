@@ -4,6 +4,7 @@
 
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
+import Features from '@/app/docs/tabs/example/features';
 import Sample from '@/app/docs/tabs/example/_sample';
 
 const DashboardPage = () => {
@@ -24,6 +25,8 @@ const DashboardPage = () => {
                     The Tabs component is used to create a tabbed interface. It is a simple way to switch between different sections of content.
                 </PageInfo.Description>
             </PageInfo>
+
+            <Features />
             <Sample />
         </div>
     );

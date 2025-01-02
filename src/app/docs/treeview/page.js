@@ -5,7 +5,7 @@
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import Sample from '@/app/docs/treeview/example/_sample';
-import AllFeatures from '@/app/docs/treeview/example/allFeatures';
+import Features from '@/app/docs/treeview/example/features';
 
 const TreeviewPage = () => {
     return (
@@ -17,13 +17,14 @@ const TreeviewPage = () => {
             </Breadcrumb>
 
             <PageInfo>
-                <PageInfo.Title>Treeview Component</PageInfo.Title>
+                <PageInfo.Title>Treeview</PageInfo.Title>
                 <PageInfo.Description>
                     The <code>Treeview</code> component is a simple treeview component that can be used to display hierarchical data.
                 </PageInfo.Description>
             </PageInfo>
+
+            <Features />
             <Sample />
-            <AllFeatures />
         </div>
     );
 };
