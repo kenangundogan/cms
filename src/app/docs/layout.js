@@ -30,6 +30,7 @@ export default function PageLayout({ children }) {
         { title: "Accordion", url: "/docs/accordion" },
         { title: "Treeview", url: "/docs/treeview" },
         { title: "Modal", url: "/docs/modal" },
+        { title: "Drawer", url: "/docs/drawer" },
         { title: "Alert", url: "/docs/alert" },
         { title: "Badge", url: "/docs/badge" },
         { title: "Button", url: "/docs/button" },
