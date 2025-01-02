@@ -72,13 +72,15 @@ const SampleExample = () => {
                 This is a basic example of the TreeView component. The TreeView component is a hierarchical list of items that can be expanded or collapsed to show or hide the child items.
             </Example.Description>
             <Example.Body>
-                {loading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <TreeView defaultExpanded={false}>
-                        {renderTreeItems(treeData)}
-                    </TreeView>
-                )}
+                <div className='bg-white p-4 mb-4'>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <TreeView defaultExpanded={false}>
+                            {renderTreeItems(treeData)}
+                        </TreeView>
+                    )}
+                </div>
                 <CodeCard codeSnippets={generateBasicExample()} />
             </Example.Body>
         </Example>
