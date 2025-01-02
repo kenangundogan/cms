@@ -9,7 +9,7 @@ const SampleExample = () => {
     const [columns, setColumns] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/table')
+        fetch('/api/table')
             .then(response => response.json())
             .then(result => {
                 setTableData(result.data);

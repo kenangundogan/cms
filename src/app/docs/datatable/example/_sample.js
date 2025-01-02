@@ -83,7 +83,7 @@ const SampleExample = () => {
 
 
                     <DataTable
-                        endpoint="http://localhost:3000/api/table"
+                        endpoint="/api/table"
                         name="Data Table"
                         responseMapping={{ data: "data" }}
                         columnVisibilityToggle={true}
