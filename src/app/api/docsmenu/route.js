@@ -13,7 +13,6 @@ export async function GET(req) {
         { title: "Drawer", url: "/docs/drawer" },
         { title: "Alert", url: "/docs/alert" },
         { title: "Badge", url: "/docs/badge" },
-        { title: "Button", url: "/docs/button" },
         { title: "Card", url: "/docs/card" },
         { title: "Dropdown", url: "/docs/dropdown" },
         { title: "List Group", url: "/docs/list-group" },
@@ -27,8 +26,9 @@ export async function GET(req) {
             title: "Form",
             url: "/docs/form",
             children: [
+                { title: "Button", url: "/docs/button" },
+                { title: "Text Field", url: "/docs/textfield" },
                 { title: "Checkbox", url: "/docs/checkbox" },
-                { title: "Input", url: "/docs/input" },
                 { title: "Radio", url: "/docs/radio" },
                 { title: "Select", url: "/docs/select" },
                 { title: "Switch", url: "/docs/switch" },
