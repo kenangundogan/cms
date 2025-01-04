@@ -28,7 +28,7 @@ export default function Drawer({ open, position = "left", onClose, children }) {
             onClick={onClose}
         >
             <div
-                className={`fixed p-4 bg-white shadow-lg transition-transform ${positionClasses[position]
+                className={`fixed overflow-hidden p-4 bg-white shadow-lg transition-transform ${positionClasses[position]
                     } ${open ? "transform-none" : `transform ${getTransform(position)}`}`}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -38,7 +38,7 @@ export default function Drawer({ open, position = "left", onClose, children }) {
                 >
                     ×
                 </button>
-                <div className="p-4">{children}</div>
+                <div className="h-full p-4 overflow-auto">{children}</div>
             </div>
         </div>
     );
