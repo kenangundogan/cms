@@ -98,25 +98,33 @@ const SampleExample = () => {
                     Showcasing <code>type</code>, <code>disabled</code>, <code>iconLeft</code>, <code>iconRight</code>, and a custom <code>className</code>.
                 </Example.Description>
                 <Example.Body>
-                    <TextField
-                        label="Password"
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Enter your password"
-                        iconLeft={<LockClosedIcon className="h-5 w-5 text-gray-500" />}
-                        iconRight={<DocumentDuplicateIcon className="h-5 w-5 text-gray-500" />}
-                        className="bg-white"
-                    />
-                    <br />
-                    <TextField
-                        label="Disabled Field"
-                        id="disabled"
-                        name="disabled"
-                        placeholder="This field is disabled"
-                        disabled
-                        iconLeft={<LockClosedIcon className="h-5 w-5 text-gray-400" />}
-                    />
+                        <TextField
+                            label="Password"
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="Enter your password"
+                            iconLeft={<LockClosedIcon className="size-4 text-gray-500" />}
+                            iconRight={<DocumentDuplicateIcon className="size-4 text-gray-500" />}
+                        />
+                        <br />
+                        <TextField
+                            label="Disabled Field"
+                            id="disabled"
+                            name="disabled"
+                            placeholder="This field is disabled"
+                            disabled
+                            iconLeft={<LockClosedIcon className="size-4 text-gray-400" />}
+                        />
+                        <br />
+                        <TextField
+                            label="Disabled Field"
+                            id="disabled"
+                            name="disabled"
+                            placeholder="This field is disabled"
+                            disabled
+                            iconRight={<LockClosedIcon className="size-4 text-gray-400" />}
+                        />
                 </Example.Body>
             </Example>
 
@@ -223,7 +231,7 @@ const SampleExample = () => {
                         type="tel"
                         placeholder="Enter your phone number"
                         validators={[required, phone]}
-                        iconLeft={<PhoneIcon className="h-5 w-5 text-gray-500" />}
+                        iconLeft={<PhoneIcon className="size-4 text-gray-500" />}
                     />
                 </Example.Body>
             </Example>

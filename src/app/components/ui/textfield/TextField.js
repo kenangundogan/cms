@@ -114,7 +114,7 @@ const TextField = ({
 
             <div className="relative">
                 {iconLeft && (
-                    <span className="absolute inset-y-0 left-2 flex items-center text-gray-400">
+                    <span className="absolute inset-y-0 left-0 p-3 flex items-center text-gray-400">
                         {iconLeft}
                     </span>
                 )}
@@ -135,7 +135,7 @@ const TextField = ({
                         maxLength={maxLength}
                         aria-invalid={!!displayError}
                         aria-describedby={displayError ? `${id}-error` : `${id}-helper`}
-                        className={`border ${displayError ? 'border-red-500' : 'border-gray-300'
+                        className={`w-full border ${displayError ? 'border-red-500' : 'border-gray-300'
                             } rounded-sm shadow-sm px-4 py-3 text-sm focus:ring ${displayError
                                 ? 'focus:ring-red-500'
                                 : 'focus:ring-blue-300 focus:border-blue-500'
@@ -158,7 +158,7 @@ const TextField = ({
                         maxLength={maxLength}
                         aria-invalid={!!displayError}
                         aria-describedby={displayError ? `${id}-error` : `${id}-helper`}
-                        className={`border ${displayError ? 'border-red-500' : 'border-gray-300'
+                        className={`w-full border ${displayError ? 'border-red-500' : 'border-gray-300'
                             } rounded-sm shadow-sm px-4 py-3 text-sm focus:ring ${displayError
                                 ? 'focus:ring-red-500'
                                 : 'focus:ring-blue-300 focus:border-blue-500'
@@ -171,7 +171,7 @@ const TextField = ({
                 )}
 
                 {iconRight && (
-                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-400">
+                    <span className="absolute inset-y-0 right-0 p-3 flex items-center text-gray-400">
                         {iconRight}
                     </span>
                 )}
