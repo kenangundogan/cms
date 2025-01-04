@@ -343,6 +343,20 @@ const Features = () => {
                                 </Table.Cell>
                             </Table.Row>
 
+                            {/* size */}
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>size</code>
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Sets the size of the input. Defaults to <code>"md"</code>.
+                                    <br />
+                                    <em>Valid values include:</em> <code>'sm'</code>, <code>'md'</code>, <code>'lg'</code>.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{`<TextField size="lg" />`}</code>
+                                </Table.Cell>
+                            </Table.Row>
                             {/* className */}
                             <Table.Row>
                                 <Table.Cell>

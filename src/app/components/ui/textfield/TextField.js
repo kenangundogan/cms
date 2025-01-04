@@ -39,9 +39,17 @@ const TextField = ({
     showCharacterCount = false,
     blockInvalidInput = false,
     validators = [],
+    size = 'md',
     className = '',
     ...props
 }) => {
+
+    const sizes = {
+        sm: "px-2 py-1 text-sm",
+        md: "px-4 py-2 text-base",
+        lg: "px-6 py-3 text-lg",
+    };
+
     const [internalValue, setInternalValue] = useState(defaultValue || '');
     const [internalError, setInternalError] = useState('');
 
@@ -136,10 +144,11 @@ const TextField = ({
                         aria-invalid={!!displayError}
                         aria-describedby={displayError ? `${id}-error` : `${id}-helper`}
                         className={`w-full border ${displayError ? 'border-red-500' : 'border-gray-300'
-                            } rounded-sm shadow-sm px-4 py-3 text-sm focus:ring ${displayError
+                            } rounded-sm shadow-sm focus:ring ${displayError
                                 ? 'focus:ring-red-500'
                                 : 'focus:ring-blue-300 focus:border-blue-500'
-                            } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                            } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}
+                            ${sizes[size]}`}
                         {...props}
                     />
                 ) : (
@@ -159,13 +168,13 @@ const TextField = ({
                         aria-invalid={!!displayError}
                         aria-describedby={displayError ? `${id}-error` : `${id}-helper`}
                         className={`w-full border ${displayError ? 'border-red-500' : 'border-gray-300'
-                            } rounded-sm shadow-sm px-4 py-3 text-sm focus:ring ${displayError
+                            } rounded-sm shadow-sm focus:ring ${displayError
                                 ? 'focus:ring-red-500'
                                 : 'focus:ring-blue-300 focus:border-blue-500'
                             } ${iconLeft ? 'pl-10' : ''
                             } ${iconRight ? 'pr-10' : ''
                             } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''
-                            }`}
+                            } ${sizes[size]}`}
                         {...props}
                     />
                 )}
@@ -224,6 +233,7 @@ TextField.propTypes = {
     blockInvalidInput: PropTypes.bool,
     validators: PropTypes.arrayOf(PropTypes.func),
     className: PropTypes.string,
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default TextField;

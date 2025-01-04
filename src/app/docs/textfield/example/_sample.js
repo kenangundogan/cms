@@ -236,6 +236,42 @@ const SampleExample = () => {
                 </Example.Body>
             </Example>
 
+            <Example>
+                <Example.Title>Sizes</Example.Title>
+                <Example.Description>
+                    We showcase the different sizes of the TextField component: <code>sm</code>, <code>md</code>, and <code>lg</code>.
+                </Example.Description>
+                <Example.Body>
+                    {/* sm */}
+                    <TextField
+                        label="Full Name"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        size="sm"
+                    />
+                    <br />
+                    {/* md */}
+                    <TextField
+                        label="Full Name"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        size="md"
+                    />
+                    <br />
+                    {/* lg */}
+                    <TextField
+                        label="Full Name"
+                        id="fullname"
+                        name="fullname"
+                        placeholder="Enter your full name"
+                        size="lg"
+                    />
+                    <br />
+                </Example.Body>
+            </Example>
+
         </div>
     );
 };
