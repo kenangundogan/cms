@@ -68,8 +68,8 @@ const generateCheckedExample = () => {
 <Checkbox label="Checked" checked={true} />
 <Checkbox label="Unchecked" checked={false} />
 
-<Checkbox label="Checked Outline" checked={true} variantType="outline" />
-<Checkbox label="Unchecked Outline" checked={false} variantType="outline" />
+<Checkbox label="Checked" checked={true} variantType="outline" />
+<Checkbox label="Unchecked" checked={false} variantType="outline" />
         `,
     };
 };
@@ -80,8 +80,8 @@ const generateDisabledExample = () => {
 <Checkbox label="Disabled Checked" checked={true} disabled />
 <Checkbox label="Disabled Unchecked" checked={false} disabled />
 
-<Checkbox label="Disabled Checked Outline" checked={true} disabled variantType="outline" />
-<Checkbox label="Disabled Unchecked Outline" checked={false} disabled variantType="outline" />
+<Checkbox label="Disabled Checked" checked={true} disabled variantType="outline" />
+<Checkbox label="Disabled Unchecked" checked={false} disabled variantType="outline" />
         `,
     };
 };
