@@ -16,7 +16,7 @@ const CodeCard = ({ codeSnippets }) => {
     };
 
     return (
-        <div className="bg-white">
+        <div data-type="CodeCard" className="bg-white">
             <div className="relative">
                 <div className="flex justify-between items-center px-4 py-4 border-b">
                     <div className="flex gap-2 items-center">
@@ -55,7 +55,7 @@ const CodeCard = ({ codeSnippets }) => {
                             language={selectedLanguage}
                             style={xcode}
                             showLineNumbers
-                            className="text-sm"
+                            className="text-xs"
                         >
                             {codeSnippets[selectedLanguage]}
                         </SyntaxHighlighter>

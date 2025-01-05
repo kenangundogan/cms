@@ -6,7 +6,7 @@ import Aside from "@/app/layout/Aside";
 
 export default function PageLayout({ children }) {
     return (
-        <main className="relative top-20 w-full min-h-screen bg-white">
+        <main data-type="Docs" className="relative top-20 w-full min-h-screen bg-white">
             <Header />
             <div className="min-h-screen flex gap-4">
                 <Aside/>
