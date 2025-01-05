@@ -28,6 +28,7 @@ export async function GET(req) {
             children: [
                 { title: "Button", url: "/docs/button" },
                 { title: "Text Field", url: "/docs/textfield" },
+                { title: "File Upload", url: "/docs/fileupload" },
                 { title: "Checkbox", url: "/docs/checkbox" },
                 { title: "Switch", url: "/docs/switch" },
                 { title: "Radio", url: "/docs/radio" },
