@@ -17,12 +17,18 @@ const RadioPage = () => {
             <PageInfo>
                 <PageInfo.Title>Radio</PageInfo.Title>
                 <PageInfo.Description>
-                    ...
+                    The <code>Radio</code> component is a versatile UI element for creating single-choice options. It provides a range of styling and functionality to fit seamlessly into any project.
                 </PageInfo.Description>
                 <PageInfo.Subtitle>Use Cases</PageInfo.Subtitle>
                 <PageInfo.List>
                     <PageInfo.Item>
-                        ...
+                        Create single-choice forms or surveys.
+                    </PageInfo.Item>
+                    <PageInfo.Item>
+                        Use for selecting options such as payment methods or delivery options.
+                    </PageInfo.Item>
+                    <PageInfo.Item>
+                        Customize its size, color, and behavior to align with your design system.
                     </PageInfo.Item>
                 </PageInfo.List>
             </PageInfo>
