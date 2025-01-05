@@ -29,10 +29,9 @@ export async function GET(req) {
                 { title: "Button", url: "/docs/button" },
                 { title: "Text Field", url: "/docs/textfield" },
                 { title: "Checkbox", url: "/docs/checkbox" },
-                { title: "Radio", url: "/docs/radio" },
-                { title: "Select", url: "/docs/select" },
                 { title: "Switch", url: "/docs/switch" },
-                { title: "Textarea", url: "/docs/textarea" },
+                { title: "Radio", url: "/docs/radio" },
+                { title: "Select", url: "/docs/select" }
             ],
         }
     ];
