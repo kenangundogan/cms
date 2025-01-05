@@ -1,7 +1,62 @@
 'use client';
 
 import Example from "@/app/docs/components/Example";
+import CodeCard from "@/app/components/ui/CodeCard";
 import FileUpload from "@/app/components/ui/fileupload/FileUpload";
+
+const generateExamples = () => {
+    return {
+        basic: `
+<FileUpload
+    id="file-upload-basic"
+    name="basic-files"
+    multiple={true}
+    placeholder="Click to select files..."
+    onChange={handleFileChange}
+/>`,
+        restrictFileTypes: `
+<FileUpload
+    id="file-upload-images"
+    name="image-files"
+    multiple={false}
+    accept="image/*"
+    placeholder="Select an image file..."
+    onChange={handleFileChange}
+/>`,
+        limitFileSize: `
+<FileUpload
+    id="file-upload-size"
+    name="size-files"
+    maxFileSize={1 * 1024 * 1024} // 1 MB
+    placeholder="Select files under 1 MB..."
+    onChange={handleFileChange}
+/>`,
+        singleFile: `
+<FileUpload
+    id="file-upload-single"
+    name="single-file"
+    multiple={false}
+    placeholder="Select a single file..."
+    onChange={handleFileChange}
+/>`,
+        disabled: `
+<FileUpload
+    id="file-upload-disabled"
+    name="disabled-file"
+    disabled={true}
+    placeholder="This file upload is disabled"
+    onChange={handleFileChange}
+/>`,
+        customStyling: `
+<FileUpload
+    id="file-upload-styled"
+    name="styled-files"
+    className="bg-blue-50 border-blue-300 text-blue-600 hover:bg-blue-100"
+    placeholder="Styled file upload..."
+    onChange={handleFileChange}
+/>`,
+    };
+};
 
 const SampleExample = () => {
     const handleFileChange = (files, error) => {
@@ -11,6 +66,8 @@ const SampleExample = () => {
         }
         console.log("Selected files:", files);
     };
+
+    const examples = generateExamples();
 
     return (
         <div className="space-y-6">
@@ -28,6 +85,7 @@ const SampleExample = () => {
                         placeholder="Click to select files..."
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.basic }} />
                 </Example.Body>
             </Example>
 
@@ -46,6 +104,7 @@ const SampleExample = () => {
                         placeholder="Select an image file..."
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.restrictFileTypes }} />
                 </Example.Body>
             </Example>
 
@@ -63,6 +122,7 @@ const SampleExample = () => {
                         placeholder="Select files under 1 MB..."
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.limitFileSize }} />
                 </Example.Body>
             </Example>
 
@@ -80,6 +140,7 @@ const SampleExample = () => {
                         placeholder="Select a single file..."
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.singleFile }} />
                 </Example.Body>
             </Example>
 
@@ -97,6 +158,7 @@ const SampleExample = () => {
                         placeholder="This file upload is disabled"
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.disabled }} />
                 </Example.Body>
             </Example>
 
@@ -114,6 +176,7 @@ const SampleExample = () => {
                         placeholder="Styled file upload..."
                         onChange={handleFileChange}
                     />
+                    <CodeCard codeSnippets={{ JS: examples.customStyling }} />
                 </Example.Body>
             </Example>
         </div>
