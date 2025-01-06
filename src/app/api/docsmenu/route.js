@@ -10,6 +10,7 @@ export async function GET(req) {
                 { title: "Data Table", url: "/docs/datatable" },
                 { title: "Base Table", url: "/docs/table" },
                 { title: "Tabs", url: "/docs/tabs" },
+                { title: "List", url: "/docs/list" },
                 { title: "Accordion", url: "/docs/accordion" },
                 { title: "Treeview", url: "/docs/treeview" },
                 { title: "Modal", url: "/docs/modal" },
