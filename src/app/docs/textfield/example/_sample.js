@@ -87,7 +87,7 @@ const SampleExample = () => {
                         label="Nickname (Uncontrolled)"
                         id="nickname"
                         name="nickname"
-                        defaultValue="Kenan Bey"
+                        defaultValue="kenangundogan"
                     />
                 </Example.Body>
             </Example>

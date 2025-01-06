@@ -43,7 +43,7 @@ const Header = () => {
                                     <Image src="/assets/images/avatar/2.png" alt="User" width={40} height={40} />
                                 </div>
                                 <div className='flex flex-col'>
-                                    <span className='font-bold'>Kenan Gündoğan</span>
+                                    <span className='font-bold'>Kenan Gundogan</span>
                                     <span className='text-xxs'>kenangundogan@example.com</span>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ const DropdownFeatures = () => {
             <Example>
                 <Example.Title>Dropdown Features</Example.Title>
                 <Example.Description>
-                    The table below provides an overview of all the properties supported by the <code>Dropdown</code> component, along with a short description for each property. This allows you to quickly see what each property does and how to integrate it into your project using <code>Dropdown</code>, Kenan Bey.
+                    The table below provides an overview of all the properties supported by the <code>Dropdown</code> component, along with a short description for each property. This allows you to quickly see what each property does and how to integrate it into your project using <code>Dropdown</code>
                 </Example.Description>
                 <Example.Body>
                     <Table>

@@ -9,7 +9,7 @@ const Features = () => {
             <Example>
                 <Example.Title>Features</Example.Title>
                 <Example.Description>
-                    The table below provides an overview of all the properties supported by the <code>TextField</code> component, along with a short description for each property. This allows you to quickly see what each property does and how to integrate it into your project using <code>TextField</code>, Kenan Bey.
+                    The table below provides an overview of all the properties supported by the <code>TextField</code> component, along with a short description for each property. This allows you to quickly see what each property does and how to integrate it into your project using <code>TextField</code>
                 </Example.Description>
                 <Example.Body>
                     <Table>
