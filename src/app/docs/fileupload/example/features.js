@@ -160,7 +160,7 @@ const Features = () => {
                                     Custom function to generate an error message for oversized files.
                                 </Table.Cell>
                                 <Table.Cell>
-                                    <code>{`<FileUpload fileTooLargeMessage={(name, size) => \`${name} is too large\`} />`}</code>
+                                    <code>{`<FileUpload fileTooLargeMessage={(name, size) => \${name} is too large\} />`}</code>
                                 </Table.Cell>
                             </Table.Row>
                         </Table.Body>
