@@ -35,6 +35,8 @@ export default function PageLayout({ children }) {
 
     const AsideMenu = () => {
         const [isOpen, setIsOpen] = useState(false);
+        const [openMenus, setOpenMenus] = useState({});
+        const pathname = usePathname();
 
         useEffect(() => {
             if (isOpen) {
@@ -47,60 +49,65 @@ export default function PageLayout({ children }) {
             };
         }, [isOpen]);
 
+        const toggleMenu = (index) => {
+            setOpenMenus((prev) => ({
+                ...prev,
+                [index]: !prev[index],
+            }));
+        };
+
         return (
-            <aside className={`fixed z-20 w-full md:w-64 overflow-hidden h-10 md:min-h-screen md:h-auto bg-black/10 ${isOpen ? "min-h-screen" : ""}`}>
+            <aside className={`fixed z-20 w-full md:w-64 bg-gray-50 ${isOpen ? "min-h-screen" : ""}`}>
+                {/* Mobile Toggle Button */}
                 <button
-                    className={`w-full h-10 flex items-center justify-between px-8 bg-white border md:hidden`}
+                    className={`w-full h-12 flex items-center justify-between px-6 bg-white border md:hidden`}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    {
-                        isOpen ?
-                            (
-                                <>
-                                    <span>Documentation</span>
-                                    <ArrowLongDownIcon className="size-3" />
-                                </>
-                            )
-                            :
-                            (
-                                <>
-                                    <span>Documentation</span>
-                                    <ArrowLongUpIcon className="size-3" />
-                                </>
-                            )
-                    }
+                    <span>Documentation</span>
+                    {isOpen ? (
+                        <ArrowLongDownIcon className="size-4" />
+                    ) : (
+                        <ArrowLongUpIcon className="size-4" />
+                    )}
                 </button>
-                <div className="min-h-screen h-screen relative w-full max-w-80 bg-gray-50 p-8 overflow-y-auto pb-52">
-                    <h2 className="text-lg font-bold mb-4">Components</h2>
-                    <ul className="text-sm">
-                        {docs.map((doc, index) => (
-                            <li key={index} className={`border-l py-1 pl-4 ${pathname === doc.url ? "font-bold border-l-black" : ""}`}>
-                                {doc.children ? (
-                                    <>
-                                        <div className="flex items-center justify-between cursor-pointer" onClick={() => toggleMenu(index)}>
-                                            <span>{doc.title}</span>
-                                            {openMenus[index] ? <ChevronDownIcon className="size-3" /> : <ChevronRightIcon className="size-3" />}
-                                        </div>
-                                        {openMenus[index] && (
-                                            <ul className="pl-4">
-                                                {doc.children.map((child, childIndex) => (
-                                                    <li key={childIndex} className={`border-l py-1 pl-4 ${pathname === child.url ? "font-bold border-l-black" : ""}`}>
-                                                        <a href={child.url}>{child.title}</a>
-                                                    </li>
-                                                ))}
-                                            </ul>
+
+                {/* Aside Content */}
+                <div
+                    className={`transition-all duration-300 max-h-screen pb-52 ${isOpen ? "block" : "hidden"
+                        } md:block min-h-screen p-6 overflow-y-auto`}
+                    // Mobilde scroll için max-height eklendi
+                >
+                    {docs.map((doc, index) => (
+                        <div key={index} className="mb-8">
+                            <h2 className="text-lg font-bold mb-4">{doc.title}</h2>
+                            <ul className="space-y-2">
+                                {doc.children.map((child, childIndex) => (
+                                    <li
+                                        key={childIndex}
+                                        className={`flex justify-between items-center text-gray-600 hover:text-black border-l pl-4 ${pathname === child.url ? "font-bold border-black" : "" }`}
+                                    >
+                                        <a
+                                            href={child.url}
+                                            className={`w-full}`}
+                                        >
+                                            {child.title}
+                                        </a>
+                                        {child.status === "Soon" && (
+                                            <span className="text-xs text-gray-500 bg-gray-200 px-2 py-0.5 rounded">
+                                                Soon
+                                            </span>
                                         )}
-                                    </>
-                                ) : (
-                                    <a href={doc.url}>{doc.title}</a>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
             </aside>
+
         );
     };
+
 
     return (
         <AsideMenu />
