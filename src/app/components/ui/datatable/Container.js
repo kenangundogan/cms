@@ -29,7 +29,7 @@ export default function Container({
     const [sortField, setSortField] = useState("id");
     const [sortOrder, setSortOrder] = useState("asc");
     const [filters, setFilters] = useState({});
-    const [errorMessage, setErrorMessage] = useState(""); // Hata mesajı için state
+    const [errorMessage, setErrorMessage] = useState("");
 
     const resolvePath = (obj, path) => {
         if (!path) return null;
@@ -50,7 +50,7 @@ export default function Container({
 
     const fetchColumnsAndData = async () => {
         try {
-            setErrorMessage(""); // Önceki hatayı temizle
+            setErrorMessage("");
             const params = new URLSearchParams({
                 page,
                 limit,
@@ -112,7 +112,7 @@ export default function Container({
                             field: key,
                             label: customCol.label || key,
                             render: customCol.render || null,
-                            filterable: customCol.filterable ?? true, // yoksa default true
+                            filterable: customCol.filterable ?? true,
                         });
                         return acc;
                     }

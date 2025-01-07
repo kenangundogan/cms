@@ -5,21 +5,21 @@ export default function Pagination({ meta, links, setPage }) {
     const getLabelContent = (label) => {
         const normalizedLabel = label.toLowerCase();
         if (normalizedLabel.includes("previous") || normalizedLabel.includes("prev")) {
-            return "«"; // Geri yön ikonu
+            return "«";
         }
         if (normalizedLabel.includes("next")) {
-            return "»"; // İleri yön ikonu
+            return "»";
         }
         if (normalizedLabel.includes("first")) {
-            return "⇤"; // İlk sayfa ikonu (opsiyonel)
+            return "⇤";
         }
         if (normalizedLabel.includes("last")) {
-            return "⇥"; // Son sayfa ikonu (opsiyonel)
+            return "⇥";
         }
         if (normalizedLabel.includes("...")) {
-            return "…"; // Statik atlama göstergesi
+            return "…";
         }
-        return label; // Diğerleri için varsayılan label
+        return label;
     };
 
     return (

@@ -16,23 +16,20 @@ import {
 } from '@/app/components/ui/textfield/validators';
 
 const SampleExample = () => {
-    // State'ler:
+
     const [textValue, setTextValue] = useState("");
     const [age, setAge] = useState("");
     const [comment, setComment] = useState("");
     const [customError, setCustomError] = useState("");
 
-    // Örnek bir onBlur fonksiyonu
     const handleBlur = () => {
         console.log('Input blurred');
     };
 
-    // Örnek bir onFocus fonksiyonu
     const handleFocus = () => {
         console.log('Input focused');
     };
 
-    // Manuel hata ayarı yapan fonksiyon (örnek)
     const triggerError = () => {
         setCustomError("Manually triggered error message!");
     };

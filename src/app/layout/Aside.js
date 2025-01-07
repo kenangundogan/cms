@@ -75,7 +75,6 @@ export default function PageLayout({ children }) {
                 <div
                     className={`transition-all duration-300 max-h-screen pb-52 ${isOpen ? "block" : "hidden"
                         } md:block min-h-screen p-6 overflow-y-auto`}
-                    // Mobilde scroll için max-height eklendi
                 >
                     {docs.map((doc, index) => (
                         <div key={index} className="mb-8">

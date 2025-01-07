@@ -9,10 +9,8 @@ export default function FixVH() {
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         };
 
-        // İlk yüklemede setVH çalışsın
         setVH();
 
-        // Ekran boyutu değişince (örn. cihazı yatay çevirme) tekrar setVH çalıştır
         window.addEventListener('resize', setVH);
         return () => window.removeEventListener('resize', setVH);
     }, []);

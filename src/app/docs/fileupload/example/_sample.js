@@ -27,7 +27,7 @@ const generateExamples = () => {
 <FileUpload
     id="file-upload-size"
     name="size-files"
-    maxFileSize={1 * 1024 * 1024} // 1 MB
+    maxFileSize={1 * 1024 * 1024}
     placeholder="Select files under 1 MB..."
     onChange={handleFileChange}
 />`,
@@ -118,7 +118,7 @@ const SampleExample = () => {
                     <FileUpload
                         id="file-upload-size"
                         name="size-files"
-                        maxFileSize={1 * 1024 * 1024} // 1 MB
+                        maxFileSize={1 * 1024 * 1024}
                         placeholder="Select files under 1 MB..."
                         onChange={handleFileChange}
                     />

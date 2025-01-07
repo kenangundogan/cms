@@ -60,7 +60,6 @@ const Checkbox = ({
 
     const variantClasses = variantType === "default" ? defaultVariants : outlineVariants;
 
-    // Stilleri Birleştir
     const combinedStyles = `
         ${baseStyles}
         ${sizes[size]}

@@ -140,7 +140,7 @@ const SampleExample = () => {
                                     </button>
                                 </div>
                             ),
-                            filterable: false, // Filtreleme bu kolon için geçerli değil
+                            filterable: false,
                         },
                     ]}
                 />

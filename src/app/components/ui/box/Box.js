@@ -3,10 +3,8 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
-// Context oluştur
 const BoxContext = createContext();
 
-// Box bileşeni
 const Box = ({ children, className }) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
 
@@ -14,7 +12,6 @@ const Box = ({ children, className }) => {
         setIsFullScreen((prevState) => !prevState);
     };
 
-    // Escape tuşunu dinlemek için useEffect
     useEffect(() => {
         const handleKeyDown = (event) => {
             if (event.key === 'Escape' && isFullScreen) {
@@ -24,7 +21,6 @@ const Box = ({ children, className }) => {
 
         window.addEventListener('keydown', handleKeyDown);
 
-        // Cleanup
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
@@ -41,7 +37,6 @@ const Box = ({ children, className }) => {
     );
 };
 
-// Head bileşeni
 Box.Head = ({ children }) => {
     const { isFullScreen, toggleFullScreen } = useContext(BoxContext);
 
@@ -68,12 +63,10 @@ Box.Head = ({ children }) => {
     );
 };
 
-// Body bileşeni
 Box.Body = ({ children }) => {
     return <div data-type="Body" className="p-4">{children}</div>;
 };
 
-// Foot bileşeni
 Box.Foot = ({ children }) => {
     return <div data-type="Foot" className="p-4 border-t">{children}</div>;
 };
