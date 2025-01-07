@@ -1,6 +1,6 @@
 // src/app/components/ui/datatable/Container.js
 import { useEffect, useState } from "react";
-import Table from "@/app/components/ui/datatable/Table";
+import Table from "@/app/components/ui/datatable/DataTable";
 import Pagination from "@/app/components/ui/datatable/Pagination";
 import Controls from "@/app/components/ui/datatable/Controls";
 import ColumnVisibilityToggle from "@/app/components/ui/datatable/ColumnVisibilityToggle";

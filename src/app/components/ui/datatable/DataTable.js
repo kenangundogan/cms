@@ -1,4 +1,4 @@
-// src/app/components/ui/datatable/Table.js
+// src/app/components/ui/datatable/DataTable.js
 import TableHeader from "@/app/components/ui/datatable/TableHeader";
 import TableBody from "@/app/components/ui/datatable/TableBody";
 import TableFooter from "@/app/components/ui/datatable/TableFooter";

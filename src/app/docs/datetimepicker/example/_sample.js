@@ -3,7 +3,7 @@
 import { ClockIcon } from '@heroicons/react/24/outline';
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
-import DateTimePicker from "@/app/components/ui/DateTimePicker/DateTimePicker";
+import DateTimePicker from "@/app/components/ui/datetimepicker/DateTimePicker";
 
 // Basic Date Picker
 const generateBasicExample = () => {
