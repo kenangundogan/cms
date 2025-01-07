@@ -57,6 +57,12 @@ const Header = () => {
                                         </Link>
                                     </li>
                                     <li>
+                                        <Link href="/docs" className='flex items-center gap-2 p-2 hover:bg-gray-50 rounded-sm'>
+                                            <span className='border border-black w-3 h-3 rounded-full'></span>
+                                            <span className='text-sm'>Docs</span>
+                                        </Link>
+                                    </li>
+                                    <li>
                                         <Link href="/myprofile" className='flex items-center gap-2 p-2 hover:bg-gray-50 rounded-sm'>
                                             <span className='border border-black w-3 h-3 rounded-full'></span>
                                             <span className='text-sm'>My Profile</span>
