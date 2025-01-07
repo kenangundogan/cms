@@ -10,6 +10,7 @@ export default function Autocomplete({
     displayFields = [],
     itemKeyField = null,
     selectedValueField = null,
+    maxLength = 50,
     size = "md",
 }) {
     const [query, setQuery] = useState("");
@@ -74,6 +75,7 @@ export default function Autocomplete({
                 <input
                     type="text"
                     id="autocomplete"
+                    maxLength={maxLength}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className={`w-full ${sizes[size]} border border-gray-300 rounded-sm shadow-sm

@@ -137,6 +137,19 @@ const Features = () => {
                                     <code>{'<Autocomplete size="lg" />'}</code>
                                 </Table.Cell>
                             </Table.Row>
+
+                            {/* maxLength */}
+                            <Table.Row>
+                                <Table.Cell>
+                                    <code>maxLength</code> (Optional)
+                                </Table.Cell>
+                                <Table.Cell>
+                                    Maximum number of characters allowed in the input field.
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <code>{'<Autocomplete maxLength={50} />'}</code>
+                                </Table.Cell>
+                            </Table.Row>
                         </Table.Body>
                     </Table>
                 </Example.Body>
