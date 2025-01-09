@@ -1,12 +1,18 @@
 'use client';
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
+import DataTable from '@/app/components/ui/datatable/Container';
 
 const generateBasicExample = () => {
     return {
         JS: `
 <DataTable
-    visibleColumns={["status"]}
+    name="Visible Columns (array)"
+    endpoint="/api/table"
+    responseMapping={{
+        data: "data",
+    }}
+    visibleColumns={["member","id"]}
 />
         `,
     };
@@ -21,24 +27,14 @@ const VisibleColumnsExample = () => {
                     Specify the columns to display in the table using the <code>visibleColumns</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Default</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">visibleColumns</code></td>
-                                    <td>Defines the list of columns to be displayed in the table.</td>
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">[]</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <DataTable
+                        name="Visible Columns (array)"
+                        endpoint="/api/table"
+                        responseMapping={{
+                            data: "data",
+                        }}
+                        visibleColumns={["member","id"]}
+                    />
                     <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>

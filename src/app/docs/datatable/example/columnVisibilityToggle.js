@@ -1,11 +1,17 @@
 'use client';
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
+import DataTable from '@/app/components/ui/datatable/Container';
 
 const generateBasicExample = () => {
     return {
         JS: `
 <DataTable
+    name="Column Visibility Toggle (boolean)"
+    endpoint="/api/table"
+    responseMapping={{
+        data: "data",
+    }}
     columnVisibilityToggle={true}
 />
         `,
@@ -21,24 +27,14 @@ const ColumnVisibilityToggleExample = () => {
                     Enable users to toggle column visibility using the <code>columnVisibilityToggle</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Default</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">columnVisibilityToggle</code></td>
-                                    <td>Allows users to toggle the visibility of table columns.</td>
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">false</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <DataTable
+                        name="Column Visibility Toggle (boolean)"
+                        endpoint="/api/table"
+                        responseMapping={{
+                            data: "data",
+                        }}
+                        columnVisibilityToggle={true}
+                    />
                     <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>

@@ -1,14 +1,20 @@
 'use client';
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
+import DataTable from '@/app/components/ui/datatable/Container';
 
 const generateBasicExample = () => {
     return {
         JS: `
 <DataTable
+    name="Show Controls (object)"
+    endpoint="/api/table"
+    responseMapping={{
+        data: "data",
+    }}
     showControls={{
         active: true,
-        options: [10, 20, 40, 60, 100, 121],
+        options: [10, 20, 40, 60, 100, 120, 140],
     }}
 />
         `,
@@ -24,29 +30,17 @@ const ShowControlsExample = () => {
                     Manage table control options (e.g., records per page) using the <code>showControls</code> prop.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Default</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">active</code></td>
-                                    <td>Enables table controls.</td>
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">false</code></td>
-                                </tr>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">options</code></td>
-                                    <td>Defines the options for records per page.</td>
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">[10, 20, 40, 60, 100]</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <DataTable
+                        name="Show Controls (object)"
+                        endpoint="/api/table"
+                        responseMapping={{
+                            data: "data",
+                        }}
+                        showControls={{
+                            active: true,
+                            options: [10, 20, 40, 60, 100, 120, 140],
+                        }}
+                    />
                     <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>

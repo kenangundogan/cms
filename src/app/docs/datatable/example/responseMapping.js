@@ -1,13 +1,16 @@
 'use client';
 import Example from "@/app/docs/components/Example";
 import CodeCard from "@/app/components/ui/CodeCard";
+import DataTable from '@/app/components/ui/datatable/Container';
 
 const generateBasicExample = () => {
     return {
         JS: `
 <DataTable
+    name="Response Mapping (object)"
+    endpoint="/api/table"
     responseMapping={{
-        data: "data"
+        data: "data",
     }}
 />
         `,
@@ -23,24 +26,13 @@ const ResponseMappingExample = () => {
                     Maps API responses to the table structure.
                 </Example.Description>
                 <Example.Body>
-                    <div>
-                        <table className="w-full text-left bg-white">
-                            <thead>
-                                <tr className="*:border *:p-4">
-                                    <th>Property</th>
-                                    <th>Description</th>
-                                    <th>Default</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="*:border *:p-4">
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">data</code></td>
-                                    <td>The key in the API response where the table data resides.</td>
-                                    <td><code className="bg-gray-100 rounded-md py-2 px-4">"items"</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <DataTable
+                        name="Response Mapping (object)"
+                        endpoint="/api/table"
+                        responseMapping={{
+                            data: "data",
+                        }}
+                    />
                     <CodeCard codeSnippets={generateBasicExample()} />
                 </Example.Body>
             </Example>

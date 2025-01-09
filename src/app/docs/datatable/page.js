@@ -45,16 +45,16 @@ const DataTablePage = () => {
             <Features />
             <Sample />
             <Endpoint />
-            <Pagination />
-            <Sorting />
+            <ResponseMapping />
             <Filter />
-            <CustomColumns />
-            <AddColumns />
+            <Sorting />
+            <ShowControls />
             <HiddenColumns />
             <VisibleColumns />
+            <Pagination />
+            <CustomColumns />
+            <AddColumns />
             <ColumnVisibilityToggle />
-            <ShowControls />
-            <ResponseMapping />
 
         </div>
     );
