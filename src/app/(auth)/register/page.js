@@ -2,13 +2,22 @@
 
 import { useState } from 'react';
 import Form from '@/app/components/ui/form/Form';
-import Input from '@/app/components/ui/form/Input';
-import Button from '@/app/components/ui/form/Button';
+import TextField from "@/app/components/ui/textfield/TextField";
+import {
+    required,
+    email,
+    phone,
+    numbersOnly,
+    lettersOnly,
+    minLength,
+    maxLength
+} from '@/app/components/ui/textfield/validators';
+import Button from "@/app/components/ui/button/Button";
 import Link from 'next/link';
 import Image from 'next/image';
 
 const RegisterPage = () => {
-    const [email, setEmail] = useState('');
+    const [emaill, setEmaill] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [firstname, setFirstname] = useState('');
@@ -37,40 +46,56 @@ const RegisterPage = () => {
                         <h1 className="text-2xl font-bold mb-2">Sign Up</h1>
                         <p className='text-sm'>Create an account to continue</p>
                     </div>
-                    <Form onSubmit={handleSubmit} className="flex flex-col">
-                        <Input
+                    <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <TextField
+                            label="First Name"
+                            id="firstname"
                             name="firstname"
-                            type="firstname"
-                            placeholder="First Name"
-                            value={firstname}
+                            type="text"
+                            placeholder="Enter your first name"
+                            validators={[required, lettersOnly]}
                             onChange={(e) => setFirstname(e.target.value)}
                         />
-                        <Input
+
+                        <TextField
+                            label="Last Name"
+                            id="lastname"
                             name="lastname"
-                            type="lastname"
-                            placeholder="Last Name"
-                            value={lastname}
+                            type="text"
+                            placeholder="Enter your last name"
+                            validators={[required, lettersOnly]}
                             onChange={(e) => setLastname(e.target.value)}
                         />
-                        <Input
+
+                        <TextField
+                            label="Username"
+                            id="username"
                             name="username"
-                            type="username"
-                            placeholder="Username"
-                            value={username}
+                            type="text"
+                            placeholder="Enter your username"
+                            validators={[required, lettersOnly]}
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                        <Input
+
+                        <TextField
+                            label="Email"
+                            id="email"
                             name="email"
                             type="email"
-                            placeholder="E-mail"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Enter your email"
+                            validators={[required, email]}
+                            onChange={(e) => setEmaill(e.target.value)}
                         />
-                        <Input
+
+                        <TextField
+                            label="Password"
+                            id="password"
                             name="password"
                             type="password"
-                            placeholder="Password"
-                            value={password}
+                            placeholder="Enter your password"
+                            minLength={6}
+                            maxLength={8}
+                            validators={[required, minLength, maxLength]}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <Button type="submit" variant="primary" className={"w-40"}>

@@ -2,13 +2,21 @@
 
 import { useState } from 'react';
 import Form from '@/app/components/ui/form/Form';
-import Input from '@/app/components/ui/form/Input';
-import Button from '@/app/components/ui/form/Button';
+import TextField from "@/app/components/ui/textfield/TextField";
+import {
+    required,
+    email,
+    phone,
+    numbersOnly,
+    lettersOnly,
+    minLength,
+    maxLength
+} from '@/app/components/ui/textfield/validators';
+import Button from "@/app/components/ui/button/Button";
 import Link from 'next/link';
 import Image from 'next/image';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (e) => {
@@ -33,20 +41,24 @@ const LoginPage = () => {
                         <h1 className="text-2xl font-bold mb-2">Sign In</h1>
                         <p className='text-sm'>Sign in to your account to continue</p>
                     </div>
-                    <Form onSubmit={handleSubmit} className="flex flex-col">
-                        <Input
+                    <Form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                        <TextField
+                            label="Email"
+                            id="email"
                             name="email"
                             type="email"
-                            placeholder="E-mail"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            placeholder="Enter your email"
+                            validators={[required, email]}
                         />
-                        <Input
+                        <TextField
+                            label="Password"
+                            id="password"
                             name="password"
                             type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            placeholder="Enter your password"
+                            minLength={6}
+                            maxLength={8}
+                            validators={[required, minLength, maxLength]}
                         />
                         <Button type="submit" variant="primary" className={"w-40"}>
                             Giriş Yap
