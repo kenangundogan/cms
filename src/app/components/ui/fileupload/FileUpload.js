@@ -105,7 +105,7 @@ const FileUpload = ({
 
             {/* Error message */}
             {error && (
-                <div className="text-sm text-red-500 mt-1">
+                <div className="text-xs text-red-500">
                     {error}
                 </div>
             )}

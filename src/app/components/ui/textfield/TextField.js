@@ -200,7 +200,7 @@ const TextField = ({
             )}
 
             {displayError && (
-                <span id={`${id}-error`} className="text-sm text-red-500">
+                <span id={`${id}-error`} className="text-xs text-red-500">
                     {displayError}
                 </span>
             )}
