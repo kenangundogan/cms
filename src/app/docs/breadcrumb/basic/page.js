@@ -1,11 +1,11 @@
-// src/app/docs/breadcrumb/page.js
+// src/app/docs/breadcrumb/basic/page.js
 
 'use client';
 
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
-import Sample from '@/app/docs/breadcrumb/example/_sample';
-import Features from '@/app/docs/breadcrumb/example/features';
+import Sample from '@/app/docs/breadcrumb/basic/example/_sample';
+import Features from '@/app/docs/breadcrumb/basic/example/features';
 
 const BreadcrumbPage = () => {
     return (
