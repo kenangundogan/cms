@@ -13,7 +13,8 @@ const BreadcrumbPage = () => {
             <Breadcrumb>
                 <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
                 <Breadcrumb.Item href="/docs">Docs</Breadcrumb.Item>
-                <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>
+                <Breadcrumb.Item href="/docs/breadcrumb">Breadcrumb</Breadcrumb.Item>
+                <Breadcrumb.Item>Basic</Breadcrumb.Item>
             </Breadcrumb>
 
             <PageInfo>
