@@ -6,7 +6,13 @@ export async function GET(req) {
             title: "Base",
             children: [
                 { title: "Box", url: "/docs/box" },
-                { title: "Breadcrumb", url: "/docs/breadcrumb" },
+                {
+                    title: "Breadcrumb",
+                    children: [
+                        { title: "Basic", url: "/docs/breadcrumb/basic" },
+                        { title: "Data", url: "/docs/breadcrumb/data" }
+                    ]
+                },
                 { title: "Data Table", url: "/docs/datatable" },
                 { title: "Base Table", url: "/docs/table" },
                 { title: "Tabs", url: "/docs/tabs" },
