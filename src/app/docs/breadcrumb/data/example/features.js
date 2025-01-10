@@ -7,7 +7,7 @@ const Features = () => {
     return (
         <div>
             <Example>
-                <Example.Title>DataBreadcrumb Features</Example.Title>
+                <Example.Title>Features</Example.Title>
                 <Example.Description>
                     Below is a detailed documentation of the <code>DataBreadcrumb</code> component, showcasing its supported features and usage examples.
                 </Example.Description>

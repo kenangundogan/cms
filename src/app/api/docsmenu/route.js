@@ -13,8 +13,13 @@ export async function GET(req) {
                         { title: "Data", url: "/docs/breadcrumb/data" }
                     ]
                 },
-                { title: "Data Table", url: "/docs/datatable" },
-                { title: "Base Table", url: "/docs/table" },
+                {
+                    title: "Table",
+                    children: [
+                        { title: "Basic", url: "/docs/table/basic" },
+                        { title: "Data", url: "/docs/table/data" }
+                    ]
+                },
                 { title: "Tabs", url: "/docs/tabs" },
                 { title: "Autocomplete", url: "/docs/autocomplete" },
                 { title: "List", url: "/docs/list" },
