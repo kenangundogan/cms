@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowLongDownIcon, ArrowLongUpIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import TextField from "@/app/components/ui/textfield/TextField";
 
 export default function PageLayout({endpoint}) {
     const [docs, setDocs] = useState([]);
@@ -80,7 +81,7 @@ export default function PageLayout({endpoint}) {
                     )}
                 </div>
                 {hasChildren && openMenus[item.title] && (
-                    <ul className="pl-4 mt-2 text-sm">
+                    <ul className="pl-4 mt-2 text-sm space-y-1">
                         {item.children.map((child) => renderMenuItem(child))}
                     </ul>
                 )}
@@ -103,7 +104,7 @@ export default function PageLayout({endpoint}) {
                 className={`w-full h-12 flex items-center justify-between px-6 bg-white border md:hidden`}
                 onClick={() => setOpenMenus((prev) => ({ ...prev, mobile: !prev.mobile }))}
             >
-                <span>Documentation</span>
+                <span>Menu</span>
                 {openMenus.mobile ? (
                     <ArrowLongDownIcon className="h-6 w-6" />
                 ) : (
@@ -115,6 +116,16 @@ export default function PageLayout({endpoint}) {
                 className={`transition-all duration-300 max-h-screen pb-52 ${openMenus.mobile ? "block" : "hidden"
                     } md:block min-h-screen p-6 overflow-y-auto`}
             >
+                <div>
+                    <TextField
+                        label=""
+                        id="search"
+                        name="search"
+                        type="text"
+                        placeholder="Search..."
+                        className="w-full mb-4"
+                    />
+                </div>
                 {docs.map((menu) => renderMenu(menu))}
             </div>
         </aside>

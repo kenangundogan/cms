@@ -5,7 +5,7 @@ export async function GET(req) {
         {
             title: "CMS",
             children: [
-                { title: "Anasayfa", url: "/dashbaord" },
+                { title: "Anasayfa", url: "/dashboard" },
                 {
                     title: "Kategori",
                     children: [
