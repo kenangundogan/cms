@@ -1,4 +1,4 @@
-// src/app/api/docsmenu/route.js
+// src/app/api/pagemenu/route.js
 
 export async function GET(req) {
     const docs = [

@@ -9,7 +9,7 @@ export default function PageLayout({ children }) {
         <main data-type="Docs" className="relative top-20 w-full min-h-screen bg-white">
             <Header />
             <div className="flex gap-4 min-h-screen" style={{ minHeight: "calc(100vh - (var(--header-height) + var(--footer-height)))" }}>
-                <Aside />
+                <Aside endpoint="/api/docsmenu" />
                 <div className="relative px-4 pt-12 pb-4 md:p-4 w-full md:w-[calc(100%-256px)] left-0 md:left-64">
                     {children}
                 </div>

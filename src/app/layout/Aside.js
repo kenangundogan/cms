@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowLongDownIcon, ArrowLongUpIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
-export default function PageLayout() {
+export default function PageLayout({endpoint}) {
     const [docs, setDocs] = useState([]);
     const [openMenus, setOpenMenus] = useState({});
     const pathname = usePathname();
@@ -12,7 +12,7 @@ export default function PageLayout() {
     useEffect(() => {
         const fetchDocs = async () => {
             try {
-                const response = await fetch('/api/docsmenu');
+                const response = await fetch(endpoint);
                 if (!response.ok) {
                     throw new Error('Menü verileri alınamadı');
                 }
