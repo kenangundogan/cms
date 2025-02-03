@@ -5,10 +5,13 @@ import { usePathname } from "next/navigation";
 import { ArrowLongDownIcon, ArrowLongUpIcon, ChevronRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import TextField from "@/app/components/ui/textfield/TextField";
 
-export default function PageLayout({endpoint}) {
+export default function PageLayout({ endpoint }) {
     const [docs, setDocs] = useState([]);
+    const [filteredDocs, setFilteredDocs] = useState([]);
     const [openMenus, setOpenMenus] = useState({});
+    const [searchTerm, setSearchTerm] = useState("");
     const pathname = usePathname();
+    let tabIndexCounter = 1;
 
     useEffect(() => {
         const fetchDocs = async () => {
@@ -19,7 +22,7 @@ export default function PageLayout({endpoint}) {
                 }
                 const data = await response.json();
                 setDocs(data);
-
+                setFilteredDocs(data);
                 openMenusForPath(data, pathname);
             } catch (error) {
                 console.error("Menü yükleme hatası:", error);
@@ -29,9 +32,22 @@ export default function PageLayout({endpoint}) {
         fetchDocs();
     }, [pathname]);
 
+    useEffect(() => {
+        if (searchTerm.length >= 3) {
+            const filtered = docs.map(menu => ({
+                ...menu,
+                children: menu.children.filter(item =>
+                    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+            })).filter(menu => menu.children.length > 0);
+            setFilteredDocs(filtered);
+        } else {
+            setFilteredDocs(docs);
+        }
+    }, [searchTerm, docs]);
+
     const openMenusForPath = (menuItems, currentPath) => {
         const newOpenMenus = {};
-
         const checkAndOpenMenu = (items) => {
             for (const item of items) {
                 if (item.children) {
@@ -45,7 +61,6 @@ export default function PageLayout({endpoint}) {
             }
             return false;
         };
-
         checkAndOpenMenu(menuItems);
         setOpenMenus(newOpenMenus);
     };
@@ -59,12 +74,11 @@ export default function PageLayout({endpoint}) {
 
     const renderMenuItem = (item) => {
         const hasChildren = item.children && item.children.length > 0;
-
+        tabIndexCounter++;
         return (
-            <li key={item.title} className="relative">
+            <li key={item.title} className="relative" tabIndex={tabIndexCounter}>
                 <div
-                    className={`flex justify-between items-center text-gray-600 hover:text-black border-l pl-4 ${pathname === item.url ? "font-bold border-black" : ""
-                        }`}
+                    className={`flex justify-between items-center text-gray-600 hover:text-black border-l pl-4 ${pathname === item.url ? "font-bold border-black" : ""}`}
                     onClick={() => hasChildren && toggleMenu(item.title)}
                 >
                     <a href={item.url} className="w-full">
@@ -101,8 +115,9 @@ export default function PageLayout({endpoint}) {
     return (
         <aside className={`fixed z-20 w-full md:w-64 bg-gray-50 ${openMenus.mobile ? "min-h-screen" : ""}`}>
             <button
-                className={`w-full h-12 flex items-center justify-between px-6 bg-white border md:hidden`}
+                className="w-full h-12 flex items-center justify-between px-6 bg-white border md:hidden"
                 onClick={() => setOpenMenus((prev) => ({ ...prev, mobile: !prev.mobile }))}
+                tabIndex={0}
             >
                 <span>Menu</span>
                 {openMenus.mobile ? (
@@ -112,21 +127,21 @@ export default function PageLayout({endpoint}) {
                 )}
             </button>
 
-            <div
-                className={`transition-all duration-300 max-h-screen pb-52 ${openMenus.mobile ? "block" : "hidden"
-                    } md:block min-h-screen p-6 overflow-y-auto`}
-            >
-                <div>
+            <div className={`transition-all duration-300 max-h-screen pb-52 ${openMenus.mobile ? "block" : "hidden"} md:block min-h-screen p-6 overflow-y-auto`}>
+                <div className="relative mb-4">
                     <TextField
-                        label=""
-                        id="search"
-                        name="search"
-                        type="text"
-                        placeholder="Search..."
-                        className="w-full mb-4"
+                        placeholder="Menüde ara..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        tabIndex={1}
                     />
+                    <button className="absolute right-4 top-1/2 transform -translate-y-1/2" onClick={() => setSearchTerm("")}>
+                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
                 </div>
-                {docs.map((menu) => renderMenu(menu))}
+                {filteredDocs.map((menu) => renderMenu(menu))}
             </div>
         </aside>
     );
