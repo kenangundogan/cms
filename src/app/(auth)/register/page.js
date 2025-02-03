@@ -6,8 +6,6 @@ import TextField from "@/app/components/ui/textfield/TextField";
 import {
     required,
     email,
-    phone,
-    numbersOnly,
     lettersOnly,
     minLength,
     maxLength
@@ -17,15 +15,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const RegisterPage = () => {
+    const [firstname, setFirstname] = useState('');
     const [emaill, setEmaill] = useState('');
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form Submitted:', { email, password, username, firstname, lastname });
+        console.log('Form Submitted:', { firstname, email, password, confirmPassword });
     };
 
     return (
@@ -58,26 +55,6 @@ const RegisterPage = () => {
                         />
 
                         <TextField
-                            label="Last Name"
-                            id="lastname"
-                            name="lastname"
-                            type="text"
-                            placeholder="Enter your last name"
-                            validators={[required, lettersOnly]}
-                            onChange={(e) => setLastname(e.target.value)}
-                        />
-
-                        <TextField
-                            label="Username"
-                            id="username"
-                            name="username"
-                            type="text"
-                            placeholder="Enter your username"
-                            validators={[required, lettersOnly]}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-
-                        <TextField
                             label="Email"
                             id="email"
                             name="email"
@@ -97,6 +74,18 @@ const RegisterPage = () => {
                             maxLength={8}
                             validators={[required, minLength, maxLength]}
                             onChange={(e) => setPassword(e.target.value)}
+                        />
+
+                        <TextField
+                            label="Confirm Password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            type="password"
+                            placeholder="Confirm your password"
+                            minLength={6}
+                            maxLength={8}
+                            validators={[required, minLength, maxLength]}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                         <Button type="submit" variant="primary" className={"w-40"}>
                             Kayıt Ol
