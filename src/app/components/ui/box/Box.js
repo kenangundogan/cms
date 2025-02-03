@@ -44,7 +44,7 @@ Box.Head = ({ children }) => {
         <div data-type="Head" className="p-4 border-b">
             <div className="flex justify-between">
                 <div className="text-md font-bold">{children}</div>
-                <div className="relative group">
+                <div className="relative z-50 group">
                     <EllipsisVerticalIcon className="size-5 cursor-pointer" />
                     <div className="group-hover:block hidden absolute right-0 w-full min-w-44 bg-white">
                         <ul className="flex flex-col text-sm p-4 border shadow-lg">

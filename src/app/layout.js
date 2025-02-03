@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
     return (
         <html lang="tr">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-96`}>
                 <FixVH />
                 {children}
             </body>

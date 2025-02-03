@@ -12,7 +12,7 @@ const Footer = () => {
     }, []);
 
     return (
-        <footer className="w-full overflow-hidden py-4 px-8 md:w-[calc(100%-256px)] translate-x-0 md:translate-x-64">
+        <footer className="w-full min-w-96 overflow-hidden py-4 px-8 md:w-[calc(100%-256px)] translate-x-0 md:translate-x-64">
             <div className='border'>
                 <div className='p-4 w-full flex justify-between items-center'>
                     <span className='text-xs font-bold'>Copyright © 2025 CMS</span>
