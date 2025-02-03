@@ -98,7 +98,7 @@ export default function PageLayout() {
     );
 
     return (
-        <aside className={`fixed z-20 w-full min-w-96 md:w-64 bg-gray-50 ${openMenus.mobile ? "min-h-screen" : ""}`}>
+        <aside className={`fixed z-20 w-full md:w-64 bg-gray-50 ${openMenus.mobile ? "min-h-screen" : ""}`}>
             <button
                 className={`w-full h-12 flex items-center justify-between px-6 bg-white border md:hidden`}
                 onClick={() => setOpenMenus((prev) => ({ ...prev, mobile: !prev.mobile }))}
