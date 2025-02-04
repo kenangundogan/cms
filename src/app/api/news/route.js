@@ -31,7 +31,7 @@ export async function GET(req) {
         : [];
 
     // Faker ile rastgele veri üretme
-    let allItems = Array.from({ length: 400 }, (_, i) => ({
+    let allItems = Array.from({ length: 36500 }, (_, i) => ({
         id: i + 1,
         title: faker.lorem.sentence(),
         written_by: faker.person.fullName(),

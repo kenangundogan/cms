@@ -6,8 +6,10 @@ import BoxWrapper from '@/app/components/ui/box/BoxWrapper';
 import Box from '@/app/components/ui/box/Box';
 import DataTable from '@/app/components/ui/datatable/Container';
 import { TrashIcon, PencilIcon, ViewfinderCircleIcon } from '@heroicons/react/24/outline';
-
+import HighChartDefault from "@/app/components/ui/highchart/Default.js";
 const DashboardPage = () => {
+
+
     return (
         <div>
             <Breadcrumb>
@@ -20,6 +22,30 @@ const DashboardPage = () => {
                 <PageInfo.Title>Haber</PageInfo.Title>
                 <PageInfo.Description>Haber listesi burada yer alacak.</PageInfo.Description>
             </PageInfo>
+
+            <BoxWrapper>
+                <Box>
+                    <Box.Body>
+                        <HighChartDefault
+                            endpoint="/api/news"
+                            responseMapping={{ data: "data" }}
+                            limitKey="meta.total"
+                            dateKey="publication_date"
+                            title="Haber Yayınlanma Dağılımı"
+                            subtitle="Son 1 yıl içinde yayınlanan haber sayıları"
+                            // xAxisTitle="Yayınlanma Tarihi"
+                            // yAxisTitle="Haber Sayısı"
+                            tooltipSuffix="haber"
+                            chartId="news-chart"
+                            type="column"
+                            size={{
+                                width: "100%",
+                                height: "500px",
+                            }}
+                        />
+                    </Box.Body>
+                </Box>
+            </BoxWrapper>
 
             <div className='p-4'>
                 <DataTable
@@ -46,12 +72,6 @@ const DashboardPage = () => {
                             links: "links",
                         },
                     }}
-                    customColumns={[
-                        {
-                            field: "avatar",
-                            render: (value) => <img src={value} alt="Preview" className="w-10 h-10 object-cover" />,
-                        }
-                    ]}
                     addColumns={[
                         {
                             field: "actions",
