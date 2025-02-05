@@ -40,7 +40,7 @@ const Box = ({ children, className, boxName }) => {
     return (
         <BoxContext.Provider value={{ isFullScreen, toggleFullScreen, showContent, toggleContent, storageKey, boxName }}>
             <div data-type="Box" data-box-name={boxName} className={`p-4 ${isFullScreen ? 'fixed inset-0 w-full h-full shadow-xl bg-yellow-50/75 z-50' : ''} ${className || ''}`}>
-                <div className="w-full flex flex-col gap-4 bg-white border rounded-sm">
+                <div className="w-full flex flex-col bg-white border rounded-sm">
                     {children}
                 </div>
             </div>
