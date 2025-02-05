@@ -10,10 +10,21 @@ import TextField from "@/app/components/ui/textfield/TextField";
 import Autocomplete from "@/app/components/ui/autocomplete/Autocomplete";
 import DateTimePicker from "@/app/components/ui/datetimepicker/DateTimePicker";
 import Select from "@/app/components/ui/select/Select";
+import Checkbox from "@/app/components/ui/checkbox/Checkbox";
 import Image from 'next/image';
 
 const DashboardPage = () => {
     const [singleValue, setSingleValue] = useState("");
+    const [checkboxStates, setCheckboxStates] = useState({
+        reklam: false
+    });
+
+    const handleCheckboxChange = (key, isChecked) => {
+        setCheckboxStates((prev) => ({
+            ...prev,
+            [key]: isChecked,
+        }));
+    };
     return (
         <div>
             <Breadcrumb>
@@ -26,6 +37,7 @@ const DashboardPage = () => {
                 <PageInfo.Title>Haber</PageInfo.Title>
                 <PageInfo.Description>Haber ekleme sayfası burada yer alacak.</PageInfo.Description>
             </PageInfo>
+
             <BoxWrapper className="flex flex-col lg:flex-row">
                 <BoxWrapper className="w-full">
                     <Box boxName="newsTitle" className="w-full">
@@ -233,7 +245,6 @@ const DashboardPage = () => {
                                     size="md"
                                     placeholder="Yazan ara..."
                                 />
-
                                 <Autocomplete
                                     endpoint="/api/content/positivenegative"
                                     name="Olumlu/Olumsuz"
@@ -246,7 +257,6 @@ const DashboardPage = () => {
                                     size="md"
                                     placeholder="Olumlu/Olumsuz ara..."
                                 />
-
                                 <Autocomplete
                                     endpoint="/api/content/mortalimmortal"
                                     name="Ölümlü/Ölümsüz"
@@ -260,6 +270,14 @@ const DashboardPage = () => {
                                     placeholder="Ölümlü/Ölümsüz ara..."
                                 />
                             </div>
+                        </Box.Body>
+                    </Box>
+                    <Box boxName="newsChoices">
+                        <Box.Head>Seçenekler</Box.Head>
+                        <Box.Body>
+                            <Checkbox label="Reklam" shape="square" variantType="outline" variant="black" checked={checkboxStates.reklam} onChange={(isChecked) => handleCheckboxChange("reklam", isChecked)} />
+                            <Checkbox label="Özel İçerik" shape="square" variantType="outline" variant="black" checked={checkboxStates.ozelicerik} onChange={(isChecked) => handleCheckboxChange("ozelicerik", isChecked)} />
+                            <Checkbox label="Listelenmeyen Haber" shape="square" variantType="outline" variant="black" checked={checkboxStates.listelenmeyenhaber} onChange={(isChecked) => handleCheckboxChange("listelenmeyenhaber", isChecked)} />
                         </Box.Body>
                     </Box>
                 </BoxWrapper>
