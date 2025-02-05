@@ -27,7 +27,7 @@ const DashboardPage = () => {
                 <Box>
                     <Box.Body>
                         <HighChartDefault
-                            endpoint="/api/news"
+                            endpoint="/api/content/news"
                             responseMapping={{ data: "data" }}
                             limitKey="meta.total"
                             dateKey="publication_date"
@@ -49,7 +49,7 @@ const DashboardPage = () => {
 
             <div className='p-4'>
                 <DataTable
-                    endpoint="/api/news"
+                    endpoint="/api/content/news"
                     name="."
                     responseMapping={{ data: "data" }}
                     columnVisibilityToggle={true}
