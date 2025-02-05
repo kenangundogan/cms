@@ -28,7 +28,7 @@ const DashboardPage = () => {
             </PageInfo>
             <BoxWrapper className="flex flex-col lg:flex-row">
                 <BoxWrapper className="w-full">
-                    <Box className="w-full">
+                    <Box boxName="newsTitle" className="w-full">
                         <Box.Head>Başlık</Box.Head>
                         <Box.Body>
                             <Form className="flex flex-col gap-4">
@@ -56,11 +56,11 @@ const DashboardPage = () => {
                             </Form>
                         </Box.Body>
                     </Box>
-                    <Box className="w-full">
+                    <Box boxName="newsSpot" className="w-full">
                         <Box.Head>Spot</Box.Head>
                         <Box.Body>
                             <Form className="flex flex-col gap-4">
-                            <TextField
+                                <TextField
                                     label="Varsayılan"
                                     id="varsayılan"
                                     name="varsayılan"
@@ -84,7 +84,7 @@ const DashboardPage = () => {
                             </Form>
                         </Box.Body>
                     </Box>
-                    <Box className="w-full">
+                    <Box boxName="newsContent" className="w-full">
                         <Box.Head>İçerik</Box.Head>
                         <Box.Body>
                             <Form className="flex flex-col gap-4">
@@ -101,7 +101,7 @@ const DashboardPage = () => {
                     </Box>
                 </BoxWrapper>
                 <BoxWrapper className="w-full lg:w-96 flex-none">
-                    <Box>
+                    <Box boxName="newsAction">
                         <Box.Body>
                             <div className="flex gap-4">
                                 <Select value={singleValue} onChange={setSingleValue}>
@@ -114,7 +114,7 @@ const DashboardPage = () => {
                             </div>
                         </Box.Body>
                     </Box>
-                    <Box>
+                    <Box boxName="newsEditors">
                         <Box.Head>Düzenleme Yapanlar</Box.Head>
                         <Box.Body>
                             <ul className='text-xs flex gap-4 overflow-y-auto'>
@@ -157,7 +157,7 @@ const DashboardPage = () => {
                             </ul>
                         </Box.Body>
                     </Box>
-                    <Box>
+                    <Box boxName="newsDate">
                         <Box.Head>Tarih</Box.Head>
                         <Box.Body>
                             <div className="flex flex-col gap-4">
@@ -193,12 +193,12 @@ const DashboardPage = () => {
                             </div>
                         </Box.Body>
                     </Box>
-                    <Box>
+                    <Box boxName="newsOthers">
                         <Box.Head>Diğer</Box.Head>
                         <Box.Body>
                             <div className="flex flex-col gap-4">
                                 <Autocomplete
-                                    endpoint="/api/content/source"
+                                    endpoint="/api/content/category"
                                     name="Kategori"
                                     responseMapping={{ data: "data" }}
                                     searchKey="name"

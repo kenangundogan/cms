@@ -5,8 +5,8 @@ import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
 const BoxContext = createContext();
 
-const Box = ({ children, className, name }) => {
-    const storageKey = name ? `box-content-${name}` : null;
+const Box = ({ children, className, boxName }) => {
+    const storageKey = boxName ? `box-content-${boxName}` : null;
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [showContent, setShowContent] = useState(true);
 
@@ -38,8 +38,8 @@ const Box = ({ children, className, name }) => {
     }, [isFullScreen]);
 
     return (
-        <BoxContext.Provider value={{ isFullScreen, toggleFullScreen, showContent, toggleContent, storageKey }}>
-            <div data-type="Box" data-name={name} className={`p-4 ${isFullScreen ? 'fixed inset-0 w-full h-full shadow-xl bg-yellow-50/75 z-50' : ''} ${className || ''}`}>
+        <BoxContext.Provider value={{ isFullScreen, toggleFullScreen, showContent, toggleContent, storageKey, boxName }}>
+            <div data-type="Box" data-box-name={boxName} className={`p-4 ${isFullScreen ? 'fixed inset-0 w-full h-full shadow-xl bg-yellow-50/75 z-50' : ''} ${className || ''}`}>
                 <div className="w-full flex flex-col gap-4 bg-white border rounded-sm">
                     {children}
                 </div>
@@ -49,7 +49,7 @@ const Box = ({ children, className, name }) => {
 };
 
 Box.Head = ({ children }) => {
-    const { isFullScreen, toggleFullScreen, toggleContent, showContent, storageKey } = useContext(BoxContext);
+    const { isFullScreen, toggleFullScreen, toggleContent, showContent, storageKey, boxName } = useContext(BoxContext);
 
     return (
         <div data-type="Head" className="p-4 border-b">
@@ -66,7 +66,7 @@ Box.Head = ({ children }) => {
                                 <span className="border border-black w-3 h-3 rounded-full"></span>
                                 <span className="text-sm">{isFullScreen ? 'Exit Full Screen' : 'Full Screen'}</span>
                             </li>
-                            {name && storageKey && (
+                            {boxName && storageKey && (
                                 <li
                                     className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-sm cursor-pointer"
                                     onClick={toggleContent}
