@@ -11,6 +11,7 @@ export default function Autocomplete({
     itemKeyField = null,
     selectedValueField = null,
     maxLength = 50,
+    placeholder = "Arama yapın...",
     size = "md",
 }) {
     const [query, setQuery] = useState("");
@@ -79,8 +80,8 @@ export default function Autocomplete({
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className={`w-full ${sizes[size]} border border-gray-300 rounded-sm shadow-sm
-                     focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
-                    placeholder="Arama yapın..."
+                     focus:ring-indigo-500 focus:border-indigo-500`}
+                    placeholder={placeholder}
                 />
 
                 {loading && (
