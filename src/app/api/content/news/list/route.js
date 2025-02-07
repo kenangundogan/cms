@@ -101,27 +101,27 @@ export async function GET(req) {
         }
 
         links.push({
-            url: currentPage > 1 ? `/api/news?page=${currentPage - 1}` : null,
+            url: currentPage > 1 ? `/api/content/news/list?page=${currentPage - 1}` : null,
             label: "Previous",
             active: false,
         });
 
         if (startPage > 1) {
-            links.push({ url: `/api/news?page=1`, label: "1", active: currentPage === 1 });
+            links.push({ url: `/api/content/news/list?page=1`, label: "1", active: currentPage === 1 });
             if (startPage > 2) links.push({ url: null, label: "...", active: false });
         }
 
         for (let i = startPage; i <= endPage; i++) {
-            links.push({ url: `/api/news?page=${i}`, label: `${i}`, active: currentPage === i });
+            links.push({ url: `/api/content/news/list?page=${i}`, label: `${i}`, active: currentPage === i });
         }
 
         if (endPage < totalPages) {
             if (endPage < totalPages - 1) links.push({ url: null, label: "...", active: false });
-            links.push({ url: `/api/news?page=${totalPages}`, label: `${totalPages}`, active: currentPage === totalPages });
+            links.push({ url: `/api/content/news/list?page=${totalPages}`, label: `${totalPages}`, active: currentPage === totalPages });
         }
 
         links.push({
-            url: currentPage < totalPages ? `/api/news?page=${currentPage + 1}` : null,
+            url: currentPage < totalPages ? `/api/content/news/list?page=${currentPage + 1}` : null,
             label: "Next",
             active: false,
         });
@@ -139,7 +139,7 @@ export async function GET(req) {
                 current_page: page,
                 from: startIndex + 1,
                 last_page: totalPages,
-                path: "/api/news",
+                path: "/api/content/news/list",
                 per_page: perPage,
                 to: endIndex > allItems.length ? allItems.length : endIndex,
                 total: allItems.length
