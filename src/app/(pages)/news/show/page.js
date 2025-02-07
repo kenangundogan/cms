@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from "react";
+import Image from 'next/image';
 import Breadcrumb from '@/app/components/ui/breadcrumb/Breadcrumb';
 import PageInfo from '@/app/components/ui/PageInfo';
 import BoxWrapper from '@/app/components/ui/box/BoxWrapper';
@@ -11,7 +12,7 @@ import Autocomplete from "@/app/components/ui/autocomplete/Autocomplete";
 import DateTimePicker from "@/app/components/ui/datetimepicker/DateTimePicker";
 import Select from "@/app/components/ui/select/Select";
 import Checkbox from "@/app/components/ui/checkbox/Checkbox";
-import Image from 'next/image';
+import Editorjs from "@/app/components/ui/editorjs/Editorjs";
 
 const DashboardPage = () => {
     const [singleValue, setSingleValue] = useState("");
@@ -25,6 +26,9 @@ const DashboardPage = () => {
             [key]: isChecked,
         }));
     };
+
+    const [content, setContent] = useState(null);
+
     return (
         <div>
             <Breadcrumb>
@@ -39,7 +43,7 @@ const DashboardPage = () => {
             </PageInfo>
 
             <BoxWrapper className="flex flex-col lg:flex-row">
-                <BoxWrapper className="w-full">
+                <BoxWrapper className="w-full lg:w-72 flex-none">
                     <Box boxName="newsTitle" className="w-full">
                         <Box.Head>Başlık</Box.Head>
                         <Box.Body>
@@ -96,23 +100,22 @@ const DashboardPage = () => {
                             </Form>
                         </Box.Body>
                     </Box>
+                </BoxWrapper>
+                <BoxWrapper className="w-full">
                     <Box boxName="newsContent" className="w-full">
                         <Box.Head>İçerik</Box.Head>
                         <Box.Body>
-                            <Form className="flex flex-col gap-4">
-                                <TextField
-                                    label=""
-                                    id="content"
-                                    name="content"
-                                    type="textarea"
-                                    rows="20"
-                                    placeholder="İçerik giriniz..."
-                                />
-                            </Form>
+                            <Editorjs endpoint="/api/content/news/show" id="newsShow" onChange={setContent} data={content} />
+                            <button
+                                onClick={() => console.log(content)}
+                                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md"
+                            >
+                                Veriyi Konsola Yazdır
+                            </button>
                         </Box.Body>
                     </Box>
                 </BoxWrapper>
-                <BoxWrapper className="w-full lg:w-96 flex-none">
+                <BoxWrapper className="w-full lg:w-72 flex-none">
                     <Box boxName="newsAction">
                         <Box.Body>
                             <div className="flex gap-4">

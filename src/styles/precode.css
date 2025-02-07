@@ -1,0 +1,28 @@
+.bg-example {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23f1f5f9'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+[data-type="Example"] code,
+[data-type="PageInfo"] code {
+    font-weight: bold;
+    font-size: .875em;
+    background-color: #f1f5f9;
+}
+
+[data-type="Example"] code:before,
+[data-type="Example"] code:after,
+[data-type="PageInfo"] code:before,
+[data-type="PageInfo"] code:after {
+    content: "`";
+}
+
+[data-type="CodeCard"] code:before,
+[data-type="CodeCard"] code:after {
+    content: unset;
+}
+
+[data-type="CodeCard"] code {
+    font-weight: unset;
+    font-size: unset;
+    background-color: unset;
+}
